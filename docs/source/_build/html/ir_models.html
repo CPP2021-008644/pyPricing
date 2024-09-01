@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ir_models module &mdash; PyPricing 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="structured module" href="structured.html" />
+    <link rel="prev" title="Indices and tables" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyPricing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ir_models module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">structured module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discount_curves.html">discount_curves module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratecurves.html">ratecurves module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyPricing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ir_models module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ir_models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ir-models-module">
+<h1>ir_models module<a class="headerlink" href="#ir-models-module" title="Permalink to this heading"></a></h1>
+digraph inheritance66093df2dd {
+bgcolor=transparent;
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;BootstrappedCaplets&quot; [URL=&quot;../ir_models.html#ir_models.BootstrappedCaplets&quot;,color=dodgerblue1,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=14,height=0.75,shape=ellipse,style=filled,target=&quot;_top&quot;];
+  &quot;ShortRateModel&quot; -&gt; &quot;BootstrappedCaplets&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;G2PlusPlusShortRate&quot; [URL=&quot;../ir_models.html#ir_models.G2PlusPlusShortRate&quot;,color=dodgerblue1,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=14,height=0.75,shape=ellipse,style=filled,target=&quot;_top&quot;];
+  &quot;ShortRateModel&quot; -&gt; &quot;G2PlusPlusShortRate&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;OneFactorHullWhiteShortRate&quot; [URL=&quot;../ir_models.html#ir_models.OneFactorHullWhiteShortRate&quot;,color=dodgerblue1,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=14,height=0.75,shape=ellipse,style=filled,target=&quot;_top&quot;];
+  &quot;ShortRateModel&quot; -&gt; &quot;OneFactorHullWhiteShortRate&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;ShortRateModel&quot; [URL=&quot;../ir_models.html#ir_models.ShortRateModel&quot;,color=dodgerblue1,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=14,height=0.75,shape=ellipse,style=filled,target=&quot;_top&quot;];
+  &quot;VasicekShortRate&quot; [URL=&quot;../ir_models.html#ir_models.VasicekShortRate&quot;,color=dodgerblue1,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=14,height=0.75,shape=ellipse,style=filled,target=&quot;_top&quot;];
+  &quot;ShortRateModel&quot; -&gt; &quot;VasicekShortRate&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-ir_models"></span><dl class="py class">
+<dt class="sig sig-object py" id="ir_models.BootstrappedCaplets">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ir_models.</span></span><span class="sig-name descname"><span class="pre">BootstrappedCaplets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spot_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.BootstrappedCaplets" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ir_models.ShortRateModel" title="ir_models.ShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortRateModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.BootstrappedCaplets.strip">
+<span class="sig-name descname"><span class="pre">strip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.BootstrappedCaplets.strip" title="Permalink to this definition"></a></dt>
+<dd><p>Return the caplet volatility surface obtained using the bootstrapping method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em>) – Valuation date.</p></li>
+<li><p><strong>discount_curve</strong> (<em>discount_curve</em><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+<li><p><strong>caps_df</strong> (<em>pandas.DataFrame</em>) – Data frame where the index is the set of maturities and the columns the different strikes, fixed. Not ATM strikes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>For each frequency, it returns a dictionary such that for each strike a data frame is returned with the caplet implied volatilities.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ir_models.</span></span><span class="sig-name descname"><span class="pre">G2PlusPlusShortRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ir_models.ShortRateModel" title="ir_models.ShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortRateModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.cap_price_function">
+<span class="sig-name descname"><span class="pre">cap_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.cap_price_function" title="Permalink to this definition"></a></dt>
+<dd><p>Returns cap prices according to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>np.ndarray</em>) – Array of model parameters.</p></li>
+<li><p><strong>strikes</strong> (<em>np. ndarray</em>) – Array of cap strikes.</p></li>
+<li><p><strong>maturities</strong> (<em>list</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>list</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caps for each frequency (keys).</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of cap prices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.compute_future_bond">
+<span class="sig-name descname"><span class="pre">compute_future_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.compute_future_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the bond price according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.DatetimeIndex</em>) – Valuation dates, the “calibration” time (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>beg_dates</strong> (<em>pandas.DatetimeIndex</em>) – Beginning dates, the first argument (<span class="math notranslate nohighlight">\(T\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>end_dates</strong> (<em>pandas.DatetimeIndex</em>) – Final dates, the second argument (<span class="math notranslate nohighlight">\(S\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.fit_to_atm_caps">
+<span class="sig-name descname"><span class="pre">fit_to_atm_caps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.0081429,</span> <span class="pre">0.0234,</span> <span class="pre">0.0020949,</span> <span class="pre">0.0015])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-0.2536</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.fit_to_atm_caps" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.generate_paths">
+<span class="sig-name descname"><span class="pre">generate_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.generate_paths" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the paths for the two components (x,y) of the G2++ model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.generate_short_rate">
+<span class="sig-name descname"><span class="pre">generate_short_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.generate_short_rate" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the short rate simulations according to a specified model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the short rate paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.get_factors_correlation">
+<span class="sig-name descname"><span class="pre">get_factors_correlation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.get_factors_correlation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.get_numerical_parameters">
+<span class="sig-name descname"><span class="pre">get_numerical_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.get_numerical_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a guess of parameters of the model and their allowed regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.get_risk_factors">
+<span class="sig-name descname"><span class="pre">get_risk_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.get_risk_factors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value of the risk factors for a given dates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.G2PlusPlusShortRate.swaption_price_function">
+<span class="sig-name descname"><span class="pre">swaption_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swaptions_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.G2PlusPlusShortRate.swaption_price_function" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ir_models.</span></span><span class="sig-name descname"><span class="pre">OneFactorHullWhiteShortRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ir_models.ShortRateModel" title="ir_models.ShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortRateModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.cap_price_function">
+<span class="sig-name descname"><span class="pre">cap_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.cap_price_function" title="Permalink to this definition"></a></dt>
+<dd><p>Returns cap prices according to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>np.ndarray</em>) – Array of model parameters.</p></li>
+<li><p><strong>strikes</strong> (<em>np. ndarray</em>) – Array of cap strikes.</p></li>
+<li><p><strong>maturities</strong> (<em>list</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>list</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caps for each frequency (keys).</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of cap prices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.compute_future_bond">
+<span class="sig-name descname"><span class="pre">compute_future_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.compute_future_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the bond price according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.DatetimeIndex</em>) – Valuation dates, the “calibration” time (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>beg_dates</strong> (<em>pandas.DatetimeIndex</em>) – Beginning dates, the first argument (<span class="math notranslate nohighlight">\(T\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>end_dates</strong> (<em>pandas.DatetimeIndex</em>) – Final dates, the second argument (<span class="math notranslate nohighlight">\(S\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.compute_future_bond_old">
+<span class="sig-name descname"><span class="pre">compute_future_bond_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.compute_future_bond_old" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.fit_to_atm_caps">
+<span class="sig-name descname"><span class="pre">fit_to_atm_caps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.001,</span> <span class="pre">0.1])</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.fit_to_atm_caps" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.generate_paths">
+<span class="sig-name descname"><span class="pre">generate_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.generate_paths" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the stochastic variable needed for the computation of the future bond.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the simulation paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.generate_short_rate">
+<span class="sig-name descname"><span class="pre">generate_short_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.generate_short_rate" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the short rate simulations according to a specified model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the short rate paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.get_numerical_parameters">
+<span class="sig-name descname"><span class="pre">get_numerical_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.get_numerical_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a guess of parameters of the model and their allowed regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.OneFactorHullWhiteShortRate.get_risk_factors">
+<span class="sig-name descname"><span class="pre">get_risk_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.OneFactorHullWhiteShortRate.get_risk_factors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value of the risk factors for a given dates</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ir_models.</span></span><span class="sig-name descname"><span class="pre">ShortRateModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spot_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.cap_price_function">
+<span class="sig-name descname"><span class="pre">cap_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.cap_price_function" title="Permalink to this definition"></a></dt>
+<dd><p>Returns cap prices according to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>np.ndarray</em>) – Array of model parameters.</p></li>
+<li><p><strong>strikes</strong> (<em>np. ndarray</em>) – Array of cap strikes.</p></li>
+<li><p><strong>maturities</strong> (<em>list</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>list</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caps for each frequency (keys).</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of cap prices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.caplet_price_function">
+<span class="sig-name descname"><span class="pre">caplet_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.caplet_price_function" title="Permalink to this definition"></a></dt>
+<dd><p>Returns caplet prices according to the model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>np.ndarray</em>) – Array of model parameters.</p></li>
+<li><p><strong>strikes</strong> (<em>np. ndarray</em>) – Array of cap strikes.</p></li>
+<li><p><strong>maturities</strong> (<em>list</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>list</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caplets for each frequency (keys).</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of cap prices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_all_bonds">
+<span class="sig-name descname"><span class="pre">compute_all_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bond_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'get'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_all_bonds" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the dictionary of bonds needed for a cap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em>) – Valuation date, the first argument (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>caps_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing cap (or caplet) information. The column, for caps, are: “Maturity”, “Tenor”, “Pay Frequency”, “Quote”. It could also contain “Strike”.</p></li>
+<li><p><strong>effective_date_interval</strong> (<em>int</em>) – Effective day interval to compute end dates</p></li>
+<li><p><strong>bond_type</strong> (<em>str</em>) – This argument specifies the way the bond is calculated. “get” uses get_value from spot_curve and “compute” uses compute_spot_bond.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary of all_bonds for the cap.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_cap_data">
+<span class="sig-name descname"><span class="pre">compute_cap_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_cap_data" title="Permalink to this definition"></a></dt>
+<dd><p>Computes cap parameters strike, forwards, T, deltas, bonds…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em>) – Valuation date, the first argument (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>caps_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing cap (or caplet) information. The column, for caps, are: “Maturity”, “Tenor”, “Pay Frequency”, “Quote”. It could also contain “Strike”.</p></li>
+<li><p><strong>discount_curve</strong> (<em>discount_curve</em><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+<li><p><strong>effective_date_interval</strong> (<em>int</em>) – Effective day interval to compute end dates</p></li>
+<li><p><strong>vol_type</strong> (<em>str</em><em>, </em><em>default = &quot;Normal&quot;</em>) – Black formula kind used for cap prices and vegas.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>caps_df, all_forwards, all_T, all_deltas, all_bonds</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame, dict, ditc, dict, dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_forward_bond">
+<span class="sig-name descname"><span class="pre">compute_forward_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_forward_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the forward bonds according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em><em> or </em><em>str</em>) – Valuation date, the first argument (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em><em> or </em><em>list</em>) – Step dates for forward bonds, the second argument (<span class="math notranslate nohighlight">\(T\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>final_dates</strong> (<em>pandas.DatetimeIndex</em><em> or </em><em>list</em>) – Final dates for forward bonds, the third argument (<span class="math notranslate nohighlight">\(S\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar for computation of time intervals.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_future_bond">
+<span class="sig-name descname"><span class="pre">compute_future_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_future_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the bond price according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.DatetimeIndex</em>) – Valuation dates, the “calibration” time (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>beg_dates</strong> (<em>pandas.DatetimeIndex</em>) – Beginning dates, the first argument (<span class="math notranslate nohighlight">\(T\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>end_dates</strong> (<em>pandas.DatetimeIndex</em>) – Final dates, the second argument (<span class="math notranslate nohighlight">\(S\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_implied_cap_vol">
+<span class="sig-name descname"><span class="pre">compute_implied_cap_vol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_forwards</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_implied_cap_vol" title="Permalink to this definition"></a></dt>
+<dd><p>For a given set of cap specifications, returns the implied volatility according to the specified Black or Bachelier’s formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_prices</strong> (<em>numpy.ndarray</em>) – Array of cap prices</p></li>
+<li><p><strong>maturities</strong> (<em>numpy.ndarray</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>numpy.ndarray</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>strikes</strong> (<em>numpy.ndarray</em>) – Array of strikes</p></li>
+<li><p><strong>maturities</strong> – Array of maturities</p></li>
+<li><p><strong>pay_freq</strong> – Array of frequencies</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caps for each frequency (keys).</p></li>
+<li><p><strong>all_forwards</strong> (<em>dict</em>) – Idem but for forwards</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+<li><p><strong>vol_type</strong> (<em>str</em><em>, </em><em>default = &quot;Normal&quot;</em>) – Black formula kind used for cap prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns implied volatilities.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_spot_bond">
+<span class="sig-name descname"><span class="pre">compute_spot_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_spot_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the spot bond price according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beg_dates</strong> (<em>pandas.DatetimeIndex</em><em> or </em><em>list</em>) – Beginning dates, the first argument, <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(P_{0}(t,T)\)</span>.</p></li>
+<li><p><strong>end_dates</strong> (<em>pandas.DatetimeIndex</em><em> or </em><em>list</em>) – Final dates, the second argument, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(P_{0}(t,T)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns <span class="math notranslate nohighlight">\(P_{0}(t,T)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.compute_vols">
+<span class="sig-name descname"><span class="pre">compute_vols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.compute_vols" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the volatility values for a given set of caps according to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em>) – Valuation date, the first argument (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(FP(t, T, S)\)</span>.</p></li>
+<li><p><strong>caps_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing cap (or caplet) information. The column, for caps, are: “Maturity”, “Tenor”, “Pay Frequency”, “Quote”. It could also contain “Strike”.</p></li>
+<li><p><strong>discount_curve</strong> (<em>discount_curve</em><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+<li><p><strong>effective_date_interval</strong> (<em>int</em>) – Effective day interval to compute end dates</p></li>
+<li><p><strong>vol_type</strong> (<em>str</em><em>, </em><em>default = &quot;Normal&quot;</em>) – Black formula kind used for cap prices and vegas.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A DataFrame with index the maturities and columns the volatility values according to the model and to the actual market quotes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.fit_to_caps">
+<span class="sig-name descname"><span class="pre">fit_to_caps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.fit_to_caps" title="Permalink to this definition"></a></dt>
+<dd><p>Adjusts parameters to caps or caplets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>pandas.Timestamp</em>) – Valuation date.</p></li>
+<li><p><strong>caps_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing cap (or caplet) information. The column, for caps, are: “Maturity”, “Tenor”, “Pay Frequency”, “Quote”. It could also contain “Strike”.</p></li>
+<li><p><strong>discount_curve</strong> (<em>discount_curve</em><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+<li><p><strong>effective_date_interval</strong> (<em>int</em><em>, </em><em>default = 2</em>) – Date interval between date and the offsets.</p></li>
+<li><p><strong>vol_type</strong> (<em>str</em><em>, </em><em>default = &quot;Normal&quot;</em>) – Black formula kind used for cap prices and vegas.</p></li>
+<li><p><strong>initial_guess</strong> (<em>numpy.ndarray</em><em>, </em><em>default = None</em>) – Initial guess for numerical minimization. If None, get_numerical_parameters is used.</p></li>
+<li><p><strong>caplets</strong> (<em>bool</em><em>, </em><em>default = False</em>) – If True, caplets are used instead of caps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>It assigns the parameters that minimize the difference of prices divided by the vega.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.generate_paths">
+<span class="sig-name descname"><span class="pre">generate_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.generate_paths" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the stochastic variable needed for the computation of the future bond.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the simulation paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.generate_short_rate">
+<span class="sig-name descname"><span class="pre">generate_short_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.generate_short_rate" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the short rate simulations according to a specified model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the short rate paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.get_numerical_parameters">
+<span class="sig-name descname"><span class="pre">get_numerical_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.get_numerical_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a guess of parameters of the model and their allowed regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.get_risk_factors">
+<span class="sig-name descname"><span class="pre">get_risk_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.get_risk_factors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value of the risk factors for a given dates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.get_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.ShortRateModel.strip_caplet_vols">
+<span class="sig-name descname"><span class="pre">strip_caplet_vols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.ShortRateModel.strip_caplet_vols" title="Permalink to this definition"></a></dt>
+<dd><p>Compute caplet implied vols from cap prices. See “Eight ways to strip your caplets: An introduction to caplet stripping”</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ir_models.</span></span><span class="sig-name descname"><span class="pre">VasicekShortRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ir_models.ShortRateModel" title="ir_models.ShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortRateModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.cap_price_function">
+<span class="sig-name descname"><span class="pre">cap_price_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.cap_price_function" title="Permalink to this definition"></a></dt>
+<dd><p>Returns cap prices according to the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>np.ndarray</em>) – Array of model parameters.</p></li>
+<li><p><strong>strikes</strong> (<em>np. ndarray</em>) – Array of cap strikes.</p></li>
+<li><p><strong>maturities</strong> (<em>list</em>) – A list of cap maturities.</p></li>
+<li><p><strong>pay_freq</strong> (<em>list</em>) – A list of cap frequencies.</p></li>
+<li><p><strong>all_T</strong> (<em>dict</em>) – Dictionary of times T for different caps for each frequency (keys).</p></li>
+<li><p><strong>all_deltas</strong> (<em>dict</em>) – Idem but for time intervals.</p></li>
+<li><p><strong>all_bonds</strong> (<em>dict</em>) – Idem but for bond prices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of cap prices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.compute_future_bond">
+<span class="sig-name descname"><span class="pre">compute_future_bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srsim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.compute_future_bond" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the bond price according to a specific model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.DatetimeIndex</em>) – Valuation dates, the “calibration” time (<span class="math notranslate nohighlight">\(t\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>beg_dates</strong> (<em>pandas.DatetimeIndex</em>) – Beginning dates, the first argument (<span class="math notranslate nohighlight">\(T\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>end_dates</strong> (<em>pandas.DatetimeIndex</em>) – Final dates, the second argument (<span class="math notranslate nohighlight">\(S\)</span>) of <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p></li>
+<li><p><strong>calendar</strong> (<em>data.calendars.DayCountCalendar</em>) – Calendar.</p></li>
+<li><p><strong>srsim</strong> (<em>numpy.ndarray</em>) – Array of simulations of the stochastic factors at date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns <span class="math notranslate nohighlight">\(P_{t}(T,S)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.generate_paths">
+<span class="sig-name descname"><span class="pre">generate_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.generate_paths" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the stochastic variable needed for the computation of the future bond.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the simulation paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.generate_short_rate">
+<span class="sig-name descname"><span class="pre">generate_short_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_rate_draws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.generate_short_rate" title="Permalink to this definition"></a></dt>
+<dd><p>It returns the short rate simulations according to a specified model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dates</strong> (<em>pandas.DatetimeIndex</em>) – Starting dates for the simulation.</p></li>
+<li><p><strong>step_dates</strong> (<em>pandas.DatetimeIndex</em>) – Step dates for the simulation.</p></li>
+<li><p><strong>short_rate_draws</strong> (<em>np.ndarray</em>) – Random draws generated for the simulation.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Time intervals for the simulation.</p></li>
+<li><p><strong>forward_measure</strong> (<em>bool</em><em>, </em><em>default = True</em>) – If True, it uses the forward measure for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the short rate paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.get_numerical_parameters">
+<span class="sig-name descname"><span class="pre">get_numerical_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.get_numerical_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a guess of parameters of the model and their allowed regions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ir_models.VasicekShortRate.get_risk_factors">
+<span class="sig-name descname"><span class="pre">get_risk_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ir_models.VasicekShortRate.get_risk_factors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value of the risk factors for a given dates</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Indices and tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structured.html" class="btn btn-neutral float-right" title="structured module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AFS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

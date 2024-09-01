@@ -1,0 +1,50 @@
+pypricing.risk package
+=========================
+
+Submodules
+----------
+
+pypricing.risk.margining module
+---------------------------------
+
+.. inheritance-diagram:: risk.margining
+   :parts: 1
+
+.. automodule:: risk.margining
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.risk.risk_factors module
+---------------------------------
+
+.. inheritance-diagram:: risk.risk_factors
+   :parts: 1
+
+.. automodule:: risk.risk_factors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.risk.statistical_analysis_functions module
+---------------------------------
+
+.. inheritance-diagram:: risk.statistical_analysis_functions
+   :parts: 1
+
+.. automodule:: risk.statistical_analysis_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.risk.twodimensional module
+---------------------------------
+
+.. inheritance-diagram:: risk.twodimensional
+   :parts: 1
+
+.. automodule:: risk.twodimensional
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

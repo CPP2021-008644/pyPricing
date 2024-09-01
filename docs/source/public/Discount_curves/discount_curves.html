@@ -1,0 +1,1868 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>discount_curves module &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/sphinx_toolbox_installation.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Structured/structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Products/irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Models/irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rate_Curves/ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Others/others_main.html">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">discount_curves module</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="discount-curves-module">
+<h1>discount_curves module<a class="headerlink" href="#discount-curves-module" title="Permalink to this heading">#</a></h1>
+<div class="graphviz"><object data="../_images/inheritance-c620718e072617d5b52020da982da2c5e614aa2b.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of discount_curves</p></object></div>
+</section>
+<section id="nota">
+<h1>Nota<a class="headerlink" href="#nota" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>El código original requiere una modificación no trivial de la arquitectura (ver figura de abajo) para que siga los principios de parsimonia y modularidad.
+Sin embargo, al ser no trivial, me he limitado a documentar el código original, arreglar lo que implicaba un mal funcionamiento y cambios de menor calado en la arquitectura (por ejemplo, métodos abstractos en la clase padre). Existen otros cambios a realizar, que están indicados (también en la documentación) con diversos <strong>TODO</strong>.</p>
+</div></blockquote>
+<img alt="../_images/Architecture.PNG" class="align-center" src="../_images/Architecture.PNG" />
+<span class="target" id="module-discount_curves"></span><dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">DiscountCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve.compute_fbond">
+<span class="sig-name descname"><span class="pre">compute_fbond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve.compute_fbond" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute forward bond price between beginning and ending dates, given a certain calendar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array_like</em>) – Dates at which to compute the forward bond prices.
+Should be 1-D array or sequence of dates.</p></li>
+<li><p><strong>beg_dates</strong> (<em>array_like</em>) – Beginning dates of the bond period. If only one date is provided, it will be converted to a list.
+Should be 1-D array or sequence of dates.</p></li>
+<li><p><strong>end_dates</strong> (<em>array_like</em>) – Ending dates of the bond period. If only one date is provided, it will be converted to a list.
+Should be 1-D array or sequence of dates.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar</em>) – The calendar system (Day Count Convention) to use when computing intervals. Calendar should be understood as an element of the classes defined in calendar.py.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>disc</strong> – The forward bond prices. A 2-D array of shape (<code class="docutils literal notranslate"><span class="pre">len(beg_dates)</span></code>, <code class="docutils literal notranslate"><span class="pre">len(dates)</span></code>) containing the
+computed forward bond prices for each date and each beginning-ending period.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">beg_dates</span></code> and <code class="docutils literal notranslate"><span class="pre">end_dates</span></code> cannot be broadcasted to a common shape. They should either have the same number
+    of elements, or one of them should be a single date that applies to all elements of the other.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function uses the <code class="docutils literal notranslate"><span class="pre">get_value</span></code> method of the current class to calculate discount factors
+at the beginning and ending dates, and then computes forward bond prices by dividing the
+discount factor at the ending date by the one at the beginning date.</p>
+<p>In mathematical terms, if <span class="math notranslate nohighlight">\(D(t, T)\)</span> denotes the discount factor at time <span class="math notranslate nohighlight">\(t\)</span> for maturity <span class="math notranslate nohighlight">\(T\)</span>,
+the forward bond price for a bond with beginning date <span class="math notranslate nohighlight">\(T_1\)</span> and ending date <span class="math notranslate nohighlight">\(T_2\)</span>, computed at a
+date <span class="math notranslate nohighlight">\(t\)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{FP}(t, T_1, T_2) = \frac{D(t, T_2)}{D(t, T_1)}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span> corresponds to <code class="docutils literal notranslate"><span class="pre">dates</span></code> in the function parameters.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_1\)</span> corresponds to <code class="docutils literal notranslate"><span class="pre">beg_dates</span></code> in the function parameters.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_2\)</span> corresponds to <code class="docutils literal notranslate"><span class="pre">end_dates</span></code> in the function parameters.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve.get_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract method to compute the discounted value at given dates for a specific type of discount curve.</p>
+<p>The exact formula for the discounted value depends on the specific discount curve used, and should be
+implemented in a child class. The discounted value is generally a function of the time intervals between
+the provided dates and future_dates (or <code class="docutils literal notranslate"><span class="pre">tenors</span></code> if <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> is not provided).</p>
+<p>In more precise terms, this corresponds to <span class="math notranslate nohighlight">\(D(t,T)\)</span> of Definition 1.1.2 of [Brigo and Mercurio, 2006]. As is standard, if rates <span class="math notranslate nohighlight">\(r\)</span> are deterministic,
+then <span class="math notranslate nohighlight">\(D\)</span> is deterministic as well and necessarily <span class="math notranslate nohighlight">\(D(t, T) = P(t, T)\)</span>, being the latter the price of a zero-coupon bond for each pair <span class="math notranslate nohighlight">\((t, T)\)</span>.
+However, if rates are stochastic, <span class="math notranslate nohighlight">\(D(t, T)\)</span> is a random quantity at time <span class="math notranslate nohighlight">\(t\)</span> depending on the future evolution of rates <span class="math notranslate nohighlight">\(r\)</span> between <span class="math notranslate nohighlight">\(t\)</span> and
+<span class="math notranslate nohighlight">\(T\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array_like</em>) – Dates at which to compute the discounted values.</p></li>
+<li><p><strong>future_dates</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Future dates for which the discounted values are computed. If provided, this overrides tenors.</p></li>
+<li><p><strong>tenors</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Tenors for which the discounted values are computed. Only used if <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> is not provided.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar</em><em>, </em><em>optional</em>) – The calendar system to use when computing intervals. If None, the discount curve calendar is used. Calendar should be a class of the</p></li>
+<li><p><strong>module.</strong> (<em>calendars.py</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>values</strong> – The computed discounted values at each date.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – <ul class="simple">
+<li><p>If both <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> and <code class="docutils literal notranslate"><span class="pre">tenors</span></code> are None. At least one must be provided.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function uses the <code class="docutils literal notranslate"><span class="pre">interval</span></code> method of the Calendar class to calculate time intervals between dates
+and <code class="docutils literal notranslate"><span class="pre">future</span> <span class="pre">dates</span></code> or <code class="docutils literal notranslate"><span class="pre">tenors</span></code>. If <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> is provided, it is used. Otherwise, <code class="docutils literal notranslate"><span class="pre">tenors</span></code> is used.</p>
+<p>The actual computation of discounted values should be implemented in a child class, depending on the
+specific type of discount curve used. For example, for a constant rate r, the discounted value might be
+calculated as <span class="math notranslate nohighlight">\(e^{-r \tau}\)</span>, where <span class="math notranslate nohighlight">\(\tau\)</span> is the time interval.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Brigo, D., &amp; Mercurio, F. (2006). Interest rate models: theory and practice. Berlin: Springer.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve.fit">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract method to fit the curve parameters to a given data.</p>
+<p>This method should be implemented in a child class, according to the specific type of discount curve used.
+The exact process of fitting the curve parameters will depend on the specific curve and the structure of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em><em> or </em><em>similar</em>) – The data to which the curve parameters will be fitted. The structure and content of this data
+will depend on the specific type of discount curve and should be described in the child class implementation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – If the method is not implemented in a child class.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is expected to update the internal state of the instance, to reflect the fitted curve parameters.
+The exact details of this process will depend on the child class implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CRDC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CRDC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CRDC" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<p>This class represents a constant rate discount curve. It inherits from the DiscountCurve class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>float</em>) – The constant discount rate to use.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar object</em><em>, </em><em>optional</em>) – A calendar object to use for date calculations, Day Count Convention used. If not provided, the discount curve calendar is used. Calendar should be a class of the
+calendars.py module.</p></li>
+<li><p><strong>is_ir_curve</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the curve is treated as an interest rate curve. If False, it’s treated as a discount curve.
+Default is True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CRDC.rate">
+<span class="sig-name descname"><span class="pre">rate</span></span><a class="headerlink" href="#discount_curves.CRDC.rate" title="Permalink to this definition">#</a></dt>
+<dd><p>The constant discount rate of the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CRDC.p">
+<span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#discount_curves.CRDC.p" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>This attribute can take three different values,</dt><dd><ul class="simple">
+<li><p>-1 : negative perturbation in <cite>get_value</cite>,</p></li>
+<li><p>0 : no perturbation in <cite>get_value</cite>,</p></li>
+<li><p>+1 : positive perturbation in <cite>get_value</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CRDC.is_ir_curve">
+<span class="sig-name descname"><span class="pre">is_ir_curve</span></span><a class="headerlink" href="#discount_curves.CRDC.is_ir_curve" title="Permalink to this definition">#</a></dt>
+<dd><p>If True, the curve is treated as an interest rate curve. If False, it’s treated as a discount curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CRDC.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#discount_curves.CRDC.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>The calendar object used for date calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Calendar object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The constant rate discount curve represents a special case of a discount curve where the discount rate
+is constant over time. This means that the present value of a future cash flow can be computed directly
+by applying the constant discount rate to the future value of the cash flow.</p>
+<p>The constant rate discount curve is most appropriate in settings where interest rates are stable and
+are expected to remain stable over the forecast period.</p>
+<p class="rubric">Examples</p>
+<p>To create a constant rate discount curve with a rate of 0.05:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">curve</span> <span class="o">=</span> <span class="n">CRDC</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span>
+<span class="go">0.05</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CRDC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CRDC.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits the curve parameters to the given data. This method assumes that the first element of the
+data list/array is the constant discount rate (r) and the second element is the constant p.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>list</em><em>, </em><em>array</em>) – The list or array of parameters to fit the curve. The first element should be the constant
+discount rate (r) and the second element should be the constant p.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In the context of this class, “fitting” is rather trivial. It only involves assigning the provided
+values to the class attributes <code class="docutils literal notranslate"><span class="pre">rate</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>The fit method modifies the internal state of the instance by changing the <code class="docutils literal notranslate"><span class="pre">rate</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code> attributes.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">curve</span> <span class="o">=</span> <span class="n">CRDC</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">curve</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="mf">0.06</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">rate</span><span class="p">,</span> <span class="n">curve</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+<span class="go">0.06 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CRDC.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'continuous'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CRDC.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the discounted value at given dates for a specified interest rate and compounding type.</p>
+<p>The discounted value is calculated based on the time intervals between the provided dates and future_dates (or
+tenors if future_dates is not provided). For the “continuous” compounding type, the value is calculated as</p>
+<div class="math notranslate nohighlight">
+\[D^\textnormal{c}(t, T)=e^{-(r+p\cdot 0.0005)\cdot\tau},\]</div>
+<p>and for the “simple” compounding type, it is calculated as</p>
+<div class="math notranslate nohighlight">
+\[D^\textnormal{s}(t, T)=\dfrac{1}{(1+(r+p\cdot0.0005)\cdot\tau)},\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the interest rate, <span class="math notranslate nohighlight">\(p\)</span> is a parameter (perturbation), and <span class="math notranslate nohighlight">\(\tau\)</span> is the time interval. <span class="math notranslate nohighlight">\(\tau(t, T)\)</span> is computed using the
+calendar if <span class="math notranslate nohighlight">\(t\)</span> (<code class="docutils literal notranslate"><span class="pre">dates</span></code>) and <span class="math notranslate nohighlight">\(T\)</span> (<code class="docutils literal notranslate"><span class="pre">future_dates</span></code>) are given. Recall that <span class="math notranslate nohighlight">\(p\)</span>, as mentioned in the class docstring, represents a perturbation.
+It can take on the values <span class="math notranslate nohighlight">\(\pm 1\)</span> or 0. By convention, the absolute value of the total perturbation for the fixed rate is set to 5 basis points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array_like</em>) – Dates at which to compute the discounted values.</p></li>
+<li><p><strong>future_dates</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Future dates for which the discounted values are computed. If provided, this overrides tenors.</p></li>
+<li><p><strong>tenors</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Tenors for which the discounted values are computed. Only used if future_dates is not provided.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar</em><em>, </em><em>optional</em>) – The calendar system (Day Count Convention) to use when computing intervals. If None, the discount curve calendar is used.</p></li>
+<li><p><strong>ty</strong> (<em>str</em><em>, </em><em>optional</em>) – The type of compounding to use (“continuous” or “simple”). Default is “continuous”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>values</strong> – The computed discounted values at each date.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If both future_dates and tenors are None. At least one must be provided.
+    If ty is not “continuous” or “simple”.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function uses the <cite>interval</cite> method of the Calendar class to calculate time intervals between dates and future dates
+or tenors. If future_dates is provided, it is used. Otherwise, tenors is used.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">LCExpCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-0.002,</span> <span class="pre">0.002)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_credit_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<p>A subclass of DiscountCurve that represents a locally constant exponential discount curve. That is, basically (below for more details),</p>
+<div class="math notranslate nohighlight">
+\[D(t, T) = \exp\left(\int_0^{\tau=T-t} \lambda(s) ds\right)\]</div>
+<p>for a locally constant function <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>calendar</strong> (<em>Calendar object</em><em>, </em><em>optional</em>) – A calendar object to use for date calculations, Day Count Convention used. If not provided, the discount curve calendar is used. Calendar should be a class of the
+calendars.py module.</p></li>
+<li><p><strong>perturbations</strong> (<em>tuple</em><em> of </em><em>float</em><em>, </em><em>optional</em>) – The perturbations used for computing risk sensitivities, default is (-0.0020, 0.0020). This is the convention for credit risk.</p></li>
+<li><p><strong>is_ir_curve</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the curve represents an interest rate curve. Default is False.</p></li>
+<li><p><strong>is_credit_curve</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the curve represents a credit curve. Default is True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.p">
+<span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.p" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>This attribute can take three different values,</dt><dd><ul class="simple">
+<li><p>-1 : negative perturbation, <span class="math notranslate nohighlight">\(p_{-1}\)</span>,</p></li>
+<li><p>0 : no perturbation, <span class="math notranslate nohighlight">\(p_{0}=0\)</span>,</p></li>
+<li><p>+1 : positive perturbation, <span class="math notranslate nohighlight">\(p_{1}\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.interpolation_data">
+<span class="sig-name descname"><span class="pre">interpolation_data</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.interpolation_data" title="Permalink to this definition">#</a></dt>
+<dd><p>A DataFrame that contains parameters to fit the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.perturbations">
+<span class="sig-name descname"><span class="pre">perturbations</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.perturbations" title="Permalink to this definition">#</a></dt>
+<dd><p>The perturbations used for computing risk sensitivities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.is_ir_curve">
+<span class="sig-name descname"><span class="pre">is_ir_curve</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.is_ir_curve" title="Permalink to this definition">#</a></dt>
+<dd><p>Flag indicating if the curve is an interest rate curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.is_credit_curve">
+<span class="sig-name descname"><span class="pre">is_credit_curve</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.is_credit_curve" title="Permalink to this definition">#</a></dt>
+<dd><p>Flag indicating if the curve is a credit curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#discount_curves.LCExpCurve.params" title="Permalink to this definition">#</a></dt>
+<dd><p>Dictionary to hold parameters related to the curve. It is a dictionary of perturbations where keys are -1, 0, and 1, and values are pandas DataFrame of parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params_df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the LCExpCurve model to the given data.</p>
+<p>This method prepares the parameters data for the calculation of the curve values.
+It sets up three versions of the parameters DataFrame (<code class="docutils literal notranslate"><span class="pre">params_df</span></code>), corresponding to a perturbation down (-1), no perturbation (0), and a perturbation up (+1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params_df</strong> (<em>pandas.DataFrame</em>) – The input parameters as a DataFrame. Each row should correspond to a date and each column to a tenor.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The interpolation data is set as the input <code class="docutils literal notranslate"><span class="pre">params_df</span></code>. The fitted parameters are stored in the <code class="docutils literal notranslate"><span class="pre">params</span></code> attribute of the object.
+The perturbations are added to the <code class="docutils literal notranslate"><span class="pre">params_df</span></code> values according to:</p>
+<p><span class="math notranslate nohighlight">\(\hspace{1.5cm}\lambda^{(t,~p)}\)</span> = <code class="docutils literal notranslate"><span class="pre">params_df.loc[date][l]</span></code> with <span class="math notranslate nohighlight">\(s\in [T_l, T_{l+1})\)</span> and <span class="math notranslate nohighlight">\(t\)</span> = <code class="docutils literal notranslate"><span class="pre">date</span></code>.</p>
+<p>Also,</p>
+<p><cite>params[i]</cite> = <cite>params_df</cite> + <span class="math notranslate nohighlight">\(p_i\cdot\Delta_i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(p_i\)</span> are the perturbation values defined at the object initialization, <code class="docutils literal notranslate"><span class="pre">self.perturbations</span></code> = <span class="math notranslate nohighlight">\((\Delta_{-1}, \Delta_{1})\)</span>   and <code class="docutils literal notranslate"><span class="pre">params[-1]</span></code>,
+<code class="docutils literal notranslate"><span class="pre">params[0]</span></code>, and <code class="docutils literal notranslate"><span class="pre">params[1]</span></code> are the parameters values stored in the <cite>params</cite> dictionary attribute under the keys <cite>-1</cite>, <cite>0</cite>, and <cite>1</cite> respectively.</p>
+<p>The value <code class="docutils literal notranslate"><span class="pre">p</span></code> is set to 0 but currently has no effect on the method’s operation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#discount_curves.LCExpCurve.get_value" title="discount_curves.LCExpCurve.get_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount_curves.LCExpCurve.get_value</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.compute_relative_values">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_relative_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve.compute_relative_values" title="Permalink to this definition">#</a></dt>
+<dd><p>This function calculates the curve value at a specific tenor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>ndarray</em>) – Array of parameter values for the curve.</p></li>
+<li><p><strong>tenors</strong> (<em>ndarray</em>) – Array of tenors for the curve.</p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – Specific tenor at which to calculate the curve value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The calculated curve value at the tenor <code class="docutils literal notranslate"><span class="pre">tau</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function calculates the curve value as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}V =
+\begin{cases}
+0, &amp; \text{if}\ \tau \leq 0, \\
+\sum_{l=0}^{\text{I}-1} \rho_l \cdot \Delta T_{l} + \rho_{\text{I}} \cdot \Delta T_{\text{I}}, &amp; \text{otherwise},
+\end{cases}\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V\)</span> is the calculated value,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_l\)</span> are the parameter values in <cite>params</cite>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta T_{l}:=T_l-T_{l-1}\)</span> with <span class="math notranslate nohighlight">\(T_{-1}:=0\)</span> are the relative tenors,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{I}\)</span> is the index where <cite>tenors</cite> becomes greater than or equal to <span class="math notranslate nohighlight">\(\tau\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta T_{\text{I}}\)</span> is the difference between <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(T_{\text{I}-1}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> is the specific tenor at which to calculate the curve value.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#discount_curves.LCExpCurve.get_value" title="discount_curves.LCExpCurve.get_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount_curves.LCExpCurve.get_value</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Suppose we have <code class="docutils literal notranslate"><span class="pre">params</span> <span class="pre">=</span> <span class="pre">np.array([0.1,</span> <span class="pre">0.2,</span> <span class="pre">0.3,</span> <span class="pre">0.4])</span></code> and <code class="docutils literal notranslate"><span class="pre">tenors</span> <span class="pre">=</span> <span class="pre">np.array([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4])</span></code>, and we want to calculate the curve value at <span class="math notranslate nohighlight">\(\tau:=\)</span> <code class="docutils literal notranslate"><span class="pre">tau</span> <span class="pre">=</span> <span class="pre">2.5</span></code>.</p>
+<p>Step 1: Check if <span class="math notranslate nohighlight">\(\tau \le 0\)</span>. In this case, tau is 2.5 so we proceed to the next steps.</p>
+<p>Step 2: Calculate <span class="math notranslate nohighlight">\(\text{I}\)</span> as the index where <code class="docutils literal notranslate"><span class="pre">tenors</span> <span class="pre">&gt;=</span> <span class="pre">tau</span></code>. In this case, <span class="math notranslate nohighlight">\(\text{I}\)</span> would be 2 as the value at index 2 in <cite>tenors</cite> (which is 3)
+is the first value that is greater than <cite>tau</cite>.</p>
+<p>Step 3: Create <code class="docutils literal notranslate"><span class="pre">rel_tenors</span></code> as the concatenation of <code class="docutils literal notranslate"><span class="pre">tenors</span></code> up to <span class="math notranslate nohighlight">\(\text{I}\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span>. This would give <code class="docutils literal notranslate"><span class="pre">rel_tenors</span> <span class="pre">=</span> <span class="pre">np.array([1,</span> <span class="pre">2,</span> <span class="pre">2.5])</span></code>.</p>
+<p>Step 4: Subtract the preceding tenor from each tenor in <code class="docutils literal notranslate"><span class="pre">rel_tenors</span></code> to get the relative tenors: <code class="docutils literal notranslate"><span class="pre">rel_tenors</span> <span class="pre">=</span> <span class="pre">np.array([1,</span> <span class="pre">1,</span> <span class="pre">0.5])</span></code>.</p>
+<p>Step 5: Add zeros to the end of <code class="docutils literal notranslate"><span class="pre">rel_tenors</span></code> to make it the same length as <code class="docutils literal notranslate"><span class="pre">tenors</span></code>. This gives <code class="docutils literal notranslate"><span class="pre">rel_tenors</span> <span class="pre">=</span> <span class="pre">np.array([1,</span> <span class="pre">1,</span> <span class="pre">0.5,</span> <span class="pre">0])</span></code>.</p>
+<p>Step 6: Calculate the curve value <span class="math notranslate nohighlight">\(V\)</span> as the sum of the element-wise product of <code class="docutils literal notranslate"><span class="pre">params</span></code> and <code class="docutils literal notranslate"><span class="pre">rel_tenors</span></code>. This gives <cite>V = 0.1*1 + 0.2*1 + 0.3*0.5 + 0.4*0 = 0.25</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes curve values at specified dates and tenors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em>) – The dates at which to compute the curve values.</p></li>
+<li><p><strong>future_dates</strong> (<em>array-like</em><em>, </em><em>optional</em>) – Future dates to be used for tenor calculation. Either this or <code class="docutils literal notranslate"><span class="pre">tenors</span></code> must be provided.</p></li>
+<li><p><strong>tenors</strong> (<em>array-like</em><em>, </em><em>optional</em>) – The tenors at which to compute the curve values. Either this or <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> must be provided.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar object</em><em>, </em><em>optional</em>) – A calendar object to use for date calculations, Day Count Convention used. If not provided, the discount curve calendar is used. Calendar should be a class of the
+calendars.py module.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The curve values at specified dates and tenors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">dates</span></code> and <code class="docutils literal notranslate"><span class="pre">end_dates</span></code> cannot be broadcasted to a common shape. They should either have the same number of elements,
+    or one of them should be a single date that applies to all elements of the other. See <code class="docutils literal notranslate"><span class="pre">_get_value_formatting</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The calculation of discounted values is based on the formula:</p>
+<div class="math notranslate nohighlight">
+\[D(t, T) = \exp\left(\int_0^{\tau(t, T)} \lambda^{(p,t)}(s) ds\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda^{(p,t)}\)</span> is a locally constant function with parameters associated with each date (for the given perturbation level, <span class="math notranslate nohighlight">\(p\)</span>). If the time interval <cite>tau</cite> is less or equal to zero,
+the corresponding value is set to zero before the exponential calculation. <span class="math notranslate nohighlight">\(\tau(t, T)\)</span> is computed using the calendar if <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(T\)</span> are given.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#discount_curves.LCExpCurve.compute_relative_values" title="discount_curves.LCExpCurve.compute_relative_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount_curves.LCExpCurve.compute_relative_values</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CubicDC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CubicDC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-0.0005,</span> <span class="pre">0.0005)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_credit_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<p>Implements a discount curve using cubic spline interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>calendar</strong> (<em>Calendar object</em>) – A calendar object to use for date calculations, Day Count Convention used. If not provided, the discount curve calendar is used. Calendar should be a class of the
+calendars.py module.</p></li>
+<li><p><strong>perturbations</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Perturbations to apply in the curve fitting, by default (-0.0005, 0.0005), basis points.</p></li>
+<li><p><strong>is_ir_curve</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, this is an interest rate curve, by default True.</p></li>
+<li><p><strong>is_credit_curve</strong> (<em>bool</em><em>, </em><em>optional</em>) – If False, this is a credit curve, by default False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.fitting_dates">
+<span class="sig-name descname"><span class="pre">fitting_dates</span></span><a class="headerlink" href="#discount_curves.CubicDC.fitting_dates" title="Permalink to this definition">#</a></dt>
+<dd><p>The dates used for fitting the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DatetimeIndex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.interpolation_data">
+<span class="sig-name descname"><span class="pre">interpolation_data</span></span><a class="headerlink" href="#discount_curves.CubicDC.interpolation_data" title="Permalink to this definition">#</a></dt>
+<dd><p>The DataFrame holding the data for interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.interpolations_dic">
+<span class="sig-name descname"><span class="pre">interpolations_dic</span></span><a class="headerlink" href="#discount_curves.CubicDC.interpolations_dic" title="Permalink to this definition">#</a></dt>
+<dd><p>Dictionary holding interpolations for different dates and perturbations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.p">
+<span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#discount_curves.CubicDC.p" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>The index of the current perturbation used. This attribute can take three different values,</dt><dd><ul class="simple">
+<li><p>-1 : negative perturbation, <span class="math notranslate nohighlight">\(p_{-1}\)</span>,</p></li>
+<li><p>0 : no perturbation, <span class="math notranslate nohighlight">\(p_{0}=0\)</span>,</p></li>
+<li><p>+1 : positive perturbation, <span class="math notranslate nohighlight">\(p_{1}\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.is_ir_curve">
+<span class="sig-name descname"><span class="pre">is_ir_curve</span></span><a class="headerlink" href="#discount_curves.CubicDC.is_ir_curve" title="Permalink to this definition">#</a></dt>
+<dd><p>Boolean flag to indicate if this is an interest rate curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.is_credit_curve">
+<span class="sig-name descname"><span class="pre">is_credit_curve</span></span><a class="headerlink" href="#discount_curves.CubicDC.is_credit_curve" title="Permalink to this definition">#</a></dt>
+<dd><p>Boolean flag to indicate if this is a credit curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.perturbations">
+<span class="sig-name descname"><span class="pre">perturbations</span></span><a class="headerlink" href="#discount_curves.CubicDC.perturbations" title="Permalink to this definition">#</a></dt>
+<dd><p>Perturbations to apply in the curve fitting. Mathematically, <span class="math notranslate nohighlight">\((p_{-1}, p_1)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Do not extrapolate (beyond 30y)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_ind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits the interpolation data to a given data set using cubic spline.</p>
+<p>This method will set the object’s interpolation data and fitting dates based on
+the provided data. It will then fit cubic spline interpolations for each date
+in the data and for perturbations at levels -1, 0, 1.</p>
+<p>For each date and perturbation pair, a cubic spline interpolation is fit to the data.
+For perturbation levels -1 and 1, the data values are multiplied by a discount factor
+before fitting the spline.</p>
+<p>The interpolation for a given date <cite>t</cite> and perturbation <cite>i</cite> is given by:</p>
+<div class="math notranslate nohighlight">
+\[S_{p_i,t}(\tau) = \text{CubicSpline}\left(\textbf{T}, \textbf{P}_t \cdot e^{+p_i \cdot\boldsymbol{\delta}_j \textbf{T}}\right)(\tau)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\textbf{T}\)</span> is the vector of tenors,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{P}_t\)</span> are the data values for date <cite>t</cite>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_i\)</span> is the perturbation for level <cite>i</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\delta}_j\)</span> (a vector of zeros except for the <span class="math notranslate nohighlight">\(j\)</span>-th entry) where <span class="math notranslate nohighlight">\(j\)</span> is the value of <code class="docutils literal notranslate"><span class="pre">delta_ind</span></code>. If <code class="docutils literal notranslate"><span class="pre">delta_ind=None</span></code>,
+<span class="math notranslate nohighlight">\(\boldsymbol{\delta}_j=\textbf{1}\)</span>, a vector of ones.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – A DataFrame with dates as index and tenors as columns. The values are the discount values.
+# [Artur] df pandas dataframe, columns: dates (in seconds timestamp), index: tenors TODO: isn’t it the opposite, see also LCExpCurve?</p></li>
+<li><p><strong>delta_ind</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the tenor to use for perturbation. By default, perturbation is applied to all tenors.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The fitted curve is stored internally for later retrieval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes and returns the values of the fitted curves at given dates and tenors.</p>
+<p>For each date in <code class="docutils literal notranslate"><span class="pre">dates</span></code>, the method tries to find the corresponding cubic spline interpolation.
+If the interpolation is found, it’s evaluated at the corresponding tenors. If no interpolation
+is found for a given date, NaN values are returned for that date.</p>
+<p>The method expects either <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> or <code class="docutils literal notranslate"><span class="pre">tenors</span></code> to be provided. If <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> are
+provided, the tenors are computed as the intervals between <code class="docutils literal notranslate"><span class="pre">dates</span></code> and <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> using
+the specified <code class="docutils literal notranslate"><span class="pre">calendar</span></code>. If only <code class="docutils literal notranslate"><span class="pre">tenors</span></code> are provided, they are used as is.</p>
+<p>The computation of curve values for a date <cite>t</cite> and future date <cite>T</cite> is given by:</p>
+<div class="math notranslate nohighlight">
+\[D(t, T) = S_{p,t}(\tau) \cdot \mathbb{1}_{\tau \geq 0},\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_{p,t}(T)\)</span> is the cubic spline interpolation for date <cite>t</cite> evaluated at <cite>T</cite>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{1}_{\tau \geq 0}\)</span> is the indicator function that is 1 if <span class="math notranslate nohighlight">\(\tau \ge 0\)</span> and 0 otherwise. <span class="math notranslate nohighlight">\(\tau=\tau(t, T)\)</span> is computed using the calendar
+if <span class="math notranslate nohighlight">\(t\)</span> (<code class="docutils literal notranslate"><span class="pre">dates</span></code>) and <span class="math notranslate nohighlight">\(T\)</span> (<code class="docutils literal notranslate"><span class="pre">future_dates</span></code>) are given.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array_like</em><em> of </em><em>str</em><em> or </em><em>datetime</em>) – The dates at which the curve values are to be computed.</p></li>
+<li><p><strong>future_dates</strong> (<em>array_like</em><em> of </em><em>str</em><em> or </em><em>datetime</em><em>, </em><em>optional</em>) – The future dates used to compute tenors. If provided, it should be the same size as <code class="docutils literal notranslate"><span class="pre">dates</span></code>.</p></li>
+<li><p><strong>tenors</strong> (<em>array_like</em><em> of </em><em>float</em><em>, </em><em>optional</em>) – The tenors at which to compute the curve values. If provided, it should be the same size as <code class="docutils literal notranslate"><span class="pre">dates</span></code>.</p></li>
+<li><p><strong>calendar</strong> (<em>Calendar object</em><em>, </em><em>optional</em>) – A calendar object to use for date calculations, Day Count Convention used. If not provided, the discount curve calendar is used. Calendar should be a class of the
+calendars.py module.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>curve_values</strong> – The computed curve values. It has the same shape as <code class="docutils literal notranslate"><span class="pre">dates</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If neither <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> nor <code class="docutils literal notranslate"><span class="pre">tenors</span></code> is provided.</p></li>
+<li><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">dates</span></code>, <code class="docutils literal notranslate"><span class="pre">future_dates</span></code> (resp. <code class="docutils literal notranslate"><span class="pre">tenors</span></code>) do not follow broadcasting rules, with <code class="docutils literal notranslate"><span class="pre">dates.size</span></code> not being greater than <code class="docutils literal notranslate"><span class="pre">future_dates.size</span></code>
+    (resp. <code class="docutils literal notranslate"><span class="pre">tenors.size</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">ZCCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semiannual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.ZCCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<p>Implements a Zero Coupon Curve using cubic spline interpolation.</p>
+<p>This class extends the CubicDC class to fit a discount curve to zero coupon bond yield data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#discount_curves.ZCCurve.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>The calendar system (Day Count Convention) to use when computing intervals. Calendar should be understood as an element of the classes defined in calendar.py.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Calendar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.interest_type">
+<span class="sig-name descname"><span class="pre">interest_type</span></span><a class="headerlink" href="#discount_curves.ZCCurve.interest_type" title="Permalink to this definition">#</a></dt>
+<dd><p>The type of interest rate (“simple” or “compound”), by default “simple”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.semiannual">
+<span class="sig-name descname"><span class="pre">semiannual</span></span><a class="headerlink" href="#discount_curves.ZCCurve.semiannual" title="Permalink to this definition">#</a></dt>
+<dd><p>If True, assume semiannual compounding, by default False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.interpolation_data">
+<span class="sig-name descname"><span class="pre">interpolation_data</span></span><a class="headerlink" href="#discount_curves.ZCCurve.interpolation_data" title="Permalink to this definition">#</a></dt>
+<dd><p>A DataFrame containing zero coupon yield data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the interest_type is not “simple” or “compound”.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_ind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.ZCCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits the zero coupon curve to the provided yield data.</p>
+<p>The method will first compute bond prices from the yield data. For simple interest, the bond price <span class="math notranslate nohighlight">\(P\)</span> for
+a zero coupon bond with yield <span class="math notranslate nohighlight">\(y\)</span> and maturity <span class="math notranslate nohighlight">\(T\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{1}{{1 + yT}}\]</div>
+<p>For compound interest, the bond price <span class="math notranslate nohighlight">\(P\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{1}{{(1 + \frac{y}{1 + s})^{T(1 + s)}}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s\)</span> is 1 if semiannual compounding is assumed and 0 otherwise.</p>
+<p>After computing the bond prices, the method calls the fit method of the CubicDC superclass to fit a
+cubic spline to the bond prices, taking into account the perturbations and a delta shift if given by <code class="docutils literal notranslate"><span class="pre">delta_ind</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – A DataFrame with dates as index and maturities as columns, <span class="math notranslate nohighlight">\(T\)</span>. The values are the zero coupon bond yields, <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><strong>delta_ind</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the tenor to use for perturbation. By default, perturbation is applied to all tenors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">DepositCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semiannual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DepositCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<p>A class used to represent a Deposit Curve.</p>
+<p>This class is a specific implementation of the CubicDC (Cubic Discount Curve) superclass for handling deposit rates.
+It supports both simple and compound interest calculations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#discount_curves.DepositCurve.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>The calendar system (Day Count Convention) to use when computing intervals. Calendar should be understood as an element of the classes defined in calendar.py.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Calendar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.interest_type">
+<span class="sig-name descname"><span class="pre">interest_type</span></span><a class="headerlink" href="#discount_curves.DepositCurve.interest_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A string representing the type of interest (either “simple” or “compound”). Default is “simple”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.semiannual">
+<span class="sig-name descname"><span class="pre">semiannual</span></span><a class="headerlink" href="#discount_curves.DepositCurve.semiannual" title="Permalink to this definition">#</a></dt>
+<dd><p>A boolean indicating whether compounding is semiannual. Default is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.interpolation_data">
+<span class="sig-name descname"><span class="pre">interpolation_data</span></span><a class="headerlink" href="#discount_curves.DepositCurve.interpolation_data" title="Permalink to this definition">#</a></dt>
+<dd><p>A DataFrame containing deposit rates data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the interest_type is not “simple” or “compound”.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_ind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DepositCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits the deposit curve to the provided deposit rate data.</p>
+<p>The method will first compute bond prices from the deposit rate data. For simple interest, the bond price <span class="math notranslate nohighlight">\(P\)</span> for
+a bond with deposit rate <span class="math notranslate nohighlight">\(d\)</span> and maturity <span class="math notranslate nohighlight">\(T\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[P = 1 + d\cdot T\]</div>
+<p>For compound interest, the bond price <span class="math notranslate nohighlight">\(P\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[P = \left(1 + \frac{d}{1 + s}\right)^{T(1 + s)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s\)</span> is 1 if semiannual compounding is assumed and 0 otherwise.</p>
+<p>After computing the bond prices, the method calls the fit method of the CubicDC superclass to fit a
+cubic spline to the bond prices, taking into account the perturbations and a delta shift if given by <code class="docutils literal notranslate"><span class="pre">delta_ind</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – A DataFrame with dates as index and maturities as columns. The values are the deposit rates.</p></li>
+<li><p><strong>delta_ind</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the tenor to use for perturbation. By default, perturbation is applied to all tenors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CubicSplineSwapCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<p>A class for computing the swap curve using cubic spline interpolation.</p>
+<p>This class is a specific implementation of the CubicDC (Cubic Discount Curve) superclass
+for handling swap rates. The curve is fitted based on the provided swap rates using cubic
+spline interpolation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>The calendar system (Day Count Convention) to use when computing intervals.
+Calendar should be understood as an element of the classes defined in calendar.py.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Calendar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve.bootstrapping">
+<span class="sig-name descname"><span class="pre">bootstrapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swap_rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve.bootstrapping" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes the discount factors from given swap rates via bootstrapping methods.</p>
+<p>This function uses recursive computation to generate discount factors from swap rates. In a typical plain vanilla interest rate swap, two parties agree to exchange
+cash flows, where one set of cash flows is based on a variable interest rate (like LIBOR), and the other set of cash flows is based on a fixed interest rate.
+The swap rate refers to the fixed interest rate in this contract.</p>
+<p>Mathematically, the swap rate <span class="math notranslate nohighlight">\(S\)</span> is determined such that the present value of fixed leg payments equals the
+present value of the floating leg payments. If we assume annual fixed payments, the swap rate can be computed using
+the formula (more details in [Brigo and Mercurio, 2006], Definition 1.5.3, and [Andersen and Piterbarg, 2010], p.231):</p>
+<div class="math notranslate nohighlight">
+\[S_T = \frac{1 - P(T)}{\sum_{i=1}^{n} P(t_i)}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_T\)</span> is the swap rate,</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is the swap’s maturity (<span class="math notranslate nohighlight">\(t_n=T\)</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(t_i)=P(0,t_i)\)</span> is the discount factor at time <span class="math notranslate nohighlight">\(t_i\)</span> (the present value of a single payment of 1 unit of currency received at time <span class="math notranslate nohighlight">\(t_i\)</span>),</p></li>
+<li><p>The denominator represents the present value of a series of 1 unit payments (an annuity) made at times <span class="math notranslate nohighlight">\(1\)</span> through <span class="math notranslate nohighlight">\(T\)</span>. That is, we are assuming that
+<span class="math notranslate nohighlight">\(\tau_i=1\)</span> for every index.</p></li>
+</ul>
+<p>Thus, if there’s only one swap rate provided, the discount factor <span class="math notranslate nohighlight">\(D\)</span> is calculated using the simple formula:</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{1}{{1 + S}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the swap rate.</p>
+<p>For a series of swap rates, the discount factor <span class="math notranslate nohighlight">\(P(t_i)\)</span> at time <span class="math notranslate nohighlight">\(t_i\)</span> is computed using the formula:</p>
+<div class="math notranslate nohighlight">
+\[P(t_i) = \frac{1 - S(t_i) \sum_{j=1}^{i-1} P(t_j)}{1 + S(t_i)}\]</div>
+<p>where, as above, <span class="math notranslate nohighlight">\(S(t_i)\)</span> is the swap rate at time <span class="math notranslate nohighlight">\(t_i\)</span>. The computation is done recursively, where  <span class="math notranslate nohighlight">\(P(t_i)\)</span> is dependent
+on  <span class="math notranslate nohighlight">\(P(t_{j&lt;i})\)</span>. This process is repeated until all discount factors for the swap rates are calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>swap_rates</strong> (<em>DataFrame</em>) – A DataFrame with dates as index and maturities as columns. The values are the swap rates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>discount_factors</strong> – A DataFrame with dates as index and maturities as columns. The values are the discount factors computed from
+swap rates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Brigo, D., &amp; Mercurio, F. (2006). Interest rate models: theory and practice. Berlin: Springer.</p></li>
+<li><p>Andersen, L. B. G., and Piterbarg, V.V. (2010). Interest Rate Modeling.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_ind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits the zero coupon curve to the provided data by separating tenors less than 1 year and greater than or equal to 1 year.</p>
+<p>This method separates the data into <cite>shorts</cite> and <cite>yearlies</cite> based on the tenor. The <cite>shorts</cite> represent the short term rates where tenor is less than 1 year,
+whereas <cite>yearlies</cite> represent the longer term rates with tenors greater than or equal to 1 year. See, for instance, below formula (6.3) in [Andersen and Piterbarg,
+2010] and Definition 1.3.1 and (1.9) of [Brigo and Mercurio, 2006].</p>
+<p>For short-term rates, the bond prices are calculated as:</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{1}{{1 + y\cdot T}}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the bond price,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the yield for each tenor,</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is the respective tenor.</p></li>
+</ul>
+<p>For long-term rates, the method performs bootstrapping using the <code class="docutils literal notranslate"><span class="pre">bootstrapping</span></code> method to calculate the discount factors. For more information on the bootstrapping
+method, refer to its docstring.</p>
+<p>After the calculations, this method calls the <cite>fit</cite> method from the <cite>CubicDC</cite> superclass to fit a cubic spline to the bond prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – A DataFrame with dates as index and maturities as columns. The values are the yields.</p></li>
+<li><p><strong>delta_ind</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the tenor to use for perturbation. By default, perturbation is applied to all tenors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For computing the discount factors we are using the swap rate 1-year (e.g., USSA1 Currency) instead of the short rate 1-year (e.g., USD LIBOR 1-Year).
+It could make sense to use the short rate for this tenor if these contracts are more liquid.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Brigo, D., &amp; Mercurio, F. (2006). Interest rate models: theory and practice. Berlin: Springer.</p></li>
+<li><p>Andersen, L. B. G., and Piterbarg, V.V. (2010). Interest Rate Modeling.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.SWICurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">SWICurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<p>SWICurve is a subclass of CubicDC for managing seasonal adjustment of inflation swaps.</p>
+<p>The class handles the seasonality adjustment of inflation swaps and fits cubic discount curves
+to this adjusted data.</p>
+<p># TODO: <strong>there is a conceptual error in this class.</strong>
+This was originally intended as if they were bonds <span class="math notranslate nohighlight">\(P\)</span>, but they are actually FORWARD bonds, <span class="math notranslate nohighlight">\(\text{FP}\)</span>.
+This must be corrected so the <cite>get_value</cite> gives the inflation bond. This is a misconception I have corrected elsewhere.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.cpi">
+<span class="sig-name descname"><span class="pre">cpi</span></span><a class="headerlink" href="#discount_curves.SWICurve.cpi" title="Permalink to this definition">#</a></dt>
+<dd><p>A DataFrame with dates as index and consumer price index (CPI) as columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.seasonal_factors">
+<span class="sig-name descname"><span class="pre">seasonal_factors</span></span><a class="headerlink" href="#discount_curves.SWICurve.seasonal_factors" title="Permalink to this definition">#</a></dt>
+<dd><p>A DataFrame with dates as index and months as columns. The values are the seasonal adjustment factors computed
+from a regression using historical CPI data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.delay_months">
+<span class="sig-name descname"><span class="pre">delay_months</span></span><a class="headerlink" href="#discount_curves.SWICurve.delay_months" title="Permalink to this definition">#</a></dt>
+<dd><p>Month delay for fit method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.fit_seasonality_adjustment">
+<span class="sig-name descname"><span class="pre">fit_seasonality_adjustment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regression_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.fit_seasonality_adjustment" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a seasonality adjustment to the CPI data using a regression method.</p>
+<p>The adjustment is performed on a rolling basis using a specified number of years of data. The method employs
+ordinary least squares regression and applies a log return transformation to the CPI data.</p>
+<p>The CPI log return is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[r_t = \log\left(\frac{P_t}{P_{t-1}}\right) = \log\left(1+\pi_t\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_t\)</span> is the log return at time <span class="math notranslate nohighlight">\(t\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t\)</span> is the CPI at time <span class="math notranslate nohighlight">\(t\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{t-1}\)</span> is the CPI at time <span class="math notranslate nohighlight">\(t-1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi_t\)</span> is the inflation rate at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ul>
+<p>The seasonality adjustment factor for a given month is calculated by taking the exponential of the regression
+coefficients corresponding to that month minus the mean of the regression coefficients. See also Fleckenstein et al., the appendix. That is, if</p>
+<div class="math notranslate nohighlight">
+\[r_t = \sum_{i=1}^{12} \beta_i\cdot d_i(t) + \varepsilon_t ,\]</div>
+<p>with <span class="math notranslate nohighlight">\(d_i\)</span> a dummy equal to one if the month of the date <span class="math notranslate nohighlight">\(t\)</span> is the <cite>i</cite>-th month. Then,</p>
+<div class="math notranslate nohighlight">
+\[a_i = e^{-\beta_i + \bar{\beta}} ~~\text{ such that }~~ \left( 1+\tilde{\pi}_t\right)=\left( 1+{\pi}_t\right)a_{i_t}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_i\)</span> is the seasonality adjustment factor for month <cite>i</cite>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_i\)</span> is the regression coefficient for month <cite>i</cite>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{\beta}\)</span> is the mean of the regression coefficients,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{\pi}_t\)</span> is the deseasonalized inflation rate.</p></li>
+</ul>
+<p>By construction,</p>
+<div class="math notranslate nohighlight">
+\[\prod_{i=1}^{12} a_i = 1 .\]</div>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">self.seasonal_factors</span></code> is filled as a data frame with index <code class="docutils literal notranslate"><span class="pre">regression_dates</span></code> and values <span class="math notranslate nohighlight">\(a_i\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regression_dates</strong> (<em>array-like</em>) – Dates at which the seasonality adjustment is computed.</p></li>
+<li><p><strong>no_regression_years</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of years of historical data to use for the regression. Default is 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Fleckenstein, M., Longstaff, F. A., &amp; Lustig, H. (2014). The TIPS‐treasury bond puzzle. <cite>Journal of Finance</cite>, 69(5), 2151-2197.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.adjust_cpi">
+<span class="sig-name descname"><span class="pre">adjust_cpi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">month_cpi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.adjust_cpi" title="Permalink to this definition">#</a></dt>
+<dd><p>Adjust the returns based on the month CPI. The method first fits a seasonality adjustment to the CPI based on the month,
+and then adjusts the returns based on these seasonal factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>month_cpi</strong> (<em>pd.Series</em>) – The consumer price index (CPI) data for each month. It must have one, and only one, date per month.</p></li>
+<li><p><strong>no_regression_years</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of years to consider in the regression. By default, 10.</p></li>
+<li><p><strong>last</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Takes the last date for the seasonal adjustment. By default, it is <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>base_cpis_adj</strong> – The adjusted CPI data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.fit_old">
+<span class="sig-name descname"><span class="pre">fit_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swi_rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay_months</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.fit_old" title="Permalink to this definition">#</a></dt>
+<dd><p># TODO: <strong>Delete. The deseasonalized procedure in the original code was sloppy and incorrect. It is better to rewrite this method from scratch.</strong>
+Fit the model to the provided inflation swap rates (SWI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swi_rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deseasonalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the model to the provided inflation swap rates (SWI).</p>
+<p>This method performs the fitting procedure for the SWICurve model. The process includes the calculation of bond prices
+using the inflation swap rates and CPI (Consumer Price Index), adjusting the data for seasonality, and calculating returns.
+The fitting is performed by the CubicDC (Cubic Discount Curve) class.</p>
+<p>Forward CPI are calculated with the formula:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{I}(t, t+\tau) = I(t) \cdot (1 + r(t,t+\tau))^{\tau}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}\)</span> is the forward CPI, Remark on p.10 of Waldenberger,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span> is the Consumer Price Index value at <span class="math notranslate nohighlight">\(t\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the inflation swap rate (a DataFrame indexed by <span class="math notranslate nohighlight">\(t\)</span> and columns <span class="math notranslate nohighlight">\(\tau\)</span>), see Defintion 1.4 of Waldenberger,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> is the tenor of the rate.</p></li>
+</ul>
+<p>If deseasonalized is True, then <span class="math notranslate nohighlight">\(I(t)\)</span> is substituted by <span class="math notranslate nohighlight">\(\tilde{I}(t)\)</span> as in <code class="docutils literal notranslate"><span class="pre">fit_seasonality_adjustment</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>swi_rates</strong> (<em>DataFrame</em>) – A DataFrame containing the inflation swap rates. The DataFrame should have dates as index and maturities as columns.</p></li>
+<li><p><strong>no_regression_years</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of years to consider for the regression process in seasonality adjustment. Defaults to 10.</p></li>
+<li><p><strong>deseasonalized</strong> (<em>bool</em><em>, </em><em>optional</em>) – If deseasonalized is True, then <span class="math notranslate nohighlight">\(I(t)\)</span> is substituted by <span class="math notranslate nohighlight">\(\tilde{I}(t)\)</span> as in <code class="docutils literal notranslate"><span class="pre">fit_seasonality_adjustment</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Waldenberger, Stefan. Inflation market models. <cite>Technische Universität Graz</cite>. (2011).</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>TODO: <strong>as a byproduct of the conceptual error, the signature does not match the base method. This gives the CPI, not the inflation bond</strong></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.get_forward_value">
+<span class="sig-name descname"><span class="pre">get_forward_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.get_forward_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CDSCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seniority</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve.fit_single_date">
+<span class="sig-name descname"><span class="pre">fit_single_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cds_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10])</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve.fit_single_date" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the LCExpCurve model to the given data.</p>
+<p>This method prepares the parameters data for the calculation of the curve values.
+It sets up three versions of the parameters DataFrame (<code class="docutils literal notranslate"><span class="pre">params_df</span></code>), corresponding to a perturbation down (-1), no perturbation (0), and a perturbation up (+1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params_df</strong> (<em>pandas.DataFrame</em>) – The input parameters as a DataFrame. Each row should correspond to a date and each column to a tenor.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The interpolation data is set as the input <code class="docutils literal notranslate"><span class="pre">params_df</span></code>. The fitted parameters are stored in the <code class="docutils literal notranslate"><span class="pre">params</span></code> attribute of the object.
+The perturbations are added to the <code class="docutils literal notranslate"><span class="pre">params_df</span></code> values according to:</p>
+<p><span class="math notranslate nohighlight">\(\hspace{1.5cm}\lambda^{(t,~p)}\)</span> = <code class="docutils literal notranslate"><span class="pre">params_df.loc[date][l]</span></code> with <span class="math notranslate nohighlight">\(s\in [T_l, T_{l+1})\)</span> and <span class="math notranslate nohighlight">\(t\)</span> = <code class="docutils literal notranslate"><span class="pre">date</span></code>.</p>
+<p>Also,</p>
+<p><cite>params[i]</cite> = <cite>params_df</cite> + <span class="math notranslate nohighlight">\(p_i\cdot\Delta_i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(p_i\)</span> are the perturbation values defined at the object initialization, <code class="docutils literal notranslate"><span class="pre">self.perturbations</span></code> = <span class="math notranslate nohighlight">\((\Delta_{-1}, \Delta_{1})\)</span>   and <code class="docutils literal notranslate"><span class="pre">params[-1]</span></code>,
+<code class="docutils literal notranslate"><span class="pre">params[0]</span></code>, and <code class="docutils literal notranslate"><span class="pre">params[1]</span></code> are the parameters values stored in the <cite>params</cite> dictionary attribute under the keys <cite>-1</cite>, <cite>0</cite>, and <cite>1</cite> respectively.</p>
+<p>The value <code class="docutils literal notranslate"><span class="pre">p</span></code> is set to 0 but currently has no effect on the method’s operation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#discount_curves.LCExpCurve.get_value" title="discount_curves.LCExpCurve.get_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount_curves.LCExpCurve.get_value</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve_Allmats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CDSCurve_Allmats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seniority</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve_Allmats" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve_Allmats.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cds_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">365</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve_Allmats.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the LCExpCurve model to the given data.</p>
+<p>This method prepares the parameters data for the calculation of the curve values.
+It sets up three versions of the parameters DataFrame (<code class="docutils literal notranslate"><span class="pre">params_df</span></code>), corresponding to a perturbation down (-1), no perturbation (0), and a perturbation up (+1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params_df</strong> (<em>pandas.DataFrame</em>) – The input parameters as a DataFrame. Each row should correspond to a date and each column to a tenor.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The interpolation data is set as the input <code class="docutils literal notranslate"><span class="pre">params_df</span></code>. The fitted parameters are stored in the <code class="docutils literal notranslate"><span class="pre">params</span></code> attribute of the object.
+The perturbations are added to the <code class="docutils literal notranslate"><span class="pre">params_df</span></code> values according to:</p>
+<p><span class="math notranslate nohighlight">\(\hspace{1.5cm}\lambda^{(t,~p)}\)</span> = <code class="docutils literal notranslate"><span class="pre">params_df.loc[date][l]</span></code> with <span class="math notranslate nohighlight">\(s\in [T_l, T_{l+1})\)</span> and <span class="math notranslate nohighlight">\(t\)</span> = <code class="docutils literal notranslate"><span class="pre">date</span></code>.</p>
+<p>Also,</p>
+<p><cite>params[i]</cite> = <cite>params_df</cite> + <span class="math notranslate nohighlight">\(p_i\cdot\Delta_i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(p_i\)</span> are the perturbation values defined at the object initialization, <code class="docutils literal notranslate"><span class="pre">self.perturbations</span></code> = <span class="math notranslate nohighlight">\((\Delta_{-1}, \Delta_{1})\)</span>   and <code class="docutils literal notranslate"><span class="pre">params[-1]</span></code>,
+<code class="docutils literal notranslate"><span class="pre">params[0]</span></code>, and <code class="docutils literal notranslate"><span class="pre">params[1]</span></code> are the parameters values stored in the <cite>params</cite> dictionary attribute under the keys <cite>-1</cite>, <cite>0</cite>, and <cite>1</cite> respectively.</p>
+<p>The value <code class="docutils literal notranslate"><span class="pre">p</span></code> is set to 0 but currently has no effect on the method’s operation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#discount_curves.LCExpCurve.get_value" title="discount_curves.LCExpCurve.get_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount_curves.LCExpCurve.get_value</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CorporateCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CorporateCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CorporateCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CorporateCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CorporateCurve.fit" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> – date of fitting, corresponding to data in bonds</p></li>
+<li><p><strong>bonds</strong> – data frame, indexed by maturities; columns: “PX_LAST”, “CPN”, “CPN_FREQ”</p></li>
+<li><p><strong>calendar</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">discount_curves module</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nota">Nota</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DiscountCurve"><code class="docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DiscountCurve.compute_fbond"><code class="docutils literal notranslate"><span class="pre">DiscountCurve.compute_fbond()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DiscountCurve.get_value"><code class="docutils literal notranslate"><span class="pre">DiscountCurve.get_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DiscountCurve.fit"><code class="docutils literal notranslate"><span class="pre">DiscountCurve.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC"><code class="docutils literal notranslate"><span class="pre">CRDC</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.rate"><code class="docutils literal notranslate"><span class="pre">CRDC.rate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.p"><code class="docutils literal notranslate"><span class="pre">CRDC.p</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.is_ir_curve"><code class="docutils literal notranslate"><span class="pre">CRDC.is_ir_curve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.calendar"><code class="docutils literal notranslate"><span class="pre">CRDC.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.fit"><code class="docutils literal notranslate"><span class="pre">CRDC.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CRDC.get_value"><code class="docutils literal notranslate"><span class="pre">CRDC.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve"><code class="docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.p"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.p</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.interpolation_data"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.interpolation_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.perturbations"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.perturbations</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.is_ir_curve"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.is_ir_curve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.is_credit_curve"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.is_credit_curve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.params"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.fit"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.compute_relative_values"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.compute_relative_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.LCExpCurve.get_value"><code class="docutils literal notranslate"><span class="pre">LCExpCurve.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC"><code class="docutils literal notranslate"><span class="pre">CubicDC</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.fitting_dates"><code class="docutils literal notranslate"><span class="pre">CubicDC.fitting_dates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.interpolation_data"><code class="docutils literal notranslate"><span class="pre">CubicDC.interpolation_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.interpolations_dic"><code class="docutils literal notranslate"><span class="pre">CubicDC.interpolations_dic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.p"><code class="docutils literal notranslate"><span class="pre">CubicDC.p</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.is_ir_curve"><code class="docutils literal notranslate"><span class="pre">CubicDC.is_ir_curve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.is_credit_curve"><code class="docutils literal notranslate"><span class="pre">CubicDC.is_credit_curve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.perturbations"><code class="docutils literal notranslate"><span class="pre">CubicDC.perturbations</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.fit"><code class="docutils literal notranslate"><span class="pre">CubicDC.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicDC.get_value"><code class="docutils literal notranslate"><span class="pre">CubicDC.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve"><code class="docutils literal notranslate"><span class="pre">ZCCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve.calendar"><code class="docutils literal notranslate"><span class="pre">ZCCurve.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve.interest_type"><code class="docutils literal notranslate"><span class="pre">ZCCurve.interest_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve.semiannual"><code class="docutils literal notranslate"><span class="pre">ZCCurve.semiannual</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve.interpolation_data"><code class="docutils literal notranslate"><span class="pre">ZCCurve.interpolation_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.ZCCurve.fit"><code class="docutils literal notranslate"><span class="pre">ZCCurve.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve"><code class="docutils literal notranslate"><span class="pre">DepositCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve.calendar"><code class="docutils literal notranslate"><span class="pre">DepositCurve.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve.interest_type"><code class="docutils literal notranslate"><span class="pre">DepositCurve.interest_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve.semiannual"><code class="docutils literal notranslate"><span class="pre">DepositCurve.semiannual</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve.interpolation_data"><code class="docutils literal notranslate"><span class="pre">DepositCurve.interpolation_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.DepositCurve.fit"><code class="docutils literal notranslate"><span class="pre">DepositCurve.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicSplineSwapCurve"><code class="docutils literal notranslate"><span class="pre">CubicSplineSwapCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicSplineSwapCurve.calendar"><code class="docutils literal notranslate"><span class="pre">CubicSplineSwapCurve.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicSplineSwapCurve.bootstrapping"><code class="docutils literal notranslate"><span class="pre">CubicSplineSwapCurve.bootstrapping()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CubicSplineSwapCurve.fit"><code class="docutils literal notranslate"><span class="pre">CubicSplineSwapCurve.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve"><code class="docutils literal notranslate"><span class="pre">SWICurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.cpi"><code class="docutils literal notranslate"><span class="pre">SWICurve.cpi</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.seasonal_factors"><code class="docutils literal notranslate"><span class="pre">SWICurve.seasonal_factors</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.delay_months"><code class="docutils literal notranslate"><span class="pre">SWICurve.delay_months</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.fit_seasonality_adjustment"><code class="docutils literal notranslate"><span class="pre">SWICurve.fit_seasonality_adjustment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.adjust_cpi"><code class="docutils literal notranslate"><span class="pre">SWICurve.adjust_cpi()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.fit_old"><code class="docutils literal notranslate"><span class="pre">SWICurve.fit_old()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.fit"><code class="docutils literal notranslate"><span class="pre">SWICurve.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.get_value"><code class="docutils literal notranslate"><span class="pre">SWICurve.get_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.SWICurve.get_forward_value"><code class="docutils literal notranslate"><span class="pre">SWICurve.get_forward_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CDSCurve"><code class="docutils literal notranslate"><span class="pre">CDSCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CDSCurve.fit_single_date"><code class="docutils literal notranslate"><span class="pre">CDSCurve.fit_single_date()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CDSCurve.fit"><code class="docutils literal notranslate"><span class="pre">CDSCurve.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CDSCurve_Allmats"><code class="docutils literal notranslate"><span class="pre">CDSCurve_Allmats</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CDSCurve_Allmats.fit"><code class="docutils literal notranslate"><span class="pre">CDSCurve_Allmats.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CorporateCurve"><code class="docutils literal notranslate"><span class="pre">CorporateCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount_curves.CorporateCurve.fit"><code class="docutils literal notranslate"><span class="pre">CorporateCurve.fit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

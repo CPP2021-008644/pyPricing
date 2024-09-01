@@ -1,0 +1,37 @@
+pypricing.data package
+======================
+
+Submodules
+----------
+
+pypricing.data.calendars module
+-------------------------------
+
+.. automodule:: pypricing.data.calendars
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.data.data\_factory module
+-----------------------------------
+
+.. automodule:: pypricing.data.data_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.data.underlyings module
+---------------------------------
+
+.. automodule:: pypricing.data.underlyings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pypricing.data
+   :members:
+   :undoc-members:
+   :show-inheritance:

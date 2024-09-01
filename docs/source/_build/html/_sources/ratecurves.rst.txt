@@ -1,0 +1,7 @@
+ratecurves module
+=================
+
+.. automodule:: ratecurves
+   :members:
+   :undoc-members:
+   :show-inheritance:

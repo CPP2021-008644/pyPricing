@@ -1,0 +1,148 @@
+.. PyPricing documentation master file, created by
+   sphinx-quickstart on Fri Dec 16 12:46:40 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+   [ARS] Tutorial: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+Welcome to PyPricing's documentation!
+=====================================
+Documentation [#f1]_ of the **AFS Python project**.
+
+.. image:: images/Logo.png
+   :align: center
+
+.. _cards-clickable:
+
+
+.. raw:: html
+
+   <style>
+       .grid {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           grid-template-rows: repeat(4, 1fr);
+           grid-gap: 10px; /* Ajusta el valor según el espaciado deseado */
+           gap: 100px 100px;
+       }
+   </style>
+
+.. grid:: 2
+
+    .. grid-item-card::  Structured
+      :link: Structured/structured_main.html
+      :text-align: center
+
+      :octicon:`columns;5em;sd-text-info`
+      ^^^
+      See ``Structured products``.
+
+    .. grid-item-card::  Interest rate products
+      :link: Interest_Rate_Products/irproducts_main.html
+      :text-align: center
+
+      :octicon:`pulse;5em;sd-text-info`
+      ^^^
+      See ``Interest rate products``.
+
+    .. grid-item-card::  Interest rate models
+      :link: Interest_Rate_Models/irmodels_main.html
+      :text-align: center
+
+      :octicon:`number;5em;sd-text-info`
+      ^^^
+      See ``Interest rate models``.
+
+    .. grid-item-card::  Underlyings
+      :link: Underlyings/underlyings_main.html
+      :text-align: center
+
+      :octicon:`stack;5em;sd-text-info`
+      ^^^
+      See ``Underlyings``.
+
+    .. grid-item-card::  Monte Carlo
+      :link: MonteCarlo_engines/mc_main.html
+      :text-align: center
+
+      :octicon:`gear;5em;sd-text-info`
+      ^^^
+      See ``Monte Carlo``.
+
+    .. grid-item-card::  Discount curves
+      :link: Discount_curves/discount_curves_main.html
+      :text-align: center
+
+      :octicon:`graph;5em;sd-text-info`
+      ^^^
+      See ``Discount curves``.
+
+    .. grid-item-card::  Rate curves
+      :link: Rate_Curves/ratecurves_main.html
+      :text-align: center
+
+      :octicon:`unfold;5em;sd-text-info`
+      ^^^
+      See ``Rate curves``.
+
+    .. grid-item-card::  Others
+      :link: Others/others_main.html
+      :text-align: center
+
+      :octicon:`server;5em;sd-text-info`
+      ^^^
+      See ``Others``.
+
+
+.. raw:: html
+
+   <style>
+       .grid-item-card {
+           margin-bottom: 100px; /* Ajusta el valor según el espaciado deseado */
+       }
+   </style>
+
+Workflow (internal information):
+---------------------------------
+
+.. image:: images/AFS_pricing_platform.png
+   :align: center
+
+Contents:
+---------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   Structured/structured_main
+   Interest_Rate_Products/irproducts_main
+   Interest_Rate_Models/irmodels_main
+   Underlyings/underlyings_main
+   MonteCarlo_engines/mc_main
+   Discount_curves/discount_curves_main
+   Fixed_Income/fixedincome_main
+   Rate_Curves/ratecurves_main
+   Risk/risk_main
+   Others/others_main
+   changelog
+   testing
+
+
+
+
+
+
+API Reference:
+--------------
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Under construction.

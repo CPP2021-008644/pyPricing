@@ -1,0 +1,169 @@
+Changelog
+=========
+
+June  2023
+----------
+
+- **Underlyings Documentation.ipynb :**
+
+  - Documentation of ``NormalAsset`` and ``LogNormalAsset`` functions.
+
+  - Code examples.
+
+- **discount_curves.py:**
+
+  - Improve the efficiency and arquitecture of ``SWICurve`` class.
+
+  - Corrected conceptual errors in the ``fit_seasonality_adjustment`` in ``SWICurve(CubicDC)`` class.
+
+- **data_factory.py**
+
+  - ``DataFactoryBeautifulData`` introduced and documented.
+
+
+May  2023
+----------
+- **structured.py:**
+
+  - Implementation of  ``Condor`` class.
+  - Implementation of greeks functions.
+
+- **Structured Products Documentation.ipynb:**
+
+  - Documentation ``ProductFromFunction`` class.
+
+- **underlyings.py:**
+
+  - Implemented the Euler method for the SABR model using the  ``generate_paths_euler`` function.
+  
+  - Created ``option_price_functions``, ``fit_to_options`` and ``compute_implied_vol``  functions for calibrating ``Heston`` and ``VolModel`` classes.
+
+  - Implemented the MultiAsset Heston method using the  ``compute_corr_matrix`` and ``generate_paths_for_pricing`` functions.
+
+- **Underlyings Documentation.ipynb :**
+
+  - Documentation of the ``SABR`` class. 
+
+  - Documentation of the path simulations.
+
+- **mc_engines.py:**
+
+  - Reduced computation time by adapting Monte Carlo to include simulation dates through the creation of the ``StochasticVolDiffusionMC`` class.
+
+- **discount_curves.py:**
+
+  - Added docstrings for previously implemented methods.
+
+  - Creation of the code examples.
+  
+  - Corrected the retrieval of the ``calendars`` attribute.
+
+
+April  2023
+----------
+- **structured.py:**
+
+  - Implementation of  ``Butterfly``, ``Straddle`` and ``Strangle`` classes.
+
+  - Implementation ``get_px`` in the ``Lookback`` class.
+
+- **Structured Products Documentation.ipynb:**
+
+  - Documentation of ``Airbag`` and ``Lookback`` classes.
+
+- **underlyings.py:**
+
+  - Implementation of the Heston model through the addition of the methods ``generate_paths_vols`` and ``generate_paths``.
+
+  - Implementation of the SABR model through the addition of the methods ``generate_paths_vols`` and ``generate_paths``.
+
+  - Added docstrings for previously implemented methods.
+
+- **Underlyings Documentation.ipynb :**
+
+  - Creation of the document.
+
+- **mc_engines.py:**
+
+  - Added docstrings for previously implemented methods.
+
+  - Modifications of ``RegressionMC`` and  ``SRRegressionMC`` classes.
+
+  - Adapted Monte Carlo to include more simulation dates.
+
+- **MC engines Documentation.ipynb:**
+
+  - Creation of the document. Commented ``RegressionMC`` and  ``SRRegressionMC`` classes.
+
+
+March 2023
+----------
+- **structured.py:**
+
+  - Implementation of ``ProductFromFunction`` class.
+
+- **Interest Rate Products Documentation.ipynb:**
+
+  - Documentation and code example implementation.
+
+- **ir_models.py:**
+
+  - Arquitecture of Hull-White two factors as a particular case of G2++.
+
+- **underlyings.py:**
+
+  - Optimization ``generate_paths`` method of the ``ExposureIndex`` class.
+
+- **ratecurves.py:**
+
+  - Corrections in the  ``FixedTenorRate`` class.
+
+  - Adjunstment in the private functions  ``_get_index`` and ``_get_ewma_vol_abstract`` of ``Underlying`` class.
+
+- **Rate Curves Documentation.ipynb:**
+
+  - Documentation in  ``FixedTenorRate`` class.
+
+February 2023
+----------
+- **irproducts.py:**
+
+  - Population of the module. In particular, creation of products as the classes ``CMSSpreadForward``, ``TARN``, ``CMSSpreadSwap``, ``RangeAccrual``.
+
+- **Interest Rate Products Documentation.ipynb:**
+
+  - Documentation of products as the classes ``CMSSpreadForward``, ``TARN``, ``CMSSpreadSwap``, ``RangeAccrual``.
+
+- **ratecurves.py:**
+
+  - Population of the module. In particular, creation of rate classes and operations as the classes ``MultiRate``, ``CumulativeRate``, ``DifferenceRate``, ``TARNRate``, ``KnockOutRae``.
+
+- **Rate Curves Documentation.ipynb:**
+
+  - Documentation of rate classes and operations as the classes ``MultiRate``, ``CumulativeRate``, ``DifferenceRate``, ``TARNRate``, ``KnockOutRae``.
+
+January 2023
+----------
+- **ir_models.py:**
+
+  - Implementation of the semi-analytical formula ``swaption_price_function`` and approximation  ``swaption_price_function_SP`` to check that the flow of **mc_engines.py**
+    for IR products works properly (i.e., explicit formulas coincide with MC).
+
+- **ratecurves.py:**
+
+  - Docstrings and documentation.
+
+  - Creation of ``SwapRate.generate_rates``.
+
+- **mc_engines.py:**
+
+  - Correction of numeraire and terminal measure adjustments.
+
+  - Modification of the class ``SRDeterministicVolDiffusionMC`` so that the flow with **ratecurves.py** and **ir_models.py** works and can price IR products.
+
+
+
+
+
+
+

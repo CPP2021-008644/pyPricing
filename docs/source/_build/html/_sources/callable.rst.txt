@@ -1,0 +1,7 @@
+callable module
+===============
+
+.. automodule:: callable
+   :members:
+   :undoc-members:
+   :show-inheritance:

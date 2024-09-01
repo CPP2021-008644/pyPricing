@@ -1,0 +1,10 @@
+risk_factors module
+=================
+
+.. inheritance-diagram:: risk.risk_factors
+   :parts: 1
+
+.. automodule:: risk.risk_factors
+   :members:
+   :undoc-members:
+   :show-inheritance:

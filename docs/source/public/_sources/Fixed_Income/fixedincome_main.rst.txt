@@ -1,0 +1,6 @@
+Fixed income
+=======================
+
+This is the main page for Fixed income documentation.
+
+- `Code <fixedincome.html>`_

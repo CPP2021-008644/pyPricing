@@ -1,0 +1,2244 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>structured module &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/sphinx_toolbox_installation.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Products/irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Models/irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Discount_curves/discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rate_Curves/ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Others/others_main.html">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">structured module</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="structured-module">
+<h1>structured module<a class="headerlink" href="#structured-module" title="Permalink to this heading">#</a></h1>
+<div class="graphviz"><object data="../_images/inheritance-45d1e7de023c6e9a5bdb25fec9a55eaad34a4027.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of structured</p></object></div>
+<span class="target" id="module-structured"></span><dl class="py class">
+<dt class="sig sig-object py" id="structured.Structured">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Structured</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pastmatters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_dates=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Structured" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../pypricing.pricing.html#pricing.excel_stuff.ToleranceTableObject" title="pricing.excel_stuff.ToleranceTableObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ToleranceTableObject</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Structured.run_mc">
+<span class="sig-name descname"><span class="pre">run_mc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mc_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Structured.run_mc" title="Permalink to this definition">#</a></dt>
+<dd><p>Run a Monte Carlo simulation for a given instrument.</p>
+<p>If the instrument has an underlying, the Monte Carlo engine’s price method is used.
+Otherwise, the instrument’s get_px method is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mc_engine</strong> (<em>object</em>) – The Monte Carlo engine to use for pricing.</p></li>
+<li><p><strong>dates</strong> (<em>list</em><em> or </em><em>pandas.DatetimeIndex</em>) – The dates for which to calculate prices.</p></li>
+<li><p><strong>discount_curve</strong> (<em>object</em>) – The discount curve to use for pricing.</p></li>
+<li><p><strong>no_sims</strong> (<em>int</em>) – The number of simulations to run.</p></li>
+<li><p><strong>statistics_gatherer</strong> (<em>object</em>) – An optional statistics gatherer. If provided, will be passed to the Monte Carlo engine.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The simulated prices for the instrument.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float or np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Structured.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Structured.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Structured.plot_payoff">
+<span class="sig-name descname"><span class="pre">plot_payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Structured.plot_payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a plot of the payoff as a function of the price <span class="math notranslate nohighlight">\(S_T\)</span>. For path dependent options we set <span class="math notranslate nohighlight">\(S_t = 0\)</span> for <span class="math notranslate nohighlight">\(t &lt; T\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mins</strong> (<em>float</em>) – Minimum value of <span class="math notranslate nohighlight">\(S_T\)</span> to be plotted.</p></li>
+<li><p><strong>maxs</strong> (<em>float</em>) – Maximum value of <span class="math notranslate nohighlight">\(S_T\)</span> to be plotted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plot of the payoff as a function of the price <span class="math notranslate nohighlight">\(S_T\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Structured.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Structured.get_px" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Derivative">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Derivative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pastmatters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_dates=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Derivative" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Structured" title="structured.Structured"><code class="xref py py-class docutils literal notranslate"><span class="pre">Structured</span></code></a></p>
+<p>date format: %Y%m%d</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Derivative.get_underlying_fpx">
+<span class="sig-name descname"><span class="pre">get_underlying_fpx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Derivative.get_underlying_fpx" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the forward price of the underlying asset at given dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the forward price.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The forward price.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Derivative.compute_discount_tolerances">
+<span class="sig-name descname"><span class="pre">compute_discount_tolerances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Derivative.compute_discount_tolerances" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Derivative.compute_equity_tolerances">
+<span class="sig-name descname"><span class="pre">compute_equity_tolerances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Derivative.compute_equity_tolerances" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.MCProduct">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">MCProduct</span></span><a class="headerlink" href="#structured.MCProduct" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.MCProduct.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.MCProduct.get_px" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the price.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.DatetimeIndex</em><em> or </em><em>list</em>) – Valuation dates.</p></li>
+<li><p><strong>discount_curve</strong> (pricing.discount_curves.DiscountCurve , <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">None</span></code>) – Discount curve.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.MCProduct.compute_discount_tolerances">
+<span class="sig-name descname"><span class="pre">compute_discount_tolerances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.MCProduct.compute_discount_tolerances" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.ProductFromFunction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">ProductFromFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pastmatters=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_asset=&lt;function</span> <span class="pre">amin&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ProductFromFunction" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a>, <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a></p>
+<p>Class for instantiating an object from its payoff at maturity. The product can be path-dependent (exotic) but it
+should have only one payment (at maturity).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.ProductFromFunction.func">
+<span class="sig-name descname"><span class="pre">func</span></span><a class="headerlink" href="#structured.ProductFromFunction.func" title="Permalink to this definition">#</a></dt>
+<dd><p>Payoff at maturity. For efficiency reasons, it is better to implement it using <code class="docutils literal notranslate"><span class="pre">np.where</span></code> (see Examples).
+Function <span class="math notranslate nohighlight">\(f(S)\)</span> defined in JupyterNotebook: Structured Products Documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>function object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.ProductFromFunction.pastmatters">
+<span class="sig-name descname"><span class="pre">pastmatters</span></span><a class="headerlink" href="#structured.ProductFromFunction.pastmatters" title="Permalink to this definition">#</a></dt>
+<dd><p>True for path dependent options otherwise, Vanilla, False (default value).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.ProductFromFunction.obsdates">
+<span class="sig-name descname"><span class="pre">obsdates</span></span><a class="headerlink" href="#structured.ProductFromFunction.obsdates" title="Permalink to this definition">#</a></dt>
+<dd><p>Observation dates. If <code class="docutils literal notranslate"><span class="pre">pastmatters</span> <span class="pre">=</span> <span class="pre">False</span></code> we define maturity as the last element of observation dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DatetimeIndex or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.ProductFromFunction.func_asset">
+<span class="sig-name descname"><span class="pre">func_asset</span></span><a class="headerlink" href="#structured.ProductFromFunction.func_asset" title="Permalink to this definition">#</a></dt>
+<dd><p>Function for several objects (Function <span class="math notranslate nohighlight">\(\phi_\mathcal{L}\)</span> defined in JupyterNotebook: Structured Products
+Documentation.) By default, np.min.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>function object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="mi">130</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For func any piecewise function can be constructed using (nested) np.where’s. For instance, we give the payoff of
+“Trigger Dual Directional/Twin Win Note” defined in DLIB documentation of Bloomberg.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ProductFromFunction.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ProductFromFunction.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.ZCBond">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">ZCBond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ZCBond" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Structured" title="structured.Structured"><code class="xref py py-class docutils literal notranslate"><span class="pre">Structured</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ZCBond.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ZCBond.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ZCBond.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ZCBond.get_px" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the prices of Zero Coupon Bond based on the Black-Scholes formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.Timestamp</em>) – Valuation date.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>prices</strong> – The prices of the options.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ZCBond.compute_equity_tolerances">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_equity_tolerances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ZCBond.compute_equity_tolerances" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Forward">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Forward" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<p>date format: %Y%m%d</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Forward.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Forward.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Forward.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Forward.get_px" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Vanilla">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Vanilla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<p>This class precomputes everything that is common for puts and calls. EXCEPT FOR IMPVOL which uses .set_, which
+requires [[pd.datetime],[values]].
+This class is inherited from the class Derivative.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Vanilla.underlying">
+<span class="sig-name descname"><span class="pre">underlying</span></span><a class="headerlink" href="#structured.Vanilla.underlying" title="Permalink to this definition">#</a></dt>
+<dd><p>The underlying asset’s symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Vanilla.strike">
+<span class="sig-name descname"><span class="pre">strike</span></span><a class="headerlink" href="#structured.Vanilla.strike" title="Permalink to this definition">#</a></dt>
+<dd><p>The strike price of the  option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Vanilla.maturity">
+<span class="sig-name descname"><span class="pre">maturity</span></span><a class="headerlink" href="#structured.Vanilla.maturity" title="Permalink to this definition">#</a></dt>
+<dd><p>The expiration date of the option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Timestamp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Vanilla.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><a class="headerlink" href="#structured.Vanilla.kind" title="Permalink to this definition">#</a></dt>
+<dd><p>The type of option, either ‘call’ or ‘put’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Vanilla.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#structured.Vanilla.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>Calendar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar">data.calendars.DayCountCalendar</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>date format: %Y%m%d</p></li>
+<li><p>prices are in percentage of nominal</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_px" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the price of an option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the forward price.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a><em>, </em><em>optional</em>) – Provides the discounts for the computation of the strikes if these are not given. Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>For LognormalAsset, the function returns a tuple containing arrays of forward prices, d1, d2, discount factors, and volatilities.</p></li>
+<li><p>For NormalAsset, the function returns a tuple containing arrays of zero rates, volatilities, and d values.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The function’s output(a tuple) varies depending on the type of asset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_gamma">
+<span class="sig-name descname"><span class="pre">get_gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_gamma" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the gamma of an option. Gamma is the second derivative
+of the option’s price with respect to the underlying asset’s price.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the gamma.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the gamma.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>gamma</strong> – Returns gamma for the given dates if the underlying asset is of type LognormalAsset.
+For a basket of assets or other unsupported types, a message is printed and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_vega">
+<span class="sig-name descname"><span class="pre">get_vega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_vega" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the vega of an option. Vega is the derivative of the option value with respect to the volatility of the underlying asset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the vega.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the vega.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vega</strong> – Returns vega for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.fit_alpha">
+<span class="sig-name descname"><span class="pre">fit_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.fit_alpha" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_vanna">
+<span class="sig-name descname"><span class="pre">get_vanna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_vanna" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the vanna of an option. Vanna is the second order derivative of the option value, once to the underlying spot price and once to volatility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the vanna.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the vanna.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vanna</strong> – Returns vanna for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_vomma">
+<span class="sig-name descname"><span class="pre">get_vomma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_vomma" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the vomma of an option. Vomma is the second order sensitivity to volatility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the vomma.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the vomma.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vomma</strong> – Returns vomma for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_veta">
+<span class="sig-name descname"><span class="pre">get_veta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_veta" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the veta of an option. Veta is the second derivative of the value function; once to volatility and once to time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the veta.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the veta.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>veta</strong> – Returns veta for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_speed">
+<span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_speed" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the speed of an option. Speed is the third derivative of the value function with respect to the underlying spot price.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the speed.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the speed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>speed</strong> – Returns speed for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_zomma">
+<span class="sig-name descname"><span class="pre">get_zomma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_zomma" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the zomma of an option. Zomma is the third derivative of the option value, twice to underlying asset price and once to volatility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the zomma.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the zomma.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>zomma</strong> – Returns zomma for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_color">
+<span class="sig-name descname"><span class="pre">get_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the color of an option. Color is a third-order derivative of the option value, twice to underlying asset price and once to time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the color.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the color.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>color</strong> – Returns color for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_ultima">
+<span class="sig-name descname"><span class="pre">get_ultima</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_ultima" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the ultima of an option. Ultima is a third-order derivative of the option value to volatility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the ultima.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the ultima.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ultima</strong> – Returns ultima for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Vanilla.get_dual_gamma">
+<span class="sig-name descname"><span class="pre">get_dual_gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Vanilla.get_dual_gamma" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the dual gamma of an option. Dual gamma is a second-order derivative of the option value to strike.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the dual gamma.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the dual gamma.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dual gamma</strong> – Returns ultima for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.ImpVolObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">ImpVolObject</span></span><a class="headerlink" href="#structured.ImpVolObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ImpVolObject.impvol">
+<span class="sig-name descname"><span class="pre">impvol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">px</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ImpVolObject.impvol" title="Permalink to this definition">#</a></dt>
+<dd><p>px=[[array dates (str)],[array values]]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Call">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Vanilla" title="structured.Vanilla"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vanilla</span></code></a>, <a class="reference internal" href="#structured.ImpVolObject" title="structured.ImpVolObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImpVolObject</span></code></a></p>
+<p>Class for instantiating a Call Option.
+This class is inherited from two other classes, Vanilla and ImpVolObject</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Call.underlying">
+<span class="sig-name descname"><span class="pre">underlying</span></span><a class="headerlink" href="#structured.Call.underlying" title="Permalink to this definition">#</a></dt>
+<dd><p>The underlying asset’s symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Call.strike">
+<span class="sig-name descname"><span class="pre">strike</span></span><a class="headerlink" href="#structured.Call.strike" title="Permalink to this definition">#</a></dt>
+<dd><p>The strike price of the  option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Call.maturity">
+<span class="sig-name descname"><span class="pre">maturity</span></span><a class="headerlink" href="#structured.Call.maturity" title="Permalink to this definition">#</a></dt>
+<dd><p>The expiration date of the option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Timestamp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Call.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#structured.Call.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>Calendar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar">data.calendars.DayCountCalendar</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_px" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the price of an option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the forward price.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a><em>, </em><em>optional</em>) – Provides the discounts for the computation of the strikes if these are not given. Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>For LognormalAsset, the function returns a tuple containing arrays of forward prices, d1, d2, discount factors, and volatilities.</p></li>
+<li><p>For NormalAsset, the function returns a tuple containing arrays of zero rates, volatilities, and d values.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The function’s output(a tuple) varies depending on the type of asset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_delta">
+<span class="sig-name descname"><span class="pre">get_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_delta" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the delta of an option. Delta is the derivative of the option value to the underlying. It’s multiplied by the nominal value to calculate the hedge ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the  delta.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the delta.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>delta</strong> – Returns ultima for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_theta">
+<span class="sig-name descname"><span class="pre">get_theta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_theta" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the theta of an option. Theta is the derivative of the option value to time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the dual theta.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the theta.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>theta</strong> – Returns theta for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_rho">
+<span class="sig-name descname"><span class="pre">get_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_rho" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the rho of an option. Rho is the derivative of the option value to interest rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the rho.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the rho.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>rho</strong> – Returns rho for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_omega">
+<span class="sig-name descname"><span class="pre">get_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_omega" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the omega of an option. It s the percentage change in option value per percentage change in the underlying price.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the omega.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the omega.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>omega</strong> – Returns omega for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_charm">
+<span class="sig-name descname"><span class="pre">get_charm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_charm" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the charm of an option. Charm is the second order derivative of the option value, once to the underlying spot price and once to time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the charm.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the charm.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>charm</strong> – Returns charm for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Call.get_dual_delta">
+<span class="sig-name descname"><span class="pre">get_dual_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Call.get_dual_delta" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the dual delta of an option. Dual delta  is the derivative of the option value to strike.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>array-like</em><em> of </em><em>pandas.Timestamp</em>) – Dates at which to compute the dual delta.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Provides the discounts for the computation of the dual delta.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dual delta</strong> – Returns dual delta for the given dates if the underlying asset is of type LognormalAsset. For a basket of assets or other unsupported types, a message is printed
+and None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method is not applicable for a basket of assets; in such cases, Monte Carlo methods
+are suggested. If the underlying asset is not of type LognormalAsset, the method also
+returns None, indicating unsupported asset dynamics.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Put">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Vanilla" title="structured.Vanilla"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vanilla</span></code></a>, <a class="reference internal" href="#structured.ImpVolObject" title="structured.ImpVolObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImpVolObject</span></code></a></p>
+<p>Class for instantiating a Put Option.
+This class is inherited from two other classes, Vanilla and ImpVolObject</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Put.underlying">
+<span class="sig-name descname"><span class="pre">underlying</span></span><a class="headerlink" href="#structured.Put.underlying" title="Permalink to this definition">#</a></dt>
+<dd><p>The underlying asset’s symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Put.strike">
+<span class="sig-name descname"><span class="pre">strike</span></span><a class="headerlink" href="#structured.Put.strike" title="Permalink to this definition">#</a></dt>
+<dd><p>The strike price of the  option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Put.maturity">
+<span class="sig-name descname"><span class="pre">maturity</span></span><a class="headerlink" href="#structured.Put.maturity" title="Permalink to this definition">#</a></dt>
+<dd><p>The expiration date of the option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Timestamp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Put.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#structured.Put.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>Calendar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar">data.calendars.DayCountCalendar</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_px" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_px" title="structured.Call.get_px"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_px</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_delta">
+<span class="sig-name descname"><span class="pre">get_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_delta" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_delta" title="structured.Call.get_delta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_delta</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_theta">
+<span class="sig-name descname"><span class="pre">get_theta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_theta" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_theta" title="structured.Call.get_theta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_theta</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_rho">
+<span class="sig-name descname"><span class="pre">get_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_rho" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_rho" title="structured.Call.get_rho"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_rho</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_omega">
+<span class="sig-name descname"><span class="pre">get_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_omega" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_omega" title="structured.Call.get_omega"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_omega</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_charm">
+<span class="sig-name descname"><span class="pre">get_charm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_charm" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_charm" title="structured.Call.get_charm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_charm</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Put.get_dual_delta">
+<span class="sig-name descname"><span class="pre">get_dual_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Put.get_dual_delta" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#structured.Call.get_dual_delta" title="structured.Call.get_dual_delta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured.Call.get_dual_delta</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Digital">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Digital</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Digital" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Digital.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Digital.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Airbag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Airbag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap_strike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Airbag" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a>, <a class="reference internal" href="#structured.ZCBond" title="structured.ZCBond"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZCBond</span></code></a></p>
+<p>The airbag is constructed by taking the zero-coupon bond, adding the call option, and subtracting the put option.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Quanto">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Quanto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Quanto" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Quanto.compute_correction">
+<span class="sig-name descname"><span class="pre">compute_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Quanto.compute_correction" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Quanto.get_underlying_fpx">
+<span class="sig-name descname"><span class="pre">get_underlying_fpx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foreign_discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Quanto.get_underlying_fpx" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.QuantoForward">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">QuantoForward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.QuantoForward" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Quanto" title="structured.Quanto"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quanto</span></code></a>, <a class="reference internal" href="#structured.Forward" title="structured.Forward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.QuantoCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">QuantoCall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.QuantoCall" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Quanto" title="structured.Quanto"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quanto</span></code></a>, <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.QuantoPut">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">QuantoPut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.QuantoPut" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Quanto" title="structured.Quanto"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quanto</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.QuantoMultiAsset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">QuantoMultiAsset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange_rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.QuantoMultiAsset" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Quanto" title="structured.Quanto"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quanto</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.QuantoMultiAsset.compute_correction">
+<span class="sig-name descname"><span class="pre">compute_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.QuantoMultiAsset.compute_correction" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.ArAsian">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">ArAsian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ArAsian" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.ArAsian.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.ArAsian.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.GAsian">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">GAsian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.GAsian" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.GAsian.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.GAsian.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Lookback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Lookback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Lookback" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<p>Class for instantiating an object which represents a financial product known as a Lookback Option.
+This class is inherited from two other classes, MCProduct and Derivative.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Lookback.underlying">
+<span class="sig-name descname"><span class="pre">underlying</span></span><a class="headerlink" href="#structured.Lookback.underlying" title="Permalink to this definition">#</a></dt>
+<dd><p>The underlying asset’s symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Lookback.obsdates">
+<span class="sig-name descname"><span class="pre">obsdates</span></span><a class="headerlink" href="#structured.Lookback.obsdates" title="Permalink to this definition">#</a></dt>
+<dd><p>Observation dates. If pastmatters = False we define maturity as the last element of observation dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DatetimeIndex or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Lookback.strike">
+<span class="sig-name descname"><span class="pre">strike</span></span><a class="headerlink" href="#structured.Lookback.strike" title="Permalink to this definition">#</a></dt>
+<dd><p>The strike price of the  option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Lookback.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><a class="headerlink" href="#structured.Lookback.kind" title="Permalink to this definition">#</a></dt>
+<dd><p>The type of option, either ‘call’ or ‘put’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="structured.Lookback.calendar">
+<span class="sig-name descname"><span class="pre">calendar</span></span><a class="headerlink" href="#structured.Lookback.calendar" title="Permalink to this definition">#</a></dt>
+<dd><p>Calendar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar">data.calendars.DayCountCalendar</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Lookback.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Lookback.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Lookback.get_px">
+<span class="sig-name descname"><span class="pre">get_px</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Lookback.get_px" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the prices of European lookback call and put options based on the Black-Scholes formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>pandas.Timestamp</em>) – Valuation date.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a><em> , </em><em>default = None</em>) – Gives the discounts for the computation of the strikes if these are not given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>prices</strong> – The prices of the options.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>- AttributeError</strong> – If the kind attribute is neither ‘call’ nor ‘put’ or if the option has a fixed strike.:</p></li>
+<li><p><strong>- NameError</strong> – If the underlying dynamics are not supported.:</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Privault, N. (2022). Notes on Stochastic Finance. Chapter 12: 429–440.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.BarrierOption">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">BarrierOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barrier_kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiassets_extremum_kind='max'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.BarrierOption" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.BarrierOption.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.BarrierOption.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.KnockOutContingentPayment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">KnockOutContingentPayment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_barrier=inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time_pay=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time_redemption=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_extremum_multi_asset='min'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_extremum_multi_asset='max'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.KnockOutContingentPayment" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.KnockOutContingentPayment.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.KnockOutContingentPayment.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.AutocallableComp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">AutocallableComp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capital_barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time_redemption=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.AutocallableComp" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.KnockOutContingentPayment" title="structured.KnockOutContingentPayment"><code class="xref py py-class docutils literal notranslate"><span class="pre">KnockOutContingentPayment</span></code></a>, <a class="reference internal" href="#structured.BarrierOption" title="structured.BarrierOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarrierOption</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.AutocallableSingleAsset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">AutocallableSingleAsset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">knock_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.AutocallableSingleAsset" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.AutocallableSingleAsset.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_simulations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.AutocallableSingleAsset.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.AutocallableSingleAsset.get_px_analytic">
+<span class="sig-name descname"><span class="pre">get_px_analytic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.AutocallableSingleAsset.get_px_analytic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.AveragingAutocallable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">AveragingAutocallable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_averaging_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">knock_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.AveragingAutocallable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.AutocallableSingleAsset" title="structured.AutocallableSingleAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutocallableSingleAsset</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Autocallable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Autocallable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlyings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pay_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">knock_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credit_curve=&lt;pricing.discount_curves.CRDC</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Autocallable" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.MCProduct" title="structured.MCProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCProduct</span></code></a>, <a class="reference internal" href="#structured.Derivative" title="structured.Derivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Derivative</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="structured.Autocallable.payoff">
+<span class="sig-name descname"><span class="pre">payoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_simulations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates_dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Autocallable.payoff" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the payoff of a Structured product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> (<em>np.ndarray</em>) – Prices of the underlying. The first index of price denotes the simulation, the second one the (full) observation dates and the third one the valuation dates.
+The fourth one is for the asset number.</p></li>
+<li><p><strong>dates_dic</strong> (<em>dict</em>) – Dictionary (or pandas.Series) which assigns an index to each date.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of observation dates previous to a fixed observation date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3  dimensional numpy array with the payoffs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterNotebook</span></code></dt><dd><p>Structured Products Documentation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Butterfly">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Butterfly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Butterfly" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a></p>
+<p>A financial derivative representing a butterfly option strategy, which involves selling two options at a middle
+strike price and buying one option each at a lower and higher strike price.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Straddle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Straddle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Straddle" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a></p>
+<p>It is an options trading strategy that involves buying both a call option and a put option with same
+strike prices, expiration date and underlying asset.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Strangle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Strangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Strangle" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a></p>
+<p>It is an options trading strategy that involves buying both a call option and a put option with different
+strike prices, but with the same expiration date and underlying asset.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="structured.Condor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">structured.</span></span><span class="sig-name descname"><span class="pre">Condor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap_strike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#structured.Condor" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#structured.Call" title="structured.Call"><code class="xref py py-class docutils literal notranslate"><span class="pre">Call</span></code></a>, <a class="reference internal" href="#structured.Put" title="structured.Put"><code class="xref py py-class docutils literal notranslate"><span class="pre">Put</span></code></a></p>
+<p>A financial derivative representing a condor option strategy, which involves selling two options at a middle different
+strike price and buying one option each at a lower and higher strike price.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Structured"><code class="docutils literal notranslate"><span class="pre">Structured</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Structured.run_mc"><code class="docutils literal notranslate"><span class="pre">Structured.run_mc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Structured.payoff"><code class="docutils literal notranslate"><span class="pre">Structured.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Structured.plot_payoff"><code class="docutils literal notranslate"><span class="pre">Structured.plot_payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Structured.get_px"><code class="docutils literal notranslate"><span class="pre">Structured.get_px()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Derivative"><code class="docutils literal notranslate"><span class="pre">Derivative</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Derivative.get_underlying_fpx"><code class="docutils literal notranslate"><span class="pre">Derivative.get_underlying_fpx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Derivative.compute_discount_tolerances"><code class="docutils literal notranslate"><span class="pre">Derivative.compute_discount_tolerances()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Derivative.compute_equity_tolerances"><code class="docutils literal notranslate"><span class="pre">Derivative.compute_equity_tolerances()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.MCProduct"><code class="docutils literal notranslate"><span class="pre">MCProduct</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.MCProduct.get_px"><code class="docutils literal notranslate"><span class="pre">MCProduct.get_px()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.MCProduct.compute_discount_tolerances"><code class="docutils literal notranslate"><span class="pre">MCProduct.compute_discount_tolerances()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction.func"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction.func</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction.pastmatters"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction.pastmatters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction.obsdates"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction.obsdates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction.func_asset"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction.func_asset</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ProductFromFunction.payoff"><code class="docutils literal notranslate"><span class="pre">ProductFromFunction.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ZCBond"><code class="docutils literal notranslate"><span class="pre">ZCBond</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ZCBond.payoff"><code class="docutils literal notranslate"><span class="pre">ZCBond.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ZCBond.get_px"><code class="docutils literal notranslate"><span class="pre">ZCBond.get_px()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ZCBond.compute_equity_tolerances"><code class="docutils literal notranslate"><span class="pre">ZCBond.compute_equity_tolerances()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Forward"><code class="docutils literal notranslate"><span class="pre">Forward</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Forward.payoff"><code class="docutils literal notranslate"><span class="pre">Forward.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Forward.get_px"><code class="docutils literal notranslate"><span class="pre">Forward.get_px()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla"><code class="docutils literal notranslate"><span class="pre">Vanilla</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.underlying"><code class="docutils literal notranslate"><span class="pre">Vanilla.underlying</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.strike"><code class="docutils literal notranslate"><span class="pre">Vanilla.strike</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.maturity"><code class="docutils literal notranslate"><span class="pre">Vanilla.maturity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.kind"><code class="docutils literal notranslate"><span class="pre">Vanilla.kind</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.calendar"><code class="docutils literal notranslate"><span class="pre">Vanilla.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.payoff"><code class="docutils literal notranslate"><span class="pre">Vanilla.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_px"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_px()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_gamma"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_gamma()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_vega"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_vega()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.fit_alpha"><code class="docutils literal notranslate"><span class="pre">Vanilla.fit_alpha()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_vanna"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_vanna()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_vomma"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_vomma()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_veta"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_veta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_speed"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_speed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_zomma"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_zomma()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_color"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_ultima"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_ultima()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Vanilla.get_dual_gamma"><code class="docutils literal notranslate"><span class="pre">Vanilla.get_dual_gamma()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ImpVolObject"><code class="docutils literal notranslate"><span class="pre">ImpVolObject</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ImpVolObject.impvol"><code class="docutils literal notranslate"><span class="pre">ImpVolObject.impvol()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call"><code class="docutils literal notranslate"><span class="pre">Call</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.underlying"><code class="docutils literal notranslate"><span class="pre">Call.underlying</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.strike"><code class="docutils literal notranslate"><span class="pre">Call.strike</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.maturity"><code class="docutils literal notranslate"><span class="pre">Call.maturity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.calendar"><code class="docutils literal notranslate"><span class="pre">Call.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_px"><code class="docutils literal notranslate"><span class="pre">Call.get_px()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_delta"><code class="docutils literal notranslate"><span class="pre">Call.get_delta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_theta"><code class="docutils literal notranslate"><span class="pre">Call.get_theta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_rho"><code class="docutils literal notranslate"><span class="pre">Call.get_rho()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_omega"><code class="docutils literal notranslate"><span class="pre">Call.get_omega()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_charm"><code class="docutils literal notranslate"><span class="pre">Call.get_charm()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Call.get_dual_delta"><code class="docutils literal notranslate"><span class="pre">Call.get_dual_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put"><code class="docutils literal notranslate"><span class="pre">Put</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.underlying"><code class="docutils literal notranslate"><span class="pre">Put.underlying</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.strike"><code class="docutils literal notranslate"><span class="pre">Put.strike</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.maturity"><code class="docutils literal notranslate"><span class="pre">Put.maturity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.calendar"><code class="docutils literal notranslate"><span class="pre">Put.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_px"><code class="docutils literal notranslate"><span class="pre">Put.get_px()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_delta"><code class="docutils literal notranslate"><span class="pre">Put.get_delta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_theta"><code class="docutils literal notranslate"><span class="pre">Put.get_theta()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_rho"><code class="docutils literal notranslate"><span class="pre">Put.get_rho()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_omega"><code class="docutils literal notranslate"><span class="pre">Put.get_omega()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_charm"><code class="docutils literal notranslate"><span class="pre">Put.get_charm()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Put.get_dual_delta"><code class="docutils literal notranslate"><span class="pre">Put.get_dual_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Digital"><code class="docutils literal notranslate"><span class="pre">Digital</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Digital.payoff"><code class="docutils literal notranslate"><span class="pre">Digital.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Airbag"><code class="docutils literal notranslate"><span class="pre">Airbag</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Quanto"><code class="docutils literal notranslate"><span class="pre">Quanto</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Quanto.compute_correction"><code class="docutils literal notranslate"><span class="pre">Quanto.compute_correction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Quanto.get_underlying_fpx"><code class="docutils literal notranslate"><span class="pre">Quanto.get_underlying_fpx()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.QuantoForward"><code class="docutils literal notranslate"><span class="pre">QuantoForward</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.QuantoCall"><code class="docutils literal notranslate"><span class="pre">QuantoCall</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.QuantoPut"><code class="docutils literal notranslate"><span class="pre">QuantoPut</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.QuantoMultiAsset"><code class="docutils literal notranslate"><span class="pre">QuantoMultiAsset</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.QuantoMultiAsset.compute_correction"><code class="docutils literal notranslate"><span class="pre">QuantoMultiAsset.compute_correction()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ArAsian"><code class="docutils literal notranslate"><span class="pre">ArAsian</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.ArAsian.payoff"><code class="docutils literal notranslate"><span class="pre">ArAsian.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.GAsian"><code class="docutils literal notranslate"><span class="pre">GAsian</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.GAsian.payoff"><code class="docutils literal notranslate"><span class="pre">GAsian.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback"><code class="docutils literal notranslate"><span class="pre">Lookback</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.underlying"><code class="docutils literal notranslate"><span class="pre">Lookback.underlying</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.obsdates"><code class="docutils literal notranslate"><span class="pre">Lookback.obsdates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.strike"><code class="docutils literal notranslate"><span class="pre">Lookback.strike</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.kind"><code class="docutils literal notranslate"><span class="pre">Lookback.kind</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.calendar"><code class="docutils literal notranslate"><span class="pre">Lookback.calendar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.payoff"><code class="docutils literal notranslate"><span class="pre">Lookback.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Lookback.get_px"><code class="docutils literal notranslate"><span class="pre">Lookback.get_px()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.BarrierOption"><code class="docutils literal notranslate"><span class="pre">BarrierOption</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.BarrierOption.payoff"><code class="docutils literal notranslate"><span class="pre">BarrierOption.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.KnockOutContingentPayment"><code class="docutils literal notranslate"><span class="pre">KnockOutContingentPayment</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.KnockOutContingentPayment.payoff"><code class="docutils literal notranslate"><span class="pre">KnockOutContingentPayment.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.AutocallableComp"><code class="docutils literal notranslate"><span class="pre">AutocallableComp</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.AutocallableSingleAsset"><code class="docutils literal notranslate"><span class="pre">AutocallableSingleAsset</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.AutocallableSingleAsset.payoff"><code class="docutils literal notranslate"><span class="pre">AutocallableSingleAsset.payoff()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.AutocallableSingleAsset.get_px_analytic"><code class="docutils literal notranslate"><span class="pre">AutocallableSingleAsset.get_px_analytic()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.AveragingAutocallable"><code class="docutils literal notranslate"><span class="pre">AveragingAutocallable</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Autocallable"><code class="docutils literal notranslate"><span class="pre">Autocallable</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Autocallable.payoff"><code class="docutils literal notranslate"><span class="pre">Autocallable.payoff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Butterfly"><code class="docutils literal notranslate"><span class="pre">Butterfly</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Straddle"><code class="docutils literal notranslate"><span class="pre">Straddle</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Strangle"><code class="docutils literal notranslate"><span class="pre">Strangle</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured.Condor"><code class="docutils literal notranslate"><span class="pre">Condor</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

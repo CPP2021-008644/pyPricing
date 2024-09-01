@@ -1,0 +1,6 @@
+Discount curves 
+=======================
+
+This is the main page for Discount curves documentation.
+
+- `Code <discount_curves.html>`_

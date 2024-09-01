@@ -1,0 +1,9 @@
+fixedincome module
+==================
+.. inheritance-diagram:: fixedincome
+   :parts: 1
+
+.. automodule:: fixedincome
+   :members:
+   :undoc-members:
+   :show-inheritance:

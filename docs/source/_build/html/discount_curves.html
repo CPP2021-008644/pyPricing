@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>discount_curves module &mdash; PyPricing 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ratecurves module" href="ratecurves.html" />
+    <link rel="prev" title="structured module" href="structured.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyPricing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ir_models.html">ir_models module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">structured module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">discount_curves module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratecurves.html">ratecurves module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyPricing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">discount_curves module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/discount_curves.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-discount_curves">
+<span id="discount-curves-module"></span><h1>discount_curves module<a class="headerlink" href="#module-discount_curves" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CDSCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seniority</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve.fit_single_date">
+<span class="sig-name descname"><span class="pre">fit_single_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cds_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10])</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve.fit_single_date" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve_Allmats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CDSCurve_Allmats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seniority</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve_Allmats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CDSCurve_Allmats.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cds_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">365</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CDSCurve_Allmats.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CRDC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CRDC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CRDC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<p>date format: %Y%m%d
+annualized rate</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CRDC.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'continuous'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CRDC.get_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CorporateCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CorporateCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CorporateCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.LCExpCurve" title="discount_curves.LCExpCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCExpCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CorporateCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CorporateCurve.fit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> – date of fitting, corresponding to data in bonds</p></li>
+<li><p><strong>bonds</strong> – data frame, indexed by maturities; columns: “PX_LAST”, “CPN”, “CPN_FREQ”</p></li>
+<li><p><strong>calendar</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CubicDC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CubicDC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-0.0005,</span> <span class="pre">0.0005)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_credit_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<p>Do not extrapolate (beyond 30y)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicDC.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicDC.get_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">CubicSplineSwapCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.CubicSplineSwapCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swap_rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.CubicSplineSwapCurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">DepositCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semiannual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DepositCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DepositCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deposit_rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DepositCurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">DiscountCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.DiscountCurve.compute_fbond">
+<span class="sig-name descname"><span class="pre">compute_fbond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.DiscountCurve.compute_fbond" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">LCExpCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-0.002,</span> <span class="pre">0.002)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ir_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_credit_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.DiscountCurve" title="discount_curves.DiscountCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscountCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params_df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.LCExpCurve.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.LCExpCurve.get_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.SWICurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">SWICurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swi_rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay_months</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.fit_seasonality_adjustment">
+<span class="sig-name descname"><span class="pre">fit_seasonality_adjustment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regression_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_regression_years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.fit_seasonality_adjustment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.get_forward_value">
+<span class="sig-name descname"><span class="pre">get_forward_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.get_forward_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.SWICurve.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.SWICurve.get_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">discount_curves.</span></span><span class="sig-name descname"><span class="pre">ZCCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semiannual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.ZCCurve" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#discount_curves.CubicDC" title="discount_curves.CubicDC"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubicDC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="discount_curves.ZCCurve.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zcyields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#discount_curves.ZCCurve.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="structured.html" class="btn btn-neutral float-left" title="structured module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ratecurves.html" class="btn btn-neutral float-right" title="ratecurves module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AFS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

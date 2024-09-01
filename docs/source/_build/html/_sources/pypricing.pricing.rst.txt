@@ -1,0 +1,109 @@
+pypricing.pricing package
+=========================
+
+Submodules
+----------
+
+pypricing.pricing.callable module
+---------------------------------
+
+.. automodule:: pypricing.pricing.callable
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.credit module
+-------------------------------
+
+.. automodule:: pypricing.pricing.credit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.discount\_curves module
+-----------------------------------------
+
+.. automodule:: pypricing.pricing.discount_curves
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.excel\_stuff module
+-------------------------------------
+
+.. automodule:: pypricing.pricing.excel_stuff
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.fixedincome module
+------------------------------------
+
+.. automodule:: pypricing.pricing.fixedincome
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.ir\_models module
+-----------------------------------
+
+.. automodule:: pypricing.pricing.ir_models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.irproducts module
+-----------------------------------
+
+.. automodule:: pypricing.pricing.irproducts
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.mc\_engines module
+------------------------------------
+
+.. automodule:: pypricing.pricing.mc_engines
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.ratecurves module
+-----------------------------------
+
+.. automodule:: pypricing.pricing.ratecurves
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.structured module
+-----------------------------------
+
+.. automodule:: pypricing.pricing.structured
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.surfaces module
+---------------------------------
+
+.. automodule:: pypricing.pricing.surfaces
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypricing.pricing.trees module
+------------------------------
+
+.. automodule:: pypricing.pricing.trees
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pypricing.pricing
+   :members:
+   :undoc-members:
+   :show-inheritance:

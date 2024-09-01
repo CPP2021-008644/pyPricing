@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Changelog &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/sphinx_toolbox_installation.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Others" href="Others/others_main.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Structured/structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interest_Rate_Products/irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interest_Rate_Models/irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Discount_curves/discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rate_Curves/ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Others/others_main.html">Others</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Changelog</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
+<section id="june-2023">
+<h2>June  2023<a class="headerlink" href="#june-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Underlyings Documentation.ipynb :</strong></p>
+<ul>
+<li><p>Documentation of <code class="docutils literal notranslate"><span class="pre">NormalAsset</span></code> and <code class="docutils literal notranslate"><span class="pre">LogNormalAsset</span></code> functions.</p></li>
+<li><p>Code examples.</p></li>
+</ul>
+</li>
+<li><p><strong>discount_curves.py:</strong></p>
+<ul>
+<li><p>Improve the efficiency and arquitecture of <code class="docutils literal notranslate"><span class="pre">SWICurve</span></code> class.</p></li>
+<li><p>Corrected conceptual errors in the <code class="docutils literal notranslate"><span class="pre">fit_seasonality_adjustment</span></code> in <code class="docutils literal notranslate"><span class="pre">SWICurve(CubicDC)</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>data_factory.py</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFactoryBeautifulData</span></code> introduced and documented.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="may-2023">
+<h2>May  2023<a class="headerlink" href="#may-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>structured.py:</strong></p>
+<ul>
+<li><p>Implementation of  <code class="docutils literal notranslate"><span class="pre">Condor</span></code> class.</p></li>
+<li><p>Implementation of greeks functions.</p></li>
+</ul>
+</li>
+<li><p><strong>Structured Products Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation <code class="docutils literal notranslate"><span class="pre">ProductFromFunction</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>underlyings.py:</strong></p>
+<ul>
+<li><p>Implemented the Euler method for the SABR model using the  <code class="docutils literal notranslate"><span class="pre">generate_paths_euler</span></code> function.</p></li>
+<li><p>Created <code class="docutils literal notranslate"><span class="pre">option_price_functions</span></code>, <code class="docutils literal notranslate"><span class="pre">fit_to_options</span></code> and <code class="docutils literal notranslate"><span class="pre">compute_implied_vol</span></code>  functions for calibrating <code class="docutils literal notranslate"><span class="pre">Heston</span></code> and <code class="docutils literal notranslate"><span class="pre">VolModel</span></code> classes.</p></li>
+<li><p>Implemented the MultiAsset Heston method using the  <code class="docutils literal notranslate"><span class="pre">compute_corr_matrix</span></code> and <code class="docutils literal notranslate"><span class="pre">generate_paths_for_pricing</span></code> functions.</p></li>
+</ul>
+</li>
+<li><p><strong>Underlyings Documentation.ipynb :</strong></p>
+<ul>
+<li><p>Documentation of the <code class="docutils literal notranslate"><span class="pre">SABR</span></code> class.</p></li>
+<li><p>Documentation of the path simulations.</p></li>
+</ul>
+</li>
+<li><p><strong>mc_engines.py:</strong></p>
+<ul>
+<li><p>Reduced computation time by adapting Monte Carlo to include simulation dates through the creation of the <code class="docutils literal notranslate"><span class="pre">StochasticVolDiffusionMC</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>discount_curves.py:</strong></p>
+<ul>
+<li><p>Added docstrings for previously implemented methods.</p></li>
+<li><p>Creation of the code examples.</p></li>
+<li><p>Corrected the retrieval of the <code class="docutils literal notranslate"><span class="pre">calendars</span></code> attribute.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="april-2023">
+<h2>April  2023<a class="headerlink" href="#april-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>structured.py:</strong></p>
+<ul>
+<li><p>Implementation of  <code class="docutils literal notranslate"><span class="pre">Butterfly</span></code>, <code class="docutils literal notranslate"><span class="pre">Straddle</span></code> and <code class="docutils literal notranslate"><span class="pre">Strangle</span></code> classes.</p></li>
+<li><p>Implementation <code class="docutils literal notranslate"><span class="pre">get_px</span></code> in the <code class="docutils literal notranslate"><span class="pre">Lookback</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>Structured Products Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation of <code class="docutils literal notranslate"><span class="pre">Airbag</span></code> and <code class="docutils literal notranslate"><span class="pre">Lookback</span></code> classes.</p></li>
+</ul>
+</li>
+<li><p><strong>underlyings.py:</strong></p>
+<ul>
+<li><p>Implementation of the Heston model through the addition of the methods <code class="docutils literal notranslate"><span class="pre">generate_paths_vols</span></code> and <code class="docutils literal notranslate"><span class="pre">generate_paths</span></code>.</p></li>
+<li><p>Implementation of the SABR model through the addition of the methods <code class="docutils literal notranslate"><span class="pre">generate_paths_vols</span></code> and <code class="docutils literal notranslate"><span class="pre">generate_paths</span></code>.</p></li>
+<li><p>Added docstrings for previously implemented methods.</p></li>
+</ul>
+</li>
+<li><p><strong>Underlyings Documentation.ipynb :</strong></p>
+<ul>
+<li><p>Creation of the document.</p></li>
+</ul>
+</li>
+<li><p><strong>mc_engines.py:</strong></p>
+<ul>
+<li><p>Added docstrings for previously implemented methods.</p></li>
+<li><p>Modifications of <code class="docutils literal notranslate"><span class="pre">RegressionMC</span></code> and  <code class="docutils literal notranslate"><span class="pre">SRRegressionMC</span></code> classes.</p></li>
+<li><p>Adapted Monte Carlo to include more simulation dates.</p></li>
+</ul>
+</li>
+<li><p><strong>MC engines Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Creation of the document. Commented <code class="docutils literal notranslate"><span class="pre">RegressionMC</span></code> and  <code class="docutils literal notranslate"><span class="pre">SRRegressionMC</span></code> classes.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="march-2023">
+<h2>March 2023<a class="headerlink" href="#march-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>structured.py:</strong></p>
+<ul>
+<li><p>Implementation of <code class="docutils literal notranslate"><span class="pre">ProductFromFunction</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>Interest Rate Products Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation and code example implementation.</p></li>
+</ul>
+</li>
+<li><p><strong>ir_models.py:</strong></p>
+<ul>
+<li><p>Arquitecture of Hull-White two factors as a particular case of G2++.</p></li>
+</ul>
+</li>
+<li><p><strong>underlyings.py:</strong></p>
+<ul>
+<li><p>Optimization <code class="docutils literal notranslate"><span class="pre">generate_paths</span></code> method of the <code class="docutils literal notranslate"><span class="pre">ExposureIndex</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>ratecurves.py:</strong></p>
+<ul>
+<li><p>Corrections in the  <code class="docutils literal notranslate"><span class="pre">FixedTenorRate</span></code> class.</p></li>
+<li><p>Adjunstment in the private functions  <code class="docutils literal notranslate"><span class="pre">_get_index</span></code> and <code class="docutils literal notranslate"><span class="pre">_get_ewma_vol_abstract</span></code> of <code class="docutils literal notranslate"><span class="pre">Underlying</span></code> class.</p></li>
+</ul>
+</li>
+<li><p><strong>Rate Curves Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation in  <code class="docutils literal notranslate"><span class="pre">FixedTenorRate</span></code> class.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="february-2023">
+<h2>February 2023<a class="headerlink" href="#february-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>irproducts.py:</strong></p>
+<ul>
+<li><p>Population of the module. In particular, creation of products as the classes <code class="docutils literal notranslate"><span class="pre">CMSSpreadForward</span></code>, <code class="docutils literal notranslate"><span class="pre">TARN</span></code>, <code class="docutils literal notranslate"><span class="pre">CMSSpreadSwap</span></code>, <code class="docutils literal notranslate"><span class="pre">RangeAccrual</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Interest Rate Products Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation of products as the classes <code class="docutils literal notranslate"><span class="pre">CMSSpreadForward</span></code>, <code class="docutils literal notranslate"><span class="pre">TARN</span></code>, <code class="docutils literal notranslate"><span class="pre">CMSSpreadSwap</span></code>, <code class="docutils literal notranslate"><span class="pre">RangeAccrual</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>ratecurves.py:</strong></p>
+<ul>
+<li><p>Population of the module. In particular, creation of rate classes and operations as the classes <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code>, <code class="docutils literal notranslate"><span class="pre">CumulativeRate</span></code>, <code class="docutils literal notranslate"><span class="pre">DifferenceRate</span></code>, <code class="docutils literal notranslate"><span class="pre">TARNRate</span></code>, <code class="docutils literal notranslate"><span class="pre">KnockOutRae</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Rate Curves Documentation.ipynb:</strong></p>
+<ul>
+<li><p>Documentation of rate classes and operations as the classes <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code>, <code class="docutils literal notranslate"><span class="pre">CumulativeRate</span></code>, <code class="docutils literal notranslate"><span class="pre">DifferenceRate</span></code>, <code class="docutils literal notranslate"><span class="pre">TARNRate</span></code>, <code class="docutils literal notranslate"><span class="pre">KnockOutRae</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="january-2023">
+<h2>January 2023<a class="headerlink" href="#january-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>ir_models.py:</strong></p>
+<ul>
+<li><p>Implementation of the semi-analytical formula <code class="docutils literal notranslate"><span class="pre">swaption_price_function</span></code> and approximation  <code class="docutils literal notranslate"><span class="pre">swaption_price_function_SP</span></code> to check that the flow of <strong>mc_engines.py</strong>
+for IR products works properly (i.e., explicit formulas coincide with MC).</p></li>
+</ul>
+</li>
+<li><p><strong>ratecurves.py:</strong></p>
+<ul>
+<li><p>Docstrings and documentation.</p></li>
+<li><p>Creation of <code class="docutils literal notranslate"><span class="pre">SwapRate.generate_rates</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>mc_engines.py:</strong></p>
+<ul>
+<li><p>Correction of numeraire and terminal measure adjustments.</p></li>
+<li><p>Modification of the class <code class="docutils literal notranslate"><span class="pre">SRDeterministicVolDiffusionMC</span></code> so that the flow with <strong>ratecurves.py</strong> and <strong>ir_models.py</strong> works and can price IR products.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Others/others_main.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Others</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-2023">June  2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2023">May  2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-2023">April  2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#march-2023">March 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-2023">February 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#january-2023">January 2023</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

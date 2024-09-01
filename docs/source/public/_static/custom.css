@@ -1,0 +1,153 @@
+html[data-theme=dark] {
+
+    /* whatever you want to change */
+    --pst-color-background: #363636 !important;
+    --pst-color-inline-code: #86c0ff !important;
+    --pst-color-primary:#86c0ff !important;
+    --color-heading: #d4cbcb !important;
+}
+
+html[data-theme=light] {
+    
+    /* whatever you want to change */
+    --pst-color-inline-code: #075dad !important;
+    --pst-color-primary:#075dad !important;
+    --color-heading: #000000 !important;
+}
+
+svg {
+    fill: var(--pst-color-primary) !important;
+}
+
+.descname .pre {
+    color: var(--pst-color-primary)
+}
+
+p .reference {
+    color: var(--pst-color-primary)
+    /* text-decoration: underline; */
+
+}
+
+h1, h2 {
+    /* color: var(--pst-color-primary) */
+    color: var(--color-heading)
+}
+
+.prev-next-title {
+    color: var(--pst-color-primary)
+}
+
+.fa-gitlab-square {
+    font-size: 24px;
+    color: #e62e00 !important;
+}
+
+.viewcode-link {
+    color: var(--pst-color-primary)
+}
+
+.viewcode-link:hover {
+    color: #e9a33b !important;
+}
+
+p a {
+    color: var(--pst-color-primary)
+    /* font-weight: bold; */
+}
+
+code a {
+    color: var(--pst-color-primary);
+    font-weight: bold;
+}
+
+.tocsection a {
+    color: var(--pst-color-primary)
+}
+
+
+
+
+a:hover{
+    color: var(--pst-color-primary)
+}
+
+li.current>a {
+    color: var(--pst-color-primary);
+    font-weight: bold;
+}
+
+.py-obj .pre {
+    color: var(--pst-color-primary)
+}
+
+dt strong {
+    color: var(--pst-color-primary)
+}
+
+.cell_input {
+    border-left-color: var(--pst-color-primary) !important;
+}
+
+.docutils .pre {
+    color: var(--pst-color-primary)
+}
+
+.docutils .pre[data-theme=dark] {
+    color: #e98c1e !important;
+}
+
+#site-title{
+    font-weight: bold;
+    font-family: Calibri Light;
+}
+
+.cell_output {
+    overflow: auto;
+}
+
+.dataframe th {
+    font-size: 11px;
+    
+}
+
+.dataframe td {
+    font-size: 9px;
+}
+
+div.bd-sidebar{
+    overflow-y: auto;
+    display: flow-root;
+}
+
+div.prompt { display:none 
+}
+.sidebar-primary-item {
+    width: 200px; /* Adjust as needed */
+}
+.bd-sidebar-primary {
+    width: 200px; /* Adjust as needed */
+    padding: 10px; /* Adjust as needed */
+}
+.company-logo {
+    position: fixed;
+    top: 8%;
+    left: 6.7%;
+    width: 10%;  
+    height: auto;
+}
+
+.sphinxsidebar {
+    position: fixed; /* Fijar la tabla de contenidos en la página */
+    top: 0; /* Posición arriba */
+    left: 30px; /* Posición izquierda */
+    width: 250px; /* Ancho de la tabla de contenidos */
+    height: 100%; /* Altura de la tabla de contenidos (100% del viewport) */
+    background-color: #f0f0f0; /* Color de fondo */
+    overflow-y: auto; /* Habilitar el desplazamiento vertical si es necesario */
+    padding: 17px; /* Espaciado interno */
+}
+.sphinxsidebar img {
+    max-width: 75px; /* Establecer un ancho máximo para la imagen */
+    height: auto; /* Mantener la proporción de aspecto original */
+}

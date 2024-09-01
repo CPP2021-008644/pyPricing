@@ -1,0 +1,1138 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>ratecurves module &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/sphinx_toolbox_installation.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Structured/structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Products/irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Models/irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Discount_curves/discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Others/others_main.html">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">ratecurves module</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="ratecurves-module">
+<h1>ratecurves module<a class="headerlink" href="#ratecurves-module" title="Permalink to this heading">#</a></h1>
+<div class="graphviz"><object data="../_images/inheritance-64a6f9e3d131d5144ef18f27fe21575b804eba60.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of ratecurves</p></object></div>
+<span class="target" id="module-ratecurves"></span><dl class="py function">
+<dt class="sig sig-object py" id="ratecurves.accumulate_index">
+<span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">accumulate_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.accumulate_index" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – Array for the particular indexing.</p></li>
+<li><p><strong>ind</strong> (<em>np.array</em><em>, </em><em>dtype=int</em><em> or </em><em>list</em>) – List of integers for the indexing.</p></li>
+<li><p><strong>op</strong> (<em>str</em>) – Operation for the cumulative operation. Either “sum” or “prod”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the same array but in the last dimension an indexing has occured and the missing positions has been “accumulated” in the next remaining position.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">accumulate_index</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="s2">&quot;prod&quot;</span><span class="p">)</span>
+<span class="go">np.array([[2., 2., 2., 4., 8.],</span>
+<span class="go">          [2., 2., 2., 4., 8.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">accumulate_index</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+<span class="go">array([[1, 1, 2, 3],</span>
+<span class="go">       [1, 1, 2, 3]], dtype=int32)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ratecurves.number_to_array">
+<span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">number_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_broadcasting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.number_to_array" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert the input arguments to NumPy arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> (<em>scalar</em><em> or </em><em>array_like</em>) – Input arguments to be converted to NumPy arrays.</p></li>
+<li><p><strong>for_broadcasting</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, reshape the arrays for broadcasting. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of NumPy arrays where each input argument is converted to an array. If an input argument is already a NumPy array, it is returned as is.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of ndarrays</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_to_array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]),</span> <span class="n">for_broadcasting</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[array([[[1.]]]), array([[[2]]]), array([[[3.]],</span>
+
+<span class="go">       [[4.]]])]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We need to add the BLANKLINE for format considerations, <a class="reference external" href="https://docs.python.org/3/library/doctest.html">https://docs.python.org/3/library/doctest.html</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.MultiRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">MultiRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.MultiRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.MultiRate.get_forward_dates">
+<span class="sig-name descname"><span class="pre">get_forward_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.MultiRate.get_forward_dates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.MultiRate.get_forward_indices">
+<span class="sig-name descname"><span class="pre">get_forward_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.MultiRate.get_forward_indices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.MultiRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.MultiRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.AdditionRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">AdditionRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.AdditionRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.MultiRate" title="ratecurves.MultiRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiRate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.AdditionRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.AdditionRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.DifferenceRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">DifferenceRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.DifferenceRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.MultiRate" title="ratecurves.MultiRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiRate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.DifferenceRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.DifferenceRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.ProductRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">ProductRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">rates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ProductRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.MultiRate" title="ratecurves.MultiRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiRate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.ProductRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ProductRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.Rate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">Rate</span></span><a class="headerlink" href="#ratecurves.Rate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.MultiRate" title="ratecurves.MultiRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiRate</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.ForwardRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">ForwardRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ForwardRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.ForwardRate.get_forward_dates">
+<span class="sig-name descname"><span class="pre">get_forward_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ForwardRate.get_forward_dates" title="Permalink to this definition">#</a></dt>
+<dd><p>Return dictionary of forward dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> (<em>pd.DatetimeIndex</em>) – Index of dates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys the given dates and values the corresponding floating dates (if date is before the effective date) and an empty Timestamp otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.ForwardRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ForwardRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.SwapRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">SwapRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floating_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_calendars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settlement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'physical'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SwapRate.get_pvbp">
+<span class="sig-name descname"><span class="pre">get_pvbp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate.get_pvbp" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the annuity of the swap, see page 308 Joshi or Chapter 16 of Privault.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>str</em><em> or </em><em>tuple</em><em> or </em><em>pd.Timestamp</em><em> or </em><em>pd.DatetimeIndex</em>) – Valuation date(s).</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Curve needed for discount bonds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the denominator of (1.25) Brigo and Mercurio evaluated for the different dates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SwapRate.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Return swap rate value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>str</em><em> or </em><em>tuple</em><em> or </em><em>pd.Timestamp</em><em> or </em><em>pd.DatetimeIndex</em>) – Valuation date(s).</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Curve needed for discount bonds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the swap rate value evaluated for the different dates using a specific discount curve.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SwapRate.get_fpx">
+<span class="sig-name descname"><span class="pre">get_fpx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate.get_fpx" title="Permalink to this definition">#</a></dt>
+<dd><p>Return forward prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> (<em>str</em><em> or </em><em>tuple</em><em> or </em><em>pd.Timestamp</em><em> or </em><em>pd.DatetimeIndex</em>) – Valuation date(s).</p></li>
+<li><p><strong>fd</strong> – Unused, for compatibility with option classes.</p></li>
+<li><p><strong>discount_curve</strong> (<a class="reference internal" href="../pypricing.pricing.html#pricing.discount_curves.DiscountCurve" title="pricing.discount_curves.DiscountCurve"><em>pricing.discount_curves.DiscountCurve</em></a>) – Curve needed for discount bonds.</p></li>
+<li><p><strong>calendar</strong> (<a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar"><em>data.calendars.DayCountCalendar</em></a>) – Calendar for computation of time intervals. Unused, for compatibility with option classes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Series of forward values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SwapRate.get_forward_dates">
+<span class="sig-name descname"><span class="pre">get_forward_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate.get_forward_dates" title="Permalink to this definition">#</a></dt>
+<dd><p>Return dictionary of forward dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> (<em>pd.DatetimeIndex</em>) – Index of dates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys the given dates and values the corresponding floating dates (if date is before the effective date) and an empty Timestamp otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SwapRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SwapRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd><p>Return paths of the swap rates given an array of simulated forward bonds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>forward_bonds</strong> (<em>np.ndarray</em>) – Array of future forward bonds as in ir_models.ShortRateModel.compute_forward_bonds.</p></li>
+<li><p><strong>discounts</strong> (<em>np.ndarray</em>) – Array of discounts.</p></li>
+<li><p><strong>intervals</strong> (<em>np.ndarray</em>) – Array of time intervals between simulation dates.</p></li>
+<li><p><strong>indices</strong> (<em>type</em>) – Description of parameter ‘indices’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of swap rates for the different simulations.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.NormalSwapRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">NormalSwapRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floating_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_calendars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.NormalSwapRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.SwapRate" title="ratecurves.SwapRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapRate</span></code></a>, <a class="reference internal" href="../pypricing.data.html#data.underlyings.NormalAsset" title="data.underlyings.NormalAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalAsset</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.LognormalSwapRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">LognormalSwapRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floating_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_calendars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.LognormalSwapRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.SwapRate" title="ratecurves.SwapRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapRate</span></code></a>, <a class="reference internal" href="../pypricing.data.html#data.underlyings.LognormalAsset" title="data.underlyings.LognormalAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LognormalAsset</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.CMSRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">CMSRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floating_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_calendars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CMSRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CMSRate.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CMSRate.get_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.PathDependentRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">PathDependentRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gearing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_coupon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.PathDependentRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.PathDependentRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.PathDependentRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.GSCFRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">GSCFRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gearing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.GSCFRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.GSCFRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.GSCFRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.CumulativeRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">CumulativeRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CumulativeRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CumulativeRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CumulativeRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.CMSDiffRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">CMSDiffRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floating_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_calendars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CMSDiffRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CMSDiffRate.get_forward_dates">
+<span class="sig-name descname"><span class="pre">get_forward_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CMSDiffRate.get_forward_dates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CMSDiffRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CMSDiffRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.KnockOutRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">KnockOutRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barrier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.KnockOutRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.Rate" title="ratecurves.Rate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.KnockOutRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.KnockOutRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.GlobalFloorRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">GlobalFloorRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.GlobalFloorRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.CumulativeRate" title="ratecurves.CumulativeRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CumulativeRate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.GlobalFloorRate.generate_rates">
+<span class="sig-name descname"><span class="pre">generate_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_bonds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discounts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.GlobalFloorRate.generate_rates" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.TARNRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">TARNRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barrier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.TARNRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.ProductRate" title="ratecurves.ProductRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductRate</span></code></a>, <a class="reference internal" href="#ratecurves.KnockOutRate" title="ratecurves.KnockOutRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">KnockOutRate</span></code></a>, <a class="reference internal" href="#ratecurves.CumulativeRate" title="ratecurves.CumulativeRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CumulativeRate</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.GFlooredRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">GFlooredRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.GFlooredRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.GlobalFloorRate" title="ratecurves.GlobalFloorRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">GlobalFloorRate</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.CDSRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">CDSRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cds_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effective_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CDSRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CDSRate.get_rpvbp">
+<span class="sig-name descname"><span class="pre">get_rpvbp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CDSRate.get_rpvbp" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CDSRate.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpvbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CDSRate.get_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.FixedTenorRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">FixedTenorRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spot_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.FixedTenorRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.FixedTenorRate.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.FixedTenorRate.get_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Simply-compounded spot interest rate.  TODO: Complete the docstring.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> – </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BM-IR] = [Brigo &amp; Mercurio, Interest Rate Models–Theory and Practice].</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.FixedTenorRate.get_fvalue">
+<span class="sig-name descname"><span class="pre">get_fvalue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.FixedTenorRate.get_fvalue" title="Permalink to this definition">#</a></dt>
+<dd><p>Simply-compounded forward interest rate.  TODO: Complete the docstring.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> – </p></li>
+<li><p><strong>future_dates</strong> – </p></li>
+<li><p><strong>calendar</strong> (<a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar"><em>data.calendars.DayCountCalendar</em></a>) – Calendar used to calculate the dates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>numpy.ndarray</em></p></li>
+<li><p><em>Array of forward rates calculated between dates and future_dates (both included). We get the simply-compounded spot interest rate if future_dates &lt;= dates.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.ShortRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">ShortRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spot_curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ShortRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.FixedTenorRate" title="ratecurves.FixedTenorRate"><code class="xref py py-class docutils literal notranslate"><span class="pre">FixedTenorRate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.ShortRate.get_fvalue">
+<span class="sig-name descname"><span class="pre">get_fvalue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.ShortRate.get_fvalue" title="Permalink to this definition">#</a></dt>
+<dd><p>Forward rates (annually-compounded) between dates and future_dates. TODO: Complete the docstring.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dates</strong> – </p></li>
+<li><p><strong>future_dates</strong> – </p></li>
+<li><p><strong>calendar</strong> (<a class="reference internal" href="../pypricing.data.html#data.calendars.DayCountCalendar" title="data.calendars.DayCountCalendar"><em>data.calendars.DayCountCalendar</em></a>) – Calendar used to calculate the dates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>numpy.ndarray</em></p></li>
+<li><p><em>Array of forward rates calculated between dates and future_dates (both included).</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.CompoundingCurve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">CompoundingCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CompoundingCurve" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.CompoundingCurve.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.CompoundingCurve.get_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.SRCLookback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">SRCLookback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookback_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SRCLookback" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.CompoundingCurve" title="ratecurves.CompoundingCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompoundingCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SRCLookback.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SRCLookback.get_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ratecurves.SRCInAdvance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ratecurves.</span></span><span class="sig-name descname"><span class="pre">SRCInAdvance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SRCInAdvance" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ratecurves.CompoundingCurve" title="ratecurves.CompoundingCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompoundingCurve</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ratecurves.SRCInAdvance.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ratecurves.SRCInAdvance.get_value" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.accumulate_index"><code class="docutils literal notranslate"><span class="pre">accumulate_index()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.number_to_array"><code class="docutils literal notranslate"><span class="pre">number_to_array()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.MultiRate"><code class="docutils literal notranslate"><span class="pre">MultiRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.MultiRate.get_forward_dates"><code class="docutils literal notranslate"><span class="pre">MultiRate.get_forward_dates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.MultiRate.get_forward_indices"><code class="docutils literal notranslate"><span class="pre">MultiRate.get_forward_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.MultiRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">MultiRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.AdditionRate"><code class="docutils literal notranslate"><span class="pre">AdditionRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.AdditionRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">AdditionRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.DifferenceRate"><code class="docutils literal notranslate"><span class="pre">DifferenceRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.DifferenceRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">DifferenceRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ProductRate"><code class="docutils literal notranslate"><span class="pre">ProductRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ProductRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">ProductRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.Rate"><code class="docutils literal notranslate"><span class="pre">Rate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ForwardRate"><code class="docutils literal notranslate"><span class="pre">ForwardRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ForwardRate.get_forward_dates"><code class="docutils literal notranslate"><span class="pre">ForwardRate.get_forward_dates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ForwardRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">ForwardRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate"><code class="docutils literal notranslate"><span class="pre">SwapRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate.get_pvbp"><code class="docutils literal notranslate"><span class="pre">SwapRate.get_pvbp()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate.get_value"><code class="docutils literal notranslate"><span class="pre">SwapRate.get_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate.get_fpx"><code class="docutils literal notranslate"><span class="pre">SwapRate.get_fpx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate.get_forward_dates"><code class="docutils literal notranslate"><span class="pre">SwapRate.get_forward_dates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SwapRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">SwapRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.NormalSwapRate"><code class="docutils literal notranslate"><span class="pre">NormalSwapRate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.LognormalSwapRate"><code class="docutils literal notranslate"><span class="pre">LognormalSwapRate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CMSRate"><code class="docutils literal notranslate"><span class="pre">CMSRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CMSRate.get_value"><code class="docutils literal notranslate"><span class="pre">CMSRate.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.PathDependentRate"><code class="docutils literal notranslate"><span class="pre">PathDependentRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.PathDependentRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">PathDependentRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.GSCFRate"><code class="docutils literal notranslate"><span class="pre">GSCFRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.GSCFRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">GSCFRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CumulativeRate"><code class="docutils literal notranslate"><span class="pre">CumulativeRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CumulativeRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">CumulativeRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CMSDiffRate"><code class="docutils literal notranslate"><span class="pre">CMSDiffRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CMSDiffRate.get_forward_dates"><code class="docutils literal notranslate"><span class="pre">CMSDiffRate.get_forward_dates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CMSDiffRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">CMSDiffRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.KnockOutRate"><code class="docutils literal notranslate"><span class="pre">KnockOutRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.KnockOutRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">KnockOutRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.GlobalFloorRate"><code class="docutils literal notranslate"><span class="pre">GlobalFloorRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.GlobalFloorRate.generate_rates"><code class="docutils literal notranslate"><span class="pre">GlobalFloorRate.generate_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.TARNRate"><code class="docutils literal notranslate"><span class="pre">TARNRate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.GFlooredRate"><code class="docutils literal notranslate"><span class="pre">GFlooredRate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CDSRate"><code class="docutils literal notranslate"><span class="pre">CDSRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CDSRate.get_rpvbp"><code class="docutils literal notranslate"><span class="pre">CDSRate.get_rpvbp()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CDSRate.get_value"><code class="docutils literal notranslate"><span class="pre">CDSRate.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.FixedTenorRate"><code class="docutils literal notranslate"><span class="pre">FixedTenorRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.FixedTenorRate.get_value"><code class="docutils literal notranslate"><span class="pre">FixedTenorRate.get_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.FixedTenorRate.get_fvalue"><code class="docutils literal notranslate"><span class="pre">FixedTenorRate.get_fvalue()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ShortRate"><code class="docutils literal notranslate"><span class="pre">ShortRate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.ShortRate.get_fvalue"><code class="docutils literal notranslate"><span class="pre">ShortRate.get_fvalue()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CompoundingCurve"><code class="docutils literal notranslate"><span class="pre">CompoundingCurve</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.CompoundingCurve.get_value"><code class="docutils literal notranslate"><span class="pre">CompoundingCurve.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SRCLookback"><code class="docutils literal notranslate"><span class="pre">SRCLookback</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SRCLookback.get_value"><code class="docutils literal notranslate"><span class="pre">SRCLookback.get_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SRCInAdvance"><code class="docutils literal notranslate"><span class="pre">SRCInAdvance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ratecurves.SRCInAdvance.get_value"><code class="docutils literal notranslate"><span class="pre">SRCInAdvance.get_value()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

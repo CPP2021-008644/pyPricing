@@ -1,0 +1,7 @@
+discount\_curves module
+=======================
+
+.. automodule:: discount_curves
+   :members:
+   :undoc-members:
+   :show-inheritance:

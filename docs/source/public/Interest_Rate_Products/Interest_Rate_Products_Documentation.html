@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Interest rate products &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/sphinx_toolbox_installation.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Models/irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Structured/structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Models/irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Discount_curves/discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rate_Curves/ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Others/others_main.html">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Interest rate products</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="Interest-rate-products">
+<h1>Interest rate products<a class="headerlink" href="#Interest-rate-products" title="Permalink to this heading">#</a></h1>
+<p>Technical notes can be skipped on a basic reading. These notes end when <span class="math notranslate nohighlight">\(\diamondsuit\)</span> appears.</p>
+<section id="European-Swaption">
+<h2>European Swaption<a class="headerlink" href="#European-Swaption" title="Permalink to this heading">#</a></h2>
+<p>If the swap has tenor structure given by <span class="math notranslate nohighlight">\(\{T_\alpha,\ldots,T_\beta\}\)</span>, the payoff of a european payer swaption is given by, Brigo and Mercurio p.19 ss,</p>
+<div class="math notranslate nohighlight">
+\[N\cdot \mathcal{A}(T_\alpha)(S_{\alpha,\beta}(T_\alpha)-K)^+\,,\]</div>
+<p>being <span class="math notranslate nohighlight">\(S_{\alpha,\beta}\)</span> the swap rate and <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> defined below. For a receiver swaption,</p>
+<div class="math notranslate nohighlight">
+\[N\cdot \mathcal{A}(T_\alpha)(K-S_{\alpha,\beta}(T_\alpha))^+\,.\]</div>
+<p>In general,</p>
+<div class="math notranslate nohighlight">
+\[\frac{f^\text{kind}(S_{\alpha,\beta}(T_\alpha), \mathcal{A}(T_\alpha))}{N\cdot \mathcal{A}(T_\alpha)}:=\left({S_{\alpha,\beta}(T_\alpha)}-K\right)\mathbb{1}_{\{S_{\alpha,\beta}(T_\alpha)\geq K\}} -\left({S_{\alpha,\beta}(T_\alpha)}-K\right)\delta_\text{kind,put}\,.\]</div>
+<p>For</p>
+<ul class="simple">
+<li><p><em>Physical-settlement:</em> <span class="math notranslate nohighlight">\(\mathcal{A}(t):=A(t)\)</span>, the annuity.</p></li>
+<li><p><em>Cash-settlement:</em> <span class="math notranslate nohighlight">\(\mathcal{A}(t):=a\left(S_{\alpha,\beta}(t)\right)\)</span>, see p.206 of Andersen and Piterbarg.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">maturity</span></code> <span class="math notranslate nohighlight">\(\rightarrow T_\alpha\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">swap_rate</span></code> <span class="math notranslate nohighlight">\(\rightarrow [S_{\alpha,\beta},\mathcal{A}]\)</span>, as a <code class="docutils literal notranslate"><span class="pre">SwapRate</span></code> (as in <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code>),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strike</span></code> <span class="math notranslate nohighlight">\(\rightarrow K\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(\text{kind}\in\{\text{call}, \text{put}\}\)</span>, for payer and receiver swaptions, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nominal</span></code> <span class="math notranslate nohighlight">\(\rightarrow N.\)</span></p></li>
+</ul>
+<p><strong>Remark.</strong> As we are generating the prices from “rate curves” and the european swaption depends on the (simulated) annuity, so it is sensible to consider it as a rate and the swaption a product depending on two rates, in the same way that other products depend on several rates, given by the <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code> class.</p>
+<section id="Technical-note-(payoff-method)">
+<h3>Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)<a class="headerlink" href="#Technical-note-(payoff-method)" title="Permalink to this heading">#</a></h3>
+<p>We analyze in detail the input and output of the <code class="docutils literal notranslate"><span class="pre">payoff</span></code> method:</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the observation dates <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^{J}\)</span> and the valuation dates <span class="math notranslate nohighlight">\(\{t^0_k\}_{k=0}^{K}\)</span>, the <em>swap rate</em> associated with the <span class="math notranslate nohighlight">\(i\)</span>-th simulation of the <span class="math notranslate nohighlight">\(l\)</span>-th component is a numpy.ndarray denoted by</p>
+<div class="math notranslate nohighlight">
+\[\textrm{price}[i,j,k,l]=S_{i, t_k^0}^l(t^1_j)\,,\]</div>
+<p>where, for the sake of simplicity, we have removed the subscripts <span class="math notranslate nohighlight">\(\alpha,\beta.\)</span> Recall that <span class="math notranslate nohighlight">\(l=0\)</span> corresponds to <span class="math notranslate nohighlight">\(S_{\alpha,\beta}\)</span> and <span class="math notranslate nohighlight">\(l=1\)</span> with the “rate” <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> <code class="docutils literal notranslate"><span class="pre">dates_dic</span></code> is a dictionary (or pandas.Series) which assigns an index to each date. The observation dates <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^{J}\)</span> satisfy <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^{J}\subseteq \{\tau_{j'}\}_{j'=0}^{J'}\)</span>, where <span class="math notranslate nohighlight">\(\{\tau_{j'}\}_{j'=0}^{J'}\)</span> are the simulation dates. That is to say, we generally simulate the prices for more dates than the ones we need for a particular product. In this sense, <code class="docutils literal notranslate"><span class="pre">dates_dic</span></code> can be understood as the map: <span class="math notranslate nohighlight">\(\tau_{j'} \mapsto j'\)</span>. In
+particular, <span class="math notranslate nohighlight">\(t^1_j \mapsto j'\)</span> such that <span class="math notranslate nohighlight">\(t^1_j = \tau_{j'}.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> <code class="docutils literal notranslate"><span class="pre">n</span></code> is an integer indicating the number of observation dates previous to a fixed observation date. This is needed in the Monte Carlo engine for exotic (path-dependent) products. For a given <code class="docutils literal notranslate"><span class="pre">n</span></code> we get the value of the underlying for the previous <code class="docutils literal notranslate"><span class="pre">n</span></code> observation dates and simulate it for the new observation dates. For more details see the method <code class="docutils literal notranslate"><span class="pre">generate_paths_for_pricing</span></code> in <em>mc_engines.py</em>.</p>
+<p>The payoff function returns a numpy.ndarray of <strong>3 dimensions</strong> and shape <span class="math notranslate nohighlight">\((|\mathcal{I}|,|\mathcal{J}|-n,|\mathcal{K}|)\)</span>, where <span class="math notranslate nohighlight">\(|\mathcal{I}|:= I+1\)</span>, <span class="math notranslate nohighlight">\(|\mathcal{J}|:= J+1\)</span> and <span class="math notranslate nohighlight">\(|\mathcal{K}|:=K+1\)</span> are the numbers of elements in the indexes <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span>. Note that we give the payoff excluding the previous observation dates. The output satisfies</p>
+<div class="math notranslate nohighlight">
+\[\textrm{payoff}[i,j,k]=f\left(S_{i, t_k^0}^{0}(t^1_j), S_{i, t_k^0}^{1}(t^1_j)\right)\times\delta_{j, j_T-n}\,,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{i,j}\)</span> denotes the Kronecker delta and <span class="math notranslate nohighlight">\(j_T\)</span> satisfies <span class="math notranslate nohighlight">\(t^1_{j_T} = T\)</span>.</p>
+<p>Finally, note that for every product we are assuming a long position, for a short position we would have <span class="math notranslate nohighlight">\(P_T = -f(S)\)</span>. <span class="math notranslate nohighlight">\(\diamondsuit\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\([S_{\alpha,\beta}, \mathcal{A}]\)</span> as described above (same structure as in the <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code> class),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dates_dic</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> Map assigning an index <span class="math notranslate nohighlight">\(j\)</span> to each date,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> Number of observation dates previous to a given observation date (needed for the Monte Carlo engine).</p></li>
+</ul>
+</section>
+</section>
+<section id="GeneralSwap">
+<h2>GeneralSwap<a class="headerlink" href="#GeneralSwap" title="Permalink to this heading">#</a></h2>
+<p>Given the tenor structure for each leg, <span class="math notranslate nohighlight">\(\mathcal{T}^f=\{T_\alpha,\ldots, T^f_l,\ldots,T_\beta\}\)</span> for <span class="math notranslate nohighlight">\(f\in\{\text{float, fixed}\}\)</span> with</p>
+<ul class="simple">
+<li><p><em>payment dates</em>: <span class="math notranslate nohighlight">\(\{t_j^{p,f}\}_{j=0}^{J^f}\subset \mathcal{T^f},\)</span> payment dates for each leg. The union gives <span class="math notranslate nohighlight">\(\{t_j^{p}\}_{j=0}^{J^p}\subset \mathcal{T},\)</span></p></li>
+<li><p><em>fixing dates</em> (observation dates): <span class="math notranslate nohighlight">\(\{t_j^1\}_{j=0}^{J}\subset \mathcal{T}^\text{float}\,,\)</span></p></li>
+</ul>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{T}:=\bigcup_f\mathcal{T}^f\)</span>, and the underlying rate <span class="math notranslate nohighlight">\(R\)</span>, the payoff (long position) is given by</p>
+<div class="math notranslate nohighlight">
+\[P_j(t_j^p) = f_j\left(\tilde{R}(t_j^p)\right)=N_j\cdot\left(\delta_{t^p_j, \mathcal{T}^\text{float}}\left(\tau^\text{float}_j\cdot\tilde{R}(t_j^p)\right)  - \delta_{t^p_j, \mathcal{T}^\text{fixed}}\left(\tau^\text{fixed}_j\cdot K_j\right)\right)\,,\]</div>
+<p>being <span class="math notranslate nohighlight">\(N_j\)</span> the, possibly varying, nominal. Obviously,</p>
+<div class="math notranslate nohighlight">
+\[\delta_{t^p_j, \mathcal{T}^f} = \sum_{l=0}^{L^f} \delta_{t^p_j, {T}^f_l}\,.\]</div>
+<p>This allows us to extend trivially arrays that are defined only for one leg to the union of both legs. With some <em>abuse of notation</em>, we will use the same names for both vectors. Also, we assume there is a bijection between <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^J\)</span> and <span class="math notranslate nohighlight">\(\{t^{p,\text{float}}_j\}_{j=0}^J\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[\tilde{R}(t^{p,\text{float}}_j):=R(t^{1}_j)\,.\]</div>
+<p>Several remarks are in order:</p>
+<ul class="simple">
+<li><p>The strike and nominal are not necessarily constant, so <em>amortizing</em> and <em>accreting</em> swaps are included.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> can be the difference of two rates with <span class="math notranslate nohighlight">\(K_j=0\)</span> using the <code class="docutils literal notranslate"><span class="pre">DifferenceRate</span></code> class, so <em>exotic</em> <em>swaps</em> are included. E.g., the difference between a CMS and Libor.</p></li>
+<li><p>Payment dates and observation (fixing) dates are not necessarily the same, so the “<em>in-arrears</em>” and “<em>fixed-in-advance</em>” (standard) cases are included.</p></li>
+<li><p>The function <span class="math notranslate nohighlight">\(\delta_{t^1_j, \mathcal{T}^f}\)</span> is implemented in the code under the name of <code class="docutils literal notranslate"><span class="pre">delta_indexing</span></code>.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">underlying</span></code> <span class="math notranslate nohighlight">\(\rightarrow R\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obsdates</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">effective_date</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(T_\alpha^{\text{float}}=T_\alpha^{\text{fixed}}\)</span> (it is assumed that both are the same),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_date</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(T_\beta^{\text{float}}=T_\beta^{\text{fixed}}\)</span> (it is assumed it is the same),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">floating_freq</span></code> <span class="math notranslate nohighlight">\(\rightarrow 12\cdot\left(T_l^{\text{float}}-T_{l-1}^{\text{float}}\right)\)</span> for <span class="math notranslate nohighlight">\(l\in\{\alpha^{\text{float}}+1, \ldots, \beta^{\text{float}}\}\)</span> (it is assumed that this is constant). For instance, if floating_freq=6, then, approximately (depends on the day count convention), <span class="math notranslate nohighlight">\(\left(T_l^{\text{float}}-T_{l-1}^{\text{float}}\right)=0.5\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fixed_freq</span></code> <span class="math notranslate nohighlight">\(\rightarrow 12\cdot\left(T_l^{\text{fixed}}-T_{l-1}^{\text{fixed}}\right)\)</span>, as above,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">legs_calendar</span></code> <span class="math notranslate nohighlight">\(\rightarrow [\text{DCC}^{\text{float}}, \text{DCC}^{\text{fixed}}]\)</span> or <span class="math notranslate nohighlight">\(\text{DCC}\)</span>. In the latter case, the same calendar for each leg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strike</span></code> <span class="math notranslate nohighlight">\(\rightarrow [K_j]_{j=0}^{J^\text{fixed}}\,\)</span> (by <em>default</em>, it equals 0),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nominal</span></code> <span class="math notranslate nohighlight">\(\rightarrow [N_j]_{j=0}^{J^p}\,,\)</span></p></li>
+</ul>
+<p>The class <code class="docutils literal notranslate"><span class="pre">SwapRate</span></code> is used to define some attributes. Also, we assume that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pay_dates</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{t^p_j\}_{j=0}^{J^p}=\mathcal{T}\backslash T_\alpha\)</span>, which cover the the “<em>in-arrears</em>” and “<em>fixed-in-advance</em>” (standard) cases. Note that the first date is needed for <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
+</ul>
+<section id="id1">
+<h3>Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>For the conventions and details on the price and payoff arrays see the “Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)” in the European Swaption section</p>
+<p>The payoff function in this case is</p>
+<div class="math notranslate nohighlight">
+\[\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^p_j))\,,\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_j(R)\)</span> was defined above. <span class="math notranslate nohighlight">\(\diamondsuit\)</span></p>
+<section id="(Vanilla)-Libor-Swap">
+<h4>(Vanilla) Libor Swap<a class="headerlink" href="#(Vanilla)-Libor-Swap" title="Permalink to this heading">#</a></h4>
+<p>In this case, <span class="math notranslate nohighlight">\(t^1_j=t^{p, \text{ float}}_{j-1}\)</span> and the rate equal to the Libor rate.</p>
+</section>
+<section id="Libor-in-arrears-Swap">
+<h4>Libor-in-arrears Swap<a class="headerlink" href="#Libor-in-arrears-Swap" title="Permalink to this heading">#</a></h4>
+<p>In this case, <span class="math notranslate nohighlight">\(t^1_j=t^{p, \text{ float}}_j\)</span> and the rate equal to the Libor rate.</p>
+</section>
+<section id="Constant-Maturity-Swap-(CMS-Swap)">
+<h4>Constant Maturity Swap (CMS Swap)<a class="headerlink" href="#Constant-Maturity-Swap-(CMS-Swap)" title="Permalink to this heading">#</a></h4>
+<p>In this special case <span class="math notranslate nohighlight">\(R\)</span> is a swap rate is of the form <span class="math notranslate nohighlight">\(S_{\alpha,\alpha+c}\)</span>, where <span class="math notranslate nohighlight">\(c\)</span> is the constant maturity.</p>
+</section>
+<section id="Amortizing-swaps">
+<h4>Amortizing swaps<a class="headerlink" href="#Amortizing-swaps" title="Permalink to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(N_j\)</span> is no longer constant.</p>
+</section>
+<section id="TARN(GeneralSwap)">
+<h4>TARN(GeneralSwap)<a class="headerlink" href="#TARN(GeneralSwap)" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="CapFloor">
+<h2>CapFloor<a class="headerlink" href="#CapFloor" title="Permalink to this heading">#</a></h2>
+<p>Given a tenor structure <span class="math notranslate nohighlight">\(\{T_\alpha,\ldots,T_\beta\}\)</span> with <span class="math notranslate nohighlight">\(\{t_j^p\}_{j=0}^J\)</span>, <span class="math notranslate nohighlight">\(\{t_j^1\}_{j=0}^J\subset \{T_\alpha,\ldots,T_\beta\}\)</span> the payment and fixing dates, respectively, and the underlying rate <span class="math notranslate nohighlight">\(R\)</span>, for a long position, the payoff is given by</p>
+<div class="math notranslate nohighlight">
+\[P_j(t_j^p) = f_j\left(R(t_j^1)\right)=N\cdot\tau_j\cdot\left(\left( R(t_j^1)  - K_j\right)_+ - \left( R(t_j^1)  - K_j\right)\cdot\delta_{\text{kind, floor}}\right).\]</div>
+<p>being <span class="math notranslate nohighlight">\(N\)</span> the nominal, <span class="math notranslate nohighlight">\(\mathcal{T}^f\)</span> the tenor structure of the <span class="math notranslate nohighlight">\(f\)</span>-leg of the swap, either float or fixed.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">underlying</span></code> <span class="math notranslate nohighlight">\(\rightarrow R\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obsdates</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calendar</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar for computations, <span class="math notranslate nohighlight">\(\tau_j=\text{DCC}(t_{j-1}^p,t_j^p)\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strike</span></code> <span class="math notranslate nohighlight">\(\rightarrow [K_j]_{j=0}^J\,,\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nominal</span></code> <span class="math notranslate nohighlight">\(\rightarrow [N_j]_{j=0}^J\,,\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pay_dates</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{t^p_j\}_{j=0}^J\)</span>, by <em>default</em> <span class="math notranslate nohighlight">\(t^1_j=t^p_j\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tenor_dates</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{T_j\}_{j=0}^{J+1},\)</span> if it is not specified, it is <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^J\cup\{t^p_j\}_{j=0}^J\)</span>. Either <code class="docutils literal notranslate"><span class="pre">pay_dates</span></code> or <code class="docutils literal notranslate"><span class="pre">tenor_dates</span></code> must be specified.</p></li>
+</ul>
+<section id="id2">
+<h3>Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>For the conventions and details on the price and payoff arrays see the “Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)” in the <a class="reference internal" href="#European-Swaption"><span class="std std-ref">previous section</span></a>.</p>
+<p>The payoff function in this case is</p>
+<div class="math notranslate nohighlight">
+\[\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_j(R)\)</span> was defined above. <span class="math notranslate nohighlight">\(\diamondsuit\)</span></p>
+</section>
+</section>
+<section id="RangeAccrual">
+<h2>RangeAccrual<a class="headerlink" href="#RangeAccrual" title="Permalink to this heading">#</a></h2>
+<p>Given two rates <span class="math notranslate nohighlight">\(R, X\)</span>, a set of payment dates <span class="math notranslate nohighlight">\(\{t^p_n\}_{n=0}^N\)</span>, a set of reference dates <span class="math notranslate nohighlight">\(\{t^1_{j}\}_{j=0}^J\)</span>, and an interval <span class="math notranslate nohighlight">\([l, u]\)</span>, a long position of the payoff is given by</p>
+<div class="math notranslate nohighlight">
+\[P_n(t_{n+1}^p) = f_n\left(R(t_n^p), \left(X(t^1_{j})\right)_{j\in\mathcal{J}_n}\right)=N\cdot R(t_n^p)\times \dfrac{\#\{j\in\mathcal{J}_n~\mid~X(t_j^1)\in[l,u]\}}{\# \mathcal{J}_n}.\]</div>
+<p>being <span class="math notranslate nohighlight">\(N\)</span> the nominal and <span class="math notranslate nohighlight">\(\mathcal{J}_n:=\left\{j\in\{0,\ldots, J\}\,\mid\, t^1_j\in[t^p_n, t^p_{n+1}\mid \right\}\)</span>, being <span class="math notranslate nohighlight">\(\mid\)</span> either <span class="math notranslate nohighlight">\(]\)</span> or <span class="math notranslate nohighlight">\()\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">underlying</span></code> <span class="math notranslate nohighlight">\(\rightarrow [R, X]\)</span> as a <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calendar</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar for computations, <span class="math notranslate nohighlight">\(\tau_j=\text{DCC}(t_{j-1}^p,t_j^p)\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nominal</span></code> <span class="math notranslate nohighlight">\(\rightarrow N\,,\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">border</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">True</span></code> if the right end of the interval is included, <span class="math notranslate nohighlight">\(\mid\)</span> equals <span class="math notranslate nohighlight">\(]\)</span>, and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. By <em>default</em>, it is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<p>With this, we can define:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reference_dates_dic</span></code> <span class="math notranslate nohighlight">\(\rightarrow \{t^p_n : \{t^1_{j}\}_{j\in\mathcal{J}_n} \}_{n=0}^N\)</span> ,</p></li>
+</ul>
+<section id="id3">
+<h3>Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>For the conventions and details on the price and payoff arrays see the “Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)” in the <a class="reference internal" href="#European-Swaption"><span class="std std-ref">previous section</span></a>.</p>
+<p>The payoff function in this case is</p>
+<div class="math notranslate nohighlight">
+\[\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_j(R)\)</span> was defined above. <span class="math notranslate nohighlight">\(\diamondsuit\)</span></p>
+</section>
+</section>
+<section id="CMSSpreadForward">
+<h2>CMSSpreadForward<a class="headerlink" href="#CMSSpreadForward" title="Permalink to this heading">#</a></h2>
+<p>Given two rates <span class="math notranslate nohighlight">\(R_0, R_1\)</span>, a set of payment dates <span class="math notranslate nohighlight">\(\{t^p_n\}_{n=0}^N\)</span>, a set of reference dates <span class="math notranslate nohighlight">\(\{t^1_{j}\}_{j=0}^J\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[P_n(t_{n+1}^p) = f_n\left(R_1(t_n^p)-R_0(t_n^p)\right)=\ldots\]</div>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">underlying</span></code> <span class="math notranslate nohighlight">\(\rightarrow [R, X]\)</span> as a <code class="docutils literal notranslate"><span class="pre">MultiRate</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calendar</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar for computations, <span class="math notranslate nohighlight">\(\tau_j=\text{DCC}(t_{j-1}^p,t_j^p)\)</span>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nominal</span></code> <span class="math notranslate nohighlight">\(\rightarrow N\,,\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">border</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">True</span></code> if the right end of the interval is included, <span class="math notranslate nohighlight">\(\mid\)</span> equals <span class="math notranslate nohighlight">\(]\)</span>, and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. By <em>default</em>, it is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<section id="id4">
+<h3>Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>For the conventions and details on the price and payoff arrays see the “Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)” in the <a class="reference internal" href="#European-Swaption"><span class="std std-ref">previous section</span></a>.</p>
+<p>The payoff function in this case is</p>
+<div class="math notranslate nohighlight">
+\[\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_j(R)\)</span> was defined above. <span class="math notranslate nohighlight">\(\diamondsuit\)</span></p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#European-Swaption">European Swaption</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Technical-note-(payoff-method)">Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#GeneralSwap">GeneralSwap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#(Vanilla)-Libor-Swap">(Vanilla) Libor Swap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Libor-in-arrears-Swap">Libor-in-arrears Swap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Constant-Maturity-Swap-(CMS-Swap)">Constant Maturity Swap (CMS Swap)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Amortizing-swaps">Amortizing swaps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#TARN(GeneralSwap)">TARN(GeneralSwap)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#CapFloor">CapFloor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RangeAccrual">RangeAccrual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#CMSSpreadForward">CMSSpreadForward</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Technical note (<code class="docutils literal notranslate"><span class="pre">payoff</span></code> method)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

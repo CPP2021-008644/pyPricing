@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mc_engines module &mdash; PyPricing 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyPricing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ir_models.html">ir_models module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">structured module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discount_curves.html">discount_curves module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratecurves.html">ratecurves module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyPricing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">mc_engines module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mc_engines.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-mc_engines">
+<span id="mc-engines-module"></span><h1>mc_engines module<a class="headerlink" href="#module-mc_engines" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">DeterministicVolDiffusionMC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">randno_gen=&lt;bound</span> <span class="pre">method</span> <span class="pre">multivariate_normal_gen.rvs</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._multivariate.multivariate_normal_gen</span> <span class="pre">object&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.compute_correlation_matrix">
+<span class="sig-name descname"><span class="pre">compute_correlation_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.compute_correlation_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.compute_intervals">
+<span class="sig-name descname"><span class="pre">compute_intervals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.compute_intervals" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.compute_price_from_simulations">
+<span class="sig-name descname"><span class="pre">compute_price_from_simulations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.compute_price_from_simulations" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>This method computes prices from simulation data. Note that it does not call for path generation,</dt><dd><p>so that we can repeatedly compute prices from the same simulation matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.generate_draws">
+<span class="sig-name descname"><span class="pre">generate_draws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_obsdates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_valuation_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.generate_draws" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.generate_paths_for_pricing">
+<span class="sig-name descname"><span class="pre">generate_paths_for_pricing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.generate_paths_for_pricing" title="Permalink to this definition"></a></dt>
+<dd><p>date format: %Y%m%d
+This methods essentially just sorts all dates, calls for simulate_asset, then concatenates the data from past obsdates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.price">
+<span class="sig-name descname"><span class="pre">price</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.price" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.DeterministicVolDiffusionMC.simulate_asset">
+<span class="sig-name descname"><span class="pre">simulate_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quanto_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_pricing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.DeterministicVolDiffusionMC.simulate_asset" title="Permalink to this definition"></a></dt>
+<dd><p>This method automatically compiles from assets the parameters necessary for the MC hardcore
+for_pricing if True, disables the adjustment by numeraire, delaying it so the routine for IR sensitivity works</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.MC1d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">MC1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">randno_gen=&lt;bound</span> <span class="pre">method</span> <span class="pre">rv_generic.rvs</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._continuous_distns.norm_gen</span> <span class="pre">object&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.MC1d.compute_price_from_simulations">
+<span class="sig-name descname"><span class="pre">compute_price_from_simulations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d.compute_price_from_simulations" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.MC1d.generate_paths">
+<span class="sig-name descname"><span class="pre">generate_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drift</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d.generate_paths" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.MC1d.generate_paths_for_pricing">
+<span class="sig-name descname"><span class="pre">generate_paths_for_pricing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d.generate_paths_for_pricing" title="Permalink to this definition"></a></dt>
+<dd><p>date format: %Y%m%d</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.MC1d.price">
+<span class="sig-name descname"><span class="pre">price</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d.price" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.MC1d.simulate_asset">
+<span class="sig-name descname"><span class="pre">simulate_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quanto_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.MC1d.simulate_asset" title="Permalink to this definition"></a></dt>
+<dd><p>date format: %Y%m%d</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.RegressionMC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">RegressionMC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">randno_gen=&lt;bound</span> <span class="pre">method</span> <span class="pre">multivariate_normal_gen.rvs</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._multivariate.multivariate_normal_gen</span> <span class="pre">object&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.RegressionMC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mc_engines.DeterministicVolDiffusionMC" title="mc_engines.DeterministicVolDiffusionMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeterministicVolDiffusionMC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.RegressionMC.compute_fdiscount">
+<span class="sig-name descname"><span class="pre">compute_fdiscount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.RegressionMC.compute_fdiscount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.RegressionMC.compute_price_from_simulations">
+<span class="sig-name descname"><span class="pre">compute_price_from_simulations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics_gatherer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.RegressionMC.compute_price_from_simulations" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>This method computes prices from simulation data. Note that it does not call for path generation,</dt><dd><p>so that we can repeatedly compute prices from the same simulation matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.SRDeterministicVolDiffusionMC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">SRDeterministicVolDiffusionMC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">short_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randno_gen=&lt;bound</span> <span class="pre">method</span> <span class="pre">multivariate_normal_gen.rvs</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._multivariate.multivariate_normal_gen</span> <span class="pre">object&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.SRDeterministicVolDiffusionMC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mc_engines.DeterministicVolDiffusionMC" title="mc_engines.DeterministicVolDiffusionMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeterministicVolDiffusionMC</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.SRDeterministicVolDiffusionMC.compute_fbond">
+<span class="sig-name descname"><span class="pre">compute_fbond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.SRDeterministicVolDiffusionMC.compute_fbond" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.SRDeterministicVolDiffusionMC.simulate_asset">
+<span class="sig-name descname"><span class="pre">simulate_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quanto_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.SRDeterministicVolDiffusionMC.simulate_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Assumes independence between assets and the short rate;
+it always works in the forward measure (despite appearing to give the option not to);
+in particular it does not work in the risk-neutral measure (it never keeps track of the money-market account)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.SRDeterministicVolDiffusionMC.simulate_short_rate">
+<span class="sig-name descname"><span class="pre">simulate_short_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.SRDeterministicVolDiffusionMC.simulate_short_rate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.SRRegressionMC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">SRRegressionMC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">short_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">randno_gen=&lt;bound</span> <span class="pre">method</span> <span class="pre">multivariate_normal_gen.rvs</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._multivariate.multivariate_normal_gen</span> <span class="pre">object&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.SRRegressionMC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mc_engines.SRDeterministicVolDiffusionMC" title="mc_engines.SRDeterministicVolDiffusionMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SRDeterministicVolDiffusionMC</span></code></a>, <a class="reference internal" href="#mc_engines.RegressionMC" title="mc_engines.RegressionMC"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegressionMC</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mc_engines.</span></span><span class="sig-name descname"><span class="pre">StatisticsGatherer</span></span><a class="headerlink" href="#mc_engines.StatisticsGatherer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer.compute_std">
+<span class="sig-name descname"><span class="pre">compute_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.StatisticsGatherer.compute_std" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer.histogram">
+<span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.StatisticsGatherer.histogram" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payoffs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.StatisticsGatherer.load" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer.reset_gatherer">
+<span class="sig-name descname"><span class="pre">reset_gatherer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.StatisticsGatherer.reset_gatherer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mc_engines.StatisticsGatherer.running_mean">
+<span class="sig-name descname"><span class="pre">running_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mc_engines.StatisticsGatherer.running_mean" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AFS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

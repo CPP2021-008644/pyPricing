@@ -1,0 +1,7 @@
+fixedincome module
+==================
+
+.. automodule:: fixedincome
+   :members:
+   :undoc-members:
+   :show-inheritance:

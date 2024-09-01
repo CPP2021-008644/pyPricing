@@ -1,0 +1,7 @@
+calendars module
+================
+
+.. automodule:: calendars
+   :members:
+   :undoc-members:
+   :show-inheritance:

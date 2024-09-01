@@ -1,0 +1,6 @@
+Risk 
+=======================
+
+This is the main page of the Risk module.
+
+- `Risk factors <risk_factors.html>`_

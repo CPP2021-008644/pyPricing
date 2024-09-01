@@ -1,0 +1,1152 @@
+{
+ "cells": [
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Rate Curves"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# ForwardRate"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Initialization attributes"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Following the notation of Brigo and Mercurio (BM) _Interest Rate Models - Theory and Practice_, Definition 1.4.1 or _Abbreviations and Notation_, we have:\n",
+    "$$\n",
+    "F(t; T, S)=\\frac{1}{\\text{DC}(T,S)}\\left(\\text{FP}^{-1}(t; T, S)-1\\right)\\,,\n",
+    "$$\n",
+    "being $\\text{FP}(t; T, S):=\\dfrac{P(t, S)}{P(t, T)}$ the forward bond."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `curve` $\\rightarrow$ discount curve ${P}$,\n",
+    "* `effective_date` $\\rightarrow T\\,$,\n",
+    "* `end_date` $\\rightarrow S\\,$\n",
+    "* `freq` $\\rightarrow$ difference between $T$ and $S$ in months. This is **actually** what we need.\n",
+    "* `calendar` $\\rightarrow \\text{DC}\\,,$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Methods"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_forward_dates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, it returns:\n",
+    "\n",
+    "$$\n",
+    "\\text{Dictionary}\\{t^1_j~:~ (t^1_j, t^1_j + \\nu)\\}\\,,\n",
+    "$$\n",
+    "where $\\nu$ is the frequency in months. That is, it returns the \"tenor structure\" starting at $t^1_j$."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ ."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### generate_rates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the array of $\\text{FP}$ and dates $\\{t^1_j\\}_{j=0}^J$, forward bonds, it returns:\n",
+    " \n",
+    "$$\n",
+    "F_{i,j,k,l=0} :=\\frac1{\\text{DC}\\left(T_{l}^j, T_{l+1}^j\\right)} \\left(\\left(\\text{FP}_{i,j,k,l}\\right)^{-1}-1\\right)\\,,\n",
+    "$$\n",
+    "being $\\{T^j_l\\}_{l=0}^1$ the tenor structure, see `get_forward_dates`, of the date $t^1_j$.\n",
+    "\n",
+    "In general, we will have that \n",
+    "$$\n",
+    "\\text{FP}_{i,j,k,l}=\\text{FP}_{t^0_k}\\left(t^1_j,T_{l}^j, T_{l+1}^j, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\,,\n",
+    "$$\n",
+    "\n",
+    "with $\\text{FP}_{t^0_k}\\left(t^1_j,T_{l}^j, T_{l+1}^j, \\underline{x}\\left(t^0_k, t^1_j\\right)\\right)$ given by ``compute_future_bond``.\n",
+    "\n",
+    "**Remark.** Actually, it returns $\\tilde{F}_{i,j,k,l}$ such that $\\tilde{F}_{i,0,k,l}=0$ (other value is fine too) and $\\left(\\tilde{F}_{i,1:,k,l}\\right)=\\left({F}_{i,j,k,l}\\right)$. This is needed for the *mc_engines* script. **Why?** $\\diamondsuit$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``forward_bonds`` $\\rightarrow \\left\\{ t^1_j~:~ \\text{FP}_{i,0,k,l}\\right\\}_{j=0}^J$, this is a dictionary for each date. Note that observation dates are implicit as the keys of the dictionary. In general, $$ \\left\\{ t^1_j~:~ \\left(\\text{FP}_{t^0_k}\\left(t^1_j; T^j_{l-1}, T^j_{l}, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i, 0, k, l}\\right\\}_{j=0}^J\\,,$$ where $T^j_l$ is given by `get_forward_dates`. **Note** that the $T_{-1}$ is defined as in `compute_forward_bond,` although unused here. **Used elsewhere?**\n",
+    "- ``discounts`` $\\rightarrow \\left\\{t^1_j~:~ \\left(P_{t^0_k}\\left(t^1_j; T^j_l, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i,l,k,0}\\right\\}_{j=0}^J$, this is a dictionary for each date. Not needed here, but this method has a common signature across the different rates.\n",
+    "- ``intervals`` $\\rightarrow$ intervals between simulation dates. **This is not needed here.**\n",
+    "\n",
+    "**Remark.** Forwards and discounts are organized as dictionaries. For this case, this might seem artificial, but in general (for instance, for average swaps) creating a big array with all the possible dates, slicing according to some previously specified dictionary of indices and doing \"cumproducts\" might be misleading with little gain in efficiency (we need to compute bonds with meaningless dates which are never used). Furthermore, this dictionary is needed irremediably  for the discounts as they come from `compute_future_bond` in *ir_models.py* that, following broadcasting rules, need $J$ to be zero to have all the discounts.\n",
+    "\n",
+    "Nevertheless, this could be changed as it is the same idea used for each date for the fixed and floating leg and this is done with a general function, `accumulate_index` in *ratecurves.py*. The same for `MultiRate` class, in both cases with no senseless simulations. Also, meaningless bond prices could be set to 1 using the function `set_past_dates` in *ir_models*, but with no gain in efficiency. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# SwapRate"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Initialization attributes"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Following the notation of Brigo and Mercurio (BM) _Interest Rate Models - Theory and Practice_, Section 1.5 or _Abbreviations and Notation_, we have:"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `curve` $\\rightarrow$ discount curve $\\tilde{P}$,\n",
+    "* `effective_date` $\\rightarrow$ $T_\\alpha^{\\text{float}}=T_\\alpha^{\\text{fixed}}$ (it is assumed that both are the same),\n",
+    "* `end_date` $\\rightarrow$ $T_\\beta^{\\text{float}}=T_\\beta^{\\text{fixed}}$ (it is assumed it is the same),\n",
+    "* `floating_freq` $\\rightarrow 12\\cdot\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)$ for $l\\in\\{\\alpha^{\\text{float}}+1, \\ldots, \\beta^{\\text{float}}\\}$ (it is assumed that this is constant). For instance, if floating_freq=6, then, approximately (depends on the day count convention), $\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)=0.5$,\n",
+    "* `fixed_freq` $\\rightarrow 12\\cdot\\left(T_l^{\\text{fixed}}-T_{l-1}^{\\text{fixed}}\\right)$, as above,\n",
+    "* `legs_calendar` $\\rightarrow [\\text{DC}^{\\text{float}}, \\text{DC}^{\\text{fixed}}]$ or $\\text{DC}$. In the latter case, the same calendar for each leg.\n",
+    "* `tenor_length`  $\\rightarrow T_\\beta-T_\\alpha$ (in years), `tenor_length=None` by default. This is what `get_forward_dates` needs and sometimes, due to day counting conventions, `end_date-effective_date` in days might be problematic. "
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Methods"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_pvbp"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, it returns a pandas.Series of the form:\n",
+    "\n",
+    "$$\n",
+    "\\text{Series}\\left(j, \\sum_{l=\\alpha^\\text{fixed}+1}^{\\beta^\\text{fixed}}\\text{DC}^\\text{fixed}\\left(T^\\text{fixed}_{l-1}, T^\\text{fixed}_{l}\\right) P\\left(t^1_j,T^\\text{fixed}_{l}\\right)\\text{Ind}\\left({t^1_j\\le T_{l-1}^{\\text{fixed}}}\\right)\\right)\\,.\n",
+    "$$\n",
+    "\n",
+    "This corresponds to the annuity of the swap (or its PVBP, for Present Value of a Basis Point), see page 308 Joshi, Chapter 16 of Privault or (5.4) of Andersen and Piterbarg. It is also the denominator of (1.25) BM evaluated for the different dates."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ , \n",
+    "- ``discount_curve ``$\\rightarrow P(\\cdot, \\cdot)$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_value"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, \n",
+    "\n",
+    "$$\n",
+    "F\\left(t^1_j, T^\\text{float}_{l-1}, T^\\text{float}_{l+1}\\right) :=\\frac1{\\text{DC}^\\text{float}\\left(T^\\text{float}_{l+1}, T^\\text{float}_{l-1}\\right)} \\left(\\frac{\\tilde{P}\\left(t^1_j, T^\\text{float}_{l}\\right)}{\\tilde{P}\\left(t^1_j, T^\\text{float}_{l-1}\\right)}-1\\right)\\text{Ind}\\left({t^1_j\\le T_{l-1}^{\\text{float}}}\\right)\n",
+    "$$\n",
+    "\n",
+    "If we define\n",
+    "\n",
+    "$$\n",
+    "N_j=\\sum_{l=\\alpha^\\text{float}+1}^{\\beta^\\text{float}}\\text{DC}^\\text{float}\\left(T^\\text{float}_{l-1}, T^\\text{float}_{l}\\right) P\\left(t^1_j,T^\\text{float}_{l}\\right)F\\left(t^1_j, T^\\text{float}_{l-1}, T^\\text{float}_{l}\\right)\\,,\n",
+    "$$\n",
+    "\n",
+    "$$\n",
+    "D_j=\\sum_{l=\\alpha^\\text{fixed}+1}^{\\beta^\\text{fixed}}\\text{DC}^\\text{fixed}\\left(T^\\text{fixed}_{l-1}, T^\\text{fixed}_{l}\\right) P\\left(t^1_j,T^\\text{fixed}_{l}\\right)\\text{Ind}\\left({t^1_j\\le T_{l-1}^{\\text{fixed}}}\\right)\\,,\n",
+    "$$\n",
+    "then this method returns the array\n",
+    "$$\n",
+    " \\left(S_{\\alpha,\\beta}(t_j^1)=\\frac{N_j}{D_j}\\right)_j\\,.\n",
+    "$$\n",
+    "This is the swap rate, see (1.25) of BM for a swap where:\n",
+    "\n",
+    "* floating payment dates are not necessarily the same as the payment dates for the fixed leg,\n",
+    "* the forwards are calculated using $\\tilde{P}$, which is not necessarily the same as the curve used for the discounts, $P$.\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ , \n",
+    "- ``discount_curve`` $\\rightarrow P(\\cdot, \\cdot)$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_forward_dates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, it returns:\n",
+    "\n",
+    "$$\n",
+    "\\text{Dictionary}\\{t^1_j~:~ (T_l^j)_{l=0}^{L}\\}\\,,\n",
+    "$$\n",
+    "where:\n",
+    "\n",
+    "* $T_l^{j,f}=t^1_j + l\\cdot\\nu_f$, where $\\nu_f$ is the frequency, $f\\in\\{\\text{float, fixed}\\}$ and $l\\in\\{0,\\ldots,L_j^f\\}$ with $L^f=$`self.tenor_length`$/(\\nu_f^m/12)$, where $\\nu_f^m$ is the frequency in months.\n",
+    "\n",
+    "* $\\{T_l^j\\}=\\{T_l^{j,\\text{float}}\\}\\cup\\{T_l^{j,\\text{fixed}}\\}$, the complete tenor structure for the date $t^1_j.$\n",
+    "\n",
+    "That is, it returns the tenor structure starting at $t^1_j$."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ ."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### generate_rates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the array of $\\text{FP}$, forward bonds,\n",
+    "\n",
+    "$$\n",
+    "F_{i,j,k,l} :=\\frac1{\\text{DC}^\\text{float}\\left(T^{j,\\text{float}}_{l}, T^{j,\\text{float}}_{l+1}\\right)} \\left(\\left(\\text{FP}_{i,j,k,l}\\right)^{-1}-1\\right)\\,.\n",
+    "$$\n",
+    "\n",
+    "Usually, it will be the case that \n",
+    "$$\n",
+    "\\text{FP}_{i,j,k,l}=\\text{FP}_{t^0_k}\\left(t^1_j,T_{l}^j, T_{l+1}^j, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\,,\n",
+    "$$\n",
+    "with $\\text{FP}_{t^0_k}\\left(t^1_j,T_{l}, T_{l+1}, \\underline{x}\\left(t^0_k, t^1_j\\right)\\right)$ given by ``compute_future_bond``.\n",
+    "\n",
+    "If we define\n",
+    "\n",
+    "$$\n",
+    "S^\\text{float}_{i,j,k}=\\sum_{l=\\alpha^\\text{float}+1}^{\\beta^\\text{float}}\\text{DC}^\\text{float}\\left(T^{j,\\text{float}}_{l}, T^{j,\\text{float}}_{l+1}\\right) P_{i, t^0_k}\\left(t^1_j,T^{j,\\text{float}}_{l+1}\\right)F_{i,j,k,l}\\,,\n",
+    "$$\n",
+    "\n",
+    "$$\n",
+    "S^\\text{fixed}_{i,j,k}=\\sum_{l=\\alpha^\\text{fixed}+1}^{\\beta^\\text{fixed}}\\text{DC}^\\text{fixed}\\left(T^{j,\\text{fixed}}_{l}, T^{j,\\text{fixed}}_{l}\\right) P_{i, t^0_k}\\left(t^1_j,T^{j,\\text{fixed}}_{l}\\right)\\,,\n",
+    "$$\n",
+    "with $S_{i,j,k}:=\\dfrac{S^\\text{float}_{i,j,k}}{S^\\text{fixed}_{i,j,k}}$, then this method returns the array\n",
+    "$$\n",
+    " \\left(S_{i,j,k,0}={S_{i,j,k}}, S_{i,j,k,1}=\\mathcal{A}_{i,j,k}\\right)_{i,j,k,l}\\,,\n",
+    "$$\n",
+    "with,\n",
+    "\n",
+    "* *Physical-settlement:* $\\mathcal{A}(t):=A(t)$, the annuity.\n",
+    "* *Cash-settlement:* $\\mathcal{A}(t):=a\\left(S_{\\alpha,\\beta}(t)\\right)$, see p.206 of Andersen and Piterbarg.\n",
+    "\n",
+    "This has the structure of a `MultiRate`, see below, with the second rate being the \"settlement rate\" $\\mathcal{A}$. This rate will be the input of, for instance, a `Swaption` object.\n",
+    "\n",
+    "**Remark.** We need to specify the \"settlement rate\" although in many situations the payoff will only depend on the swap rate. A physically-settled swaption is an example of the former whereas a cash-settled swaption is an example of the latter. $\\diamondsuit$\n",
+    "\n",
+    "These are the elements that constitute the swap rate, see (1.25) of BM for a swap where:\n",
+    "\n",
+    "- floating payment dates are not necessarily the same as the payment dates for the fixed leg,\n",
+    "- the forwards are calculated using $\\tilde{P}_{i, t^0_k}$, which is not necessarily the same as the curve used for the discounts, $P$.\n",
+    "\n",
+    "**Remark.** Actually, it returns $\\tilde{S}_{i,j,k,l}$ such that $\\tilde{S}_{i,0,k,l}=0$ (other value is fine too) and $\\left(\\tilde{S}_{i,1:,k,l}\\right)=\\left({S}_{i,j,k,l}\\right)$. This is needed for the *mc_engines* script.$\\diamondsuit$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``forward_bonds`` $\\rightarrow \\left\\{ t^1_j~:~ \\text{FP}_{i,0,k,l}\\right\\}_{j=0}^J$. In general, $$ \\left\\{ t^1_j~:~ \\left(\\text{FP}_{t^0_k}\\left(t^1_j; T^j_{l-1}, T^j_{l}, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i, 0, k, l}\\right\\}_{j=0}^J\\,,$$ this is a dictionary for each date,\n",
+    "- ``discounts`` $\\rightarrow \\left\\{t^1_j~:~ \\left(P_{t^0_k}\\left(t^1_j; T^j_l, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i,l,k,0}\\right\\}_{j=0}^J$, this is a dictionary for each date,\n",
+    "- ``intervals`` $\\rightarrow$ intervals between simulation dates. **This is not needed here, needed elsewhere?**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# CMSRate"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Initialization attributes"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Following the notation of Brigo and Mercurio (BM) _Interest Rate Models - Theory and Practice_, Section 13.7 or _Abbreviations and Notation_, we have:"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* ``curve`` $\\rightarrow$ discount curve $\\tilde{P}$,\n",
+    "* ``tenor`` $\\rightarrow c\\,,$ as a year fraction,\n",
+    "* ``floating_freq`` $\\rightarrow 12\\cdot\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)$ for $l\\in\\{\\alpha^{\\text{float}}+1, \\ldots, \\beta^{\\text{float}}\\}$ (it is assumed that this is constant). For instance, if floating_freq=6, then, approximately (depends on the day count convention), $\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)=0.5$,\n",
+    "* ``fixed_freq`` $\\rightarrow 12\\cdot\\left(T_l^{\\text{fixed}}-T_{l-1}^{\\text{fixed}}\\right)$, as above,\n",
+    "* ``legs_calendar`` $\\rightarrow [\\text{DC}^{\\text{float}}, \\text{DC}^{\\text{fixed}}]$ or $\\text{DC}$. In the latter case, the same calendar for each leg."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Methods"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_value"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, $T_{\\alpha}:=t^1_j$ and $T_\\beta=T_\\alpha+c$. Then, as for `SwapRate` (**optimal?**).\n",
+    "\n",
+    "$$\n",
+    "F\\left(t^1_j, T^\\text{float}_{l-1}, T^\\text{float}_{l}\\right) :=\\frac1{\\text{DC}^\\text{float}\\left(T^\\text{float}_{l}, T^\\text{float}_{l-1}\\right)} \\left(\\frac{\\tilde{P}\\left(t^1_j, T^\\text{float}_{l}\\right)}{\\tilde{P}\\left(t^1_j, T^\\text{float}_{l-1}\\right)}-1\\right)\\text{Ind}\\left({t^1_j\\le T_{l-1}^{\\text{float}}}\\right)\n",
+    "$$\n",
+    "\n",
+    "If we define\n",
+    "\n",
+    "$$\n",
+    "N_j=\\sum_{l=\\alpha^\\text{float}+1}^{\\beta^\\text{float}}\\text{DC}^\\text{float}\\left(T^\\text{float}_{l-1}, T^\\text{float}_{l}\\right) P\\left(t^1_j,T^\\text{float}_{l}\\right)F\\left(t^1_j, T^\\text{float}_{l-1}, T^\\text{float}_{l}\\right)\\,,\n",
+    "$$\n",
+    "\n",
+    "$$\n",
+    "D_j=\\sum_{l=\\alpha^\\text{fixed}+1}^{\\beta^\\text{fixed}}\\text{DC}^\\text{fixed}\\left(T^\\text{fixed}_{l-1}, T^\\text{fixed}_{l}\\right) P\\left(t^1_j,T^\\text{fixed}_{l}\\right)\\text{Ind}\\left({t^1_j\\le T_{l-1}^{\\text{fixed}}}\\right)\\,,\n",
+    "$$\n",
+    "then this method returns the array\n",
+    "$$\n",
+    " \\left(S_{\\alpha,\\beta}(t_j^1)=\\frac{N_j}{D_j}\\right)_j\\,.\n",
+    "$$\n",
+    "This is the swap rate, see (1.25) of BM for a swap where:\n",
+    "\n",
+    "* floating payment dates are not necessarily the same as the payment dates for the fixed leg,\n",
+    "* the forwards are calculated using $\\tilde{P}$, which is not necessarily the same as the curve used for the discounts, $P$.\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ , \n",
+    "- ``discount_curve`` $\\rightarrow P(\\cdot, \\cdot)$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# MultiRate"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Initialization attributes"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is a class dealing with multiple rates, $R_0,\\ldots, R_N$, in the same object."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `rates` $\\rightarrow (R_0,\\ldots, R_N)\\,,$ a tuple."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Methods"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_forward_dates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For dates $\\rightarrow\\{t^1_j\\}_{j=0}^J$, it returns:\n",
+    "\n",
+    "$$\n",
+    "\\text{Dictionary}\\{t^1_j~:~ (T_l^j)_{l=0}^{L_j}\\}\\,,\n",
+    "$$\n",
+    "where:\n",
+    "\n",
+    "* $\\{T_l^j\\}=\\bigcup_{n=0}^N\\{T_l^{j,n}\\}$, the complete tenor structure for the date $t^1_j.$\n",
+    "* $\\{T_l^{j,n}\\}$ is the complete tenor structure for the date $t^1_j$ and $n$-th component. \n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``dates`` $\\rightarrow\\{t^1_j\\}_{j=0}^J$ ."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### get_forward_indices"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For a date $t^1_j$, it returns:\n",
+    "\n",
+    "$$\n",
+    "\\text{Dictionary}\\{n~:~ \\mathcal{L}_n\\}\\,,\n",
+    "$$\n",
+    "where $\\mathcal{L}_n \\subset \\{0, \\ldots, L_j\\}$ is such that, as lists with sorted values,\n",
+    "$$\n",
+    "T^{j}_{\\mathcal{L}_n[l]}=T^{j,n}_l\\,,\n",
+    "$$\n",
+    "for $l\\in\\{0, \\ldots, L^n_j\\}$.\n",
+    "\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``date`` $\\rightarrow t^1_j$."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### generate_rates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For a given set dates $\\{t^1_j\\}$ and associated forward bonds and discounts, it returns the array:\n",
+    "$$\n",
+    "S_{i,j,k,l} = S_{i,j,k,0}^l\\,,\n",
+    "$$\n",
+    "where $S^l$ is the fourth-dimensional array given by each component `generate_rates.`"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- ``forward_bonds`` $\\rightarrow \\left\\{ t^1_j~:~ \\text{FP}_{i,0,k,l}\\right\\}_{j=0}^J$. In general, $$ \\left\\{ t^1_j~:~ \\left(\\text{FP}_{t^0_k}\\left(t^1_j; T^j_{l-1}, T^j_{l}, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i, 0, k, l}\\right\\}_{j=0}^J\\,,$$ this is a dictionary for each date,\n",
+    "- ``discounts`` $\\rightarrow \\left\\{t^1_j~:~ \\left(P_{t^0_k}\\left(t^1_j; T^j_l, \\underline{x}_i\\left(t^0_k, t^1_j\\right)\\right)\\right)_{i,l,k,0}\\right\\}_{j=0}^J$, this is a dictionary for each date,\n",
+    "- ``intervals`` $\\rightarrow$ intervals between simulation dates. **This is not needed here, needed elsewhere?**\n",
+    "\n",
+    "**Remark.** Note that $T^j_l$ is, as above, $\\{T_l^j\\}=\\bigcup_{n=0}^N\\{T_l^{j,n}\\}$, the complete tenor structure for the date $t^1_j$, but each component only needs a particular subset of dates of the forward bonds and discounts. That's why we need `get_forward_indices` and also the function `accumulate_index` of *ratecurves.py* for the forwards."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# DifferenceRate(MultiRate)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given $R_0, R_1$, as a ``MultiRate``, it returns the rate $R_1-R_0$. Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# ProductRate(MultiRate)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate $\\prod_{n=0}^N R_n$. Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# AdditionRate(MultiRate)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate $\\sum_{n=0}^N R_n$. Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# PathDependentRate(MultiRate):"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a set of rates $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    " C_j = C_{j-1} + s_j + g_j\\times \\prod_{n=0}^N R_n(t^1_j)\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $s$ is the spread and $g$ is the gearing."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `gearing` $\\rightarrow [g_j]_{j=0}^{J_g}\\,,$\n",
+    "* `spread` $\\rightarrow [s_j]_{j=0}^{J_s}\\,,$\n",
+    "* `initial_coupon` $\\rightarrow C_{-1}\\,,$ by _default_ it equals 0."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that if either `gearing` or `spread` are not constant, their size must match the ones of the dictionary of forward_bonds and discounts in `generate_rates`. That is:\n",
+    "$$\n",
+    " J_a = J~~ \\lor ~~ \\min(J_a, J)=1\\,.\n",
+    "$$\n",
+    "for $a\\in\\{s, g\\}.$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## CumulativeRate(MultiRate):"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a set of rates $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    " Q_j =\\sum_{i=0}^{j-1} \\tau_i \\prod_{n=0}^N R_n(T_i)\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $\\tau_i$ are a given set of time intervals."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `dates` $\\rightarrow (T_j)_j\\,,$\n",
+    "* `calendar` $\\rightarrow \\text{DC}\\,,$ thus $\\tau_i = \\text{DC}(T_{i-1}, T_i)$."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# GSCFRate(MultiRate):"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a set of rates $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    " C_j = \\max\\left(\\min\\left(s_j + g_j\\times \\prod_{n=0}^N R_n(t^1_j), c_j\\right), f_j\\right)\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $g$ is the Gearing, $s$ is the Spread, $c$ is the Cap and $f$ is the Floor, (GSCF)."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `gearing` $\\rightarrow [g_j]_{j=0}^{J_g}\\,,$\n",
+    "* `spread` $\\rightarrow [s_j]_{j=0}^{J_s}\\,,$\n",
+    "* `cap` $\\rightarrow [c_j]_{j=0}^{J_s}\\,,$\n",
+    "* `floor` $\\rightarrow [f_j]_{j=0}^{J_s}\\,,$\n",
+    "* `initial_coupon` $\\rightarrow C_{-1}\\,,$ by _default_ it equals 0."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that if either `gearing` or `spread` are not constant, their size must match the ones of the dictionary of forward_bonds and discounts in `generate_rates`. That is:\n",
+    "$$\n",
+    " J_a = J~~ \\lor ~~ \\min(J_a, J)=1\\,.\n",
+    "$$\n",
+    "for $a\\in\\{s, g, c, f\\}.$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Trade-level \"rates\""
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## KnockOutRate(MultiRate):"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a set of rates $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    " \\text{TL}_j =\\prod_{i=0}^j\\text{Ind}\\left(\\prod_{n=0}^N R_n(T_i) \\land B\\right)\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $\\land$ is either $>$ (for down-and-out) or $<$ (for up-and-out). _Do not confuse_ it with $\\min(\\cdot,\\cdot)$. "
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `barrier` $\\rightarrow B\\,,$\n",
+    "* `kind` $\\rightarrow$ 'up-and-out' or 'down-and-out' as strings."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## GlobalFloorRate(CumulativeRate):"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a set of rates $\\left( R_n\\right)_{n=0}^N$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    " \\Delta_j =(F- Q_j)_{+} \\times \\delta_{jJ}\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $Q_j$ is as in [CumulativeRate(MultiRate)](##CumulativeRate(MultiRate))."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `dates` $\\rightarrow (T_j)_j\\,,$\n",
+    "* `calendar` $\\rightarrow \\text{DC}\\,,$ thus $\\tau_i = \\text{DC}(T_{i-1}, T_i)$,\n",
+    "* `floor` $\\rightarrow F\\,.$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Child rates"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## TARNRate(ProductRate) (trade-level feature)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a rate $R$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    "C_j = R_j \\times \\prod_{i=0}^j\\text{Ind}\\left( Q_i < B\\right)\n",
+    "$$\n",
+    "where, as above,\n",
+    "$$\n",
+    " Q_j =\\sum_{i=0}^{j-1} \\tau_i R(T_i)\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $\\tau_i$ are a given set of time intervals."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rate` $\\rightarrow R\\,$\n",
+    "* `dates` $\\rightarrow (T_j)_j\\,,$\n",
+    "* `calendar` $\\rightarrow \\text{DC}\\,,$ thus $\\tau_i = \\text{DC}(T_{i-1}, T_i)$.\n",
+    "* `barrier` $\\rightarrow B\\,,$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## GFlooredRate(AdditionRate) (trade-level feature)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Same structure as other rates, so we omit some details. Given a rate $R$, as a ``MultiRate``, it returns the rate defined as:\n",
+    "$$\n",
+    "C_j = R_j + \\Delta_j\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $\\Delta_j$ is as in [GlobalFloorRate(CumulativeRate)](##GlobalFloorRate(CumulativeRate))."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**\n",
+    "\n",
+    "* `rates` $\\rightarrow (R_n)_{n=0}^N\\,$ as a ``MultiRate``,\n",
+    "* `dates` $\\rightarrow (T_j)_j\\,,$\n",
+    "* `calendar` $\\rightarrow \\text{DC}\\,,$ thus $\\tau_i = \\text{DC}(T_{i-1}, T_i)$.\n",
+    "* `floor` $\\rightarrow F\\,.$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Other methods are inherited, not overwritten."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  },
+  "vscode": {
+   "interpreter": {
+    "hash": "ad2bdc8ecc057115af97d19610ffacc2b4e99fae6737bb82f5d7fb13d2f2c186"
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

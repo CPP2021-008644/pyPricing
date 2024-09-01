@@ -1,0 +1,7 @@
+irproducts module
+=================
+
+.. automodule:: irproducts
+   :members:
+   :undoc-members:
+   :show-inheritance:

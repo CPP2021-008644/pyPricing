@@ -1,0 +1,63 @@
+image: python:3.11
+
+before_script:
+##
+## Install ssh-agent if not already installed, it is required by Docker.
+## (change apt-get to yum if you use an RPM-based image)
+##
+- 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+
+##
+## Run ssh-agent (inside the build environment)
+##
+- eval $(ssh-agent -s)
+
+##
+## Give the right permissions, otherwise ssh-add will refuse to add files
+## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+##
+- chmod 400 "$myss"
+- ssh-add "$myss"
+
+##
+## Create the SSH directory and give it the right permissions
+##
+- mkdir -p ~/.ssh
+- chmod 700 ~/.ssh
+
+##
+## Use ssh-keyscan to scan the keys of your private server. Replace gitlab.com
+## with your own domain name. You can copy and repeat that command if you have
+## more than one server to connect to.
+##
+- ssh-keyscan -p 31022 git.arfima.com >> ~/.ssh/known_hosts
+- chmod 644 ~/.ssh/known_hosts
+
+
+stages:
+  - test  # When a commit is made to the main branch, the test_job will run first.
+  - deploy  # If the test_job passes (i.e., all tests pass), then the pages job will run.
+
+test_job:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+#    - python -m pytest -v tests -W ignore  # Pytests
+  only:
+    - main
+
+
+pages:  # GitLab documentation page.
+  stage: deploy
+  script:
+    - pip install -r requirements.txt
+    - pip install -r docs/requirements-docs.txt
+    - apt update
+    - apt-get install --yes graphviz
+    - apt-get install --yes pandoc
+    - sphinx-build -b html docs/source/ public/
+  only:
+    - main  # The web page is updated only when the pipeline is in the main branch.
+  artifacts:
+    paths:
+      - public

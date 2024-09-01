@@ -1,0 +1,50 @@
+<head>
+    <style>
+
+        .grid-container {
+            display: flex;
+            max-height: 300px;
+            
+        }
+
+        .grid-item img {
+            max-height: 100px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item"> <img src="_static/contributors/ministerio.PNG" onerror="fixImagePath(this)"  alt="Ministerio de Ciencia e Innovación"></div>
+        <div class="grid-item"><img src="_static/contributors/AEI.PNG" onerror="fixImagePath(this)" alt="Agencia Estatal de Investigación"></div>
+        <div class="grid-item"><img src="_static/contributors/PRTR.PNG"  onerror="fixImagePath(this)" alt="Plan de Recuperación, Transformación y Resiliencia"></div>
+        <div class="grid-item"><img src="_static/contributors/UE.PNG"   onerror="fixImagePath(this)" alt="Unión Europea"></div>
+        <div class="grid-item"><img src="_static/contributors/UNED.png"  onerror="fixImagePath(this)" alt="UNED"></div>
+        <div class="grid-item"><img src="_static/contributors/UC3M.png"  onerror="fixImagePath(this)" alt="UC3M"></div>
+        <script>
+            function fixImagePath(img){
+                var currentFileName = img.src.split('/').pop();
+                
+                var repo = "pypricing"
+                var imagesPath = "_static/contributors/"
+                var url = window.location.pathname;
+
+                var nSlashes = 0
+                if (img.src.includes("docs/build/html/")){
+                    repo =  repo + "/docs/build/html/"
+                    nSlashes = nSlashes + 1
+                }
+                var wordIndex = url.indexOf(repo);
+
+                if (wordIndex === -1) {
+                    return -1;
+                }
+                var substringAfterWord = url.substring(wordIndex + repo.length);
+                nSlashes = nSlashes + (substringAfterWord.match(/\//g) || []).length - 1;
+                var subdirs = '../'.repeat(nSlashes)
+                var newPath = subdirs + imagesPath + currentFileName;
+                img.src = newPath
+            }
+        </script>
+    </div>
+</body>

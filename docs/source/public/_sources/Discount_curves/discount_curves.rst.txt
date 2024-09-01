@@ -1,0 +1,21 @@
+discount\_curves module
+=======================
+
+.. inheritance-diagram:: discount_curves
+   :parts: -1
+
+Nota
+=====================================
+ El código original requiere una modificación no trivial de la arquitectura (ver figura de abajo) para que siga los principios de parsimonia y modularidad. 
+ Sin embargo, al ser no trivial, me he limitado a documentar el código original, arreglar lo que implicaba un mal funcionamiento y cambios de menor calado en la arquitectura (por ejemplo, métodos abstractos en la clase padre). Existen otros cambios a realizar, que están indicados (también en la documentación) con diversos **TODO**.
+
+.. image:: ../images/Architecture.PNG
+   :align: center
+
+.. automodule:: discount_curves
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :no-inherited-members:
+
+

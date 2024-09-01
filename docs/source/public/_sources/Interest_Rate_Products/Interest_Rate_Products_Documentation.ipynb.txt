@@ -1,0 +1,575 @@
+{
+ "cells": [
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#  Interest rate products"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Technical notes can be skipped on a basic reading. These notes end when  $\\diamondsuit$ appears."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## European Swaption"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the swap has tenor structure given by $\\{T_\\alpha,\\ldots,T_\\beta\\}$, the payoff of a european payer swaption is given by, Brigo and Mercurio p.19 ss,\n",
+    "$$\n",
+    "    N\\cdot \\mathcal{A}(T_\\alpha)(S_{\\alpha,\\beta}(T_\\alpha)-K)^+\\,,\n",
+    "$$\n",
+    "being $S_{\\alpha,\\beta}$ the swap rate and $\\mathcal{A}$ defined below. For a receiver swaption,\n",
+    "$$\n",
+    "    N\\cdot \\mathcal{A}(T_\\alpha)(K-S_{\\alpha,\\beta}(T_\\alpha))^+\\,.\n",
+    "$$\n",
+    "In general,\n",
+    "$$\n",
+    "\\frac{f^\\text{kind}(S_{\\alpha,\\beta}(T_\\alpha), \\mathcal{A}(T_\\alpha))}{N\\cdot \\mathcal{A}(T_\\alpha)}:=\\left({S_{\\alpha,\\beta}(T_\\alpha)}-K\\right)\\mathbb{1}_{\\{S_{\\alpha,\\beta}(T_\\alpha)\\geq K\\}} -\\left({S_{\\alpha,\\beta}(T_\\alpha)}-K\\right)\\delta_\\text{kind,put}\\,.\n",
+    "$$\n",
+    "For\n",
+    "\n",
+    "* *Physical-settlement:* $\\mathcal{A}(t):=A(t)$, the annuity.\n",
+    "* *Cash-settlement:* $\\mathcal{A}(t):=a\\left(S_{\\alpha,\\beta}(t)\\right)$, see p.206 of Andersen and Piterbarg."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `maturity` $\\rightarrow T_\\alpha$,\n",
+    "* `swap_rate` $\\rightarrow [S_{\\alpha,\\beta},\\mathcal{A}]$, as a `SwapRate` (as in `MultiRate`),\n",
+    "* `strike` $\\rightarrow K$,\n",
+    "* `kind` $\\rightarrow$ $\\text{kind}\\in\\{\\text{call}, \\text{put}\\}$, for payer and receiver swaptions, respectively.\n",
+    "* `nominal` $\\rightarrow N.$\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Remark.** As we are generating the prices from \"rate curves\" and the european swaption depends on the (simulated) annuity, so it is sensible to consider it as a rate and the swaption a product depending on two rates, in the same way that other products depend on several rates, given by the `MultiRate` class."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Technical note (`payoff` method) "
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We analyze in detail the input and output of the `payoff` method:\n",
+    "\n",
+    "$\\bullet$ For the observation dates $\\{t^1_j\\}_{j=0}^{J}$ and the valuation dates $\\{t^0_k\\}_{k=0}^{K}$, the *swap rate* associated with the $i$-th simulation of the $l$-th component is a numpy.ndarray denoted by\n",
+    "    \n",
+    "$$\\textrm{price}[i,j,k,l]=S_{i, t_k^0}^l(t^1_j)\\,,$$\n",
+    "where, for the sake of simplicity, we have removed the subscripts $\\alpha,\\beta.$ Recall that $l=0$ corresponds to $S_{\\alpha,\\beta}$ and $l=1$ with the \"rate\" $\\mathcal{A}$.\n",
+    "    \n",
+    "$\\bullet$  `dates_dic` is a dictionary (or pandas.Series) which assigns an index to each date. The observation dates $\\{t^1_j\\}_{j=0}^{J}$ satisfy $\\{t^1_j\\}_{j=0}^{J}\\subseteq \\{\\tau_{j'}\\}_{j'=0}^{J'}$, where $\\{\\tau_{j'}\\}_{j'=0}^{J'}$ are the simulation dates. That is to say, we generally simulate the prices for more dates than the ones we need for a particular product. In this sense, `dates_dic` can be understood as the map: $\\tau_{j'} \\mapsto j'$. In particular, $t^1_j \\mapsto j'$ such that $t^1_j = \\tau_{j'}.$\n",
+    "\n",
+    "$\\bullet$ `n` is an integer indicating the number of observation dates previous to a fixed observation date. This is needed in the Monte Carlo engine for exotic (path-dependent) products. For a given  `n` we get the value of the underlying for the previous `n` observation dates and simulate it for the new observation dates. For more details see the method `generate_paths_for_pricing` in *mc_engines.py*.\n",
+    "\n",
+    "The payoff function returns a numpy.ndarray of **3 dimensions** and shape $(|\\mathcal{I}|,|\\mathcal{J}|-n,|\\mathcal{K}|)$, where $|\\mathcal{I}|:= I+1$, $|\\mathcal{J}|:= J+1$ and $|\\mathcal{K}|:=K+1$ are the numbers of elements in the indexes $i$, $j$ and $k$. Note that we give the payoff excluding the previous observation dates. The output satisfies\n",
+    "\n",
+    "$$\\textrm{payoff}[i,j,k]=f\\left(S_{i, t_k^0}^{0}(t^1_j), S_{i, t_k^0}^{1}(t^1_j)\\right)\\times\\delta_{j, j_T-n}\\,,$$\n",
+    "\n",
+    "where $\\delta_{i,j}$ denotes the Kronecker delta and $j_T$ satisfies $t^1_{j_T} = T$. \n",
+    " \n",
+    "Finally, note that for every product we are assuming a long position, for a short position we would have $P_T = -f(S)$. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `price`      $\\rightarrow$ $[S_{\\alpha,\\beta}, \\mathcal{A}]$ as described above (same structure as in the `MultiRate` class),\n",
+    "* `dates_dic`     $\\rightarrow$ Map assigning an index $j$ to each date, \n",
+    "* `n`  $\\rightarrow$ Number of observation dates previous to a given observation date (needed for the Monte Carlo engine)."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## GeneralSwap"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Description"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Given the tenor structure for each leg, $\\mathcal{T}^f=\\{T_\\alpha,\\ldots, T^f_l,\\ldots,T_\\beta\\}$ for $f\\in\\{\\text{float, fixed}\\}$ with\n",
+    "\n",
+    "* *payment dates*: $\\{t_j^{p,f}\\}_{j=0}^{J^f}\\subset \\mathcal{T^f},$ payment dates for each leg. The union gives $\\{t_j^{p}\\}_{j=0}^{J^p}\\subset \\mathcal{T},$\n",
+    "* *fixing dates* (observation dates): $\\{t_j^1\\}_{j=0}^{J}\\subset \\mathcal{T}^\\text{float}\\,,$\n",
+    "\n",
+    "where $\\mathcal{T}:=\\bigcup_f\\mathcal{T}^f$, and the underlying rate $R$, the payoff (long position) is given by\n",
+    "\n",
+    "$$\n",
+    "P_j(t_j^p) = f_j\\left(\\tilde{R}(t_j^p)\\right)=N_j\\cdot\\left(\\delta_{t^p_j, \\mathcal{T}^\\text{float}}\\left(\\tau^\\text{float}_j\\cdot\\tilde{R}(t_j^p)\\right)  - \\delta_{t^p_j, \\mathcal{T}^\\text{fixed}}\\left(\\tau^\\text{fixed}_j\\cdot K_j\\right)\\right)\\,,\n",
+    "$$\n",
+    "being $N_j$ the, possibly varying, nominal. Obviously,\n",
+    "$$\n",
+    "\\delta_{t^p_j, \\mathcal{T}^f} = \\sum_{l=0}^{L^f} \\delta_{t^p_j, {T}^f_l}\\,.\n",
+    "$$\n",
+    "This allows us to extend trivially arrays that are defined only for one leg to the union of both legs. With some *abuse of notation*, we will use the same names for both vectors.\n",
+    "Also, we assume there is a bijection between $\\{t^1_j\\}_{j=0}^J$ and $\\{t^{p,\\text{float}}_j\\}_{j=0}^J$ so\n",
+    "$$\n",
+    "\\tilde{R}(t^{p,\\text{float}}_j):=R(t^{1}_j)\\,.\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Several remarks are in order:\n",
+    "\n",
+    "* The strike and nominal are not necessarily constant, so *amortizing* and *accreting* swaps are included.\n",
+    "* $R$ can be the difference of two rates with $K_j=0$ using the `DifferenceRate` class, so *exotic* *swaps* are included. E.g., the difference between a CMS and Libor.\n",
+    "* Payment dates and observation (fixing) dates are not necessarily the same, so the \"*in-arrears*\" and \"*fixed-in-advance*\" (standard) cases are included.\n",
+    "* The function $\\delta_{t^1_j, \\mathcal{T}^f}$ is implemented in the code under the name of `delta_indexing`."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `underlying` $\\rightarrow R$,\n",
+    "* `obsdates` $\\rightarrow \\{t^1_j\\}_{j=0}^J$ ,\n",
+    "* `effective_date` $\\rightarrow$ $T_\\alpha^{\\text{float}}=T_\\alpha^{\\text{fixed}}$ (it is assumed that both are the same),\n",
+    "* `end_date` $\\rightarrow$ $T_\\beta^{\\text{float}}=T_\\beta^{\\text{fixed}}$ (it is assumed it is the same),\n",
+    "* `floating_freq` $\\rightarrow 12\\cdot\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)$ for $l\\in\\{\\alpha^{\\text{float}}+1, \\ldots, \\beta^{\\text{float}}\\}$ (it is assumed that this is constant). For instance, if floating_freq=6, then, approximately (depends on the day count convention), $\\left(T_l^{\\text{float}}-T_{l-1}^{\\text{float}}\\right)=0.5$,\n",
+    "* `fixed_freq` $\\rightarrow 12\\cdot\\left(T_l^{\\text{fixed}}-T_{l-1}^{\\text{fixed}}\\right)$, as above,\n",
+    "* `legs_calendar` $\\rightarrow [\\text{DCC}^{\\text{float}}, \\text{DCC}^{\\text{fixed}}]$ or $\\text{DCC}$. In the latter case, the same calendar for each leg.\n",
+    "* `strike` $\\rightarrow [K_j]_{j=0}^{J^\\text{fixed}}\\,$ (by _default_, it equals 0),\n",
+    "* `nominal` $\\rightarrow [N_j]_{j=0}^{J^p}\\,,$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The class `SwapRate` is used to define some attributes. Also, we assume that:\n",
+    "\n",
+    "* `pay_dates` $\\rightarrow \\{t^p_j\\}_{j=0}^{J^p}=\\mathcal{T}\\backslash T_\\alpha$, which cover the the \"*in-arrears*\" and \"*fixed-in-advance*\" (standard) cases. Note that the first date is needed for $\\tau$.\n"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Technical note (`payoff` method)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the conventions and details on the price and payoff arrays see the \"Technical note (`payoff` method)\" in the [European Swaption section](##European-Swaption)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The payoff function in this case is\n",
+    "\n",
+    "$$\\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^p_j))\\,,$$\n",
+    "\n",
+    "where $f_j(R)$ was defined above. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### (Vanilla) Libor Swap"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this case, $t^1_j=t^{p, \\text{ float}}_{j-1}$ and the rate equal to the Libor rate."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Libor-in-arrears Swap"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this case, $t^1_j=t^{p, \\text{ float}}_j$ and the rate equal to the Libor rate."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "###  Constant Maturity Swap (CMS Swap)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this special case $R$ is a swap rate is of the form $S_{\\alpha,\\alpha+c}$, where $c$ is the constant maturity."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Amortizing swaps"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$N_j$ is no longer constant."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### TARN(GeneralSwap)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## CapFloor"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Given a tenor structure $\\{T_\\alpha,\\ldots,T_\\beta\\}$ with $\\{t_j^p\\}_{j=0}^J$, $\\{t_j^1\\}_{j=0}^J\\subset \\{T_\\alpha,\\ldots,T_\\beta\\}$ the payment and fixing dates, respectively, and the underlying rate $R$, for a long position, the payoff is given by\n",
+    "\n",
+    "$$\n",
+    "P_j(t_j^p) = f_j\\left(R(t_j^1)\\right)=N\\cdot\\tau_j\\cdot\\left(\\left( R(t_j^1)  - K_j\\right)_+ - \\left( R(t_j^1)  - K_j\\right)\\cdot\\delta_{\\text{kind, floor}}\\right).\n",
+    "$$\n",
+    "\n",
+    "being $N$ the nominal, $\\mathcal{T}^f$ the tenor structure of the $f$-leg of the swap, either float or fixed."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `underlying` $\\rightarrow R$,\n",
+    "* `obsdates` $\\rightarrow \\{t^1_j\\}_{j=0}^J$ ,\n",
+    "* `calendar` $\\rightarrow$ calendar for computations, $\\tau_j=\\text{DCC}(t_{j-1}^p,t_j^p)$,\n",
+    "* `strike` $\\rightarrow [K_j]_{j=0}^J\\,,$\n",
+    "* `nominal` $\\rightarrow [N_j]_{j=0}^J\\,,$\n",
+    "* `pay_dates` $\\rightarrow \\{t^p_j\\}_{j=0}^J$, by _default_ $t^1_j=t^p_j$,\n",
+    "* `tenor_dates ` $\\rightarrow \\{T_j\\}_{j=0}^{J+1},$ if it is not specified, it is $\\{t^1_j\\}_{j=0}^J\\cup\\{t^p_j\\}_{j=0}^J$. Either `pay_dates` or `tenor_dates` must be specified."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Technical note (`payoff` method)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the conventions and details on the price and payoff arrays see the \"Technical note (`payoff` method)\" in the [previous section](#european-swaption)."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The payoff function in this case is\n",
+    "\n",
+    "$$\\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))$$\n",
+    "\n",
+    "where $f_j(R)$ was defined above. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## RangeAccrual"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Given two rates $R, X$, a set of payment dates $\\{t^p_n\\}_{n=0}^N$, a set of reference dates $\\{t^1_{j}\\}_{j=0}^J$, and an interval $[l, u]$, a long position of the payoff is given by\n",
+    "\n",
+    "$$\n",
+    "P_n(t_{n+1}^p) = f_n\\left(R(t_n^p), \\left(X(t^1_{j})\\right)_{j\\in\\mathcal{J}_n}\\right)=N\\cdot R(t_n^p)\\times \\dfrac{\\#\\{j\\in\\mathcal{J}_n~\\mid~X(t_j^1)\\in[l,u]\\}}{\\# \\mathcal{J}_n}.\n",
+    "$$\n",
+    "\n",
+    "being $N$ the nominal and $\\mathcal{J}_n:=\\left\\{j\\in\\{0,\\ldots, J\\}\\,\\mid\\, t^1_j\\in[t^p_n, t^p_{n+1}\\mid \\right\\}$, being $\\mid$ either $]$ or $)$. "
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `underlying` $\\rightarrow [R, X]$ as a `MultiRate`,\n",
+    "* `calendar` $\\rightarrow$ calendar for computations, $\\tau_j=\\text{DCC}(t_{j-1}^p,t_j^p)$,\n",
+    "* `nominal` $\\rightarrow N\\,,$\n",
+    "* `border` $\\rightarrow$ `True` if the right end of the interval is included, $\\mid$ equals $]$, and `False` otherwise. By _default_, it is `False`."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "With this, we can define:"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `reference_dates_dic` $\\rightarrow \\{t^p_n : \\{t^1_{j}\\}_{j\\in\\mathcal{J}_n} \\}_{n=0}^N$ ,"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Technical note (`payoff` method)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the conventions and details on the price and payoff arrays see the \"Technical note (`payoff` method)\" in the [previous section](#european-swaption)."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The payoff function in this case is\n",
+    "\n",
+    "$$\\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))$$\n",
+    "\n",
+    "where $f_j(R)$ was defined above. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## CMSSpreadForward"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Given two rates $R_0, R_1$, a set of payment dates $\\{t^p_n\\}_{n=0}^N$, a set of reference dates $\\{t^1_{j}\\}_{j=0}^J$, \n",
+    "\n",
+    "$$\n",
+    "P_n(t_{n+1}^p) = f_n\\left(R_1(t_n^p)-R_0(t_n^p)\\right)=\\ldots\n",
+    "$$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\text{Code}$ - math $(\\TeX)$ **translation**"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* `underlying` $\\rightarrow [R, X]$ as a `MultiRate`,\n",
+    "* `calendar` $\\rightarrow$ calendar for computations, $\\tau_j=\\text{DCC}(t_{j-1}^p,t_j^p)$,\n",
+    "* `nominal` $\\rightarrow N\\,,$\n",
+    "* `border` $\\rightarrow$ `True` if the right end of the interval is included, $\\mid$ equals $]$, and `False` otherwise. By _default_, it is `False`."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Technical note (`payoff` method)"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For the conventions and details on the price and payoff arrays see the \"Technical note (`payoff` method)\" in the [previous section](#european-swaption)."
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The payoff function in this case is\n",
+    "\n",
+    "$$\\textrm{payoff}[i,j,k]=f_j(R_{i, t_k^0}(t^1_j))$$\n",
+    "\n",
+    "where $f_j(R)$ was defined above. $\\diamondsuit$"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  },
+  "vscode": {
+   "interpreter": {
+    "hash": "ad2bdc8ecc057115af97d19610ffacc2b4e99fae6737bb82f5d7fb13d2f2c186"
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

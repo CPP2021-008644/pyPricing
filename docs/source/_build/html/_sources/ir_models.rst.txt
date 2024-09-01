@@ -1,0 +1,17 @@
+ir\_models module
+=================
+
+.. graphviz::
+   digraph {
+      "From here" -> "To" -> "Somewhere";
+      "From here" -> "To" -> "Somewhere else";
+   }	
+
+.. inheritance-diagram:: ir_models
+   :parts: 1
+
+.. automodule:: ir_models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

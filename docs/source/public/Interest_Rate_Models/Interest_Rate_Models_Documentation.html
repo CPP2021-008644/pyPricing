@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Interest Rate Models &#8212; PyPricing 2023 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/sphinx-toolbox.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_toolbox_installation.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/sphinx_toolbox_installation.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyPricing 2023 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Structured/structured_main.html">
+                        Structured
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Interest_Rate_Products/irproducts_main.html">
+                        Interest Rate Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="irmodels_main.html">
+                        Interest Rate Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Underlyings/underlyings_main.html">
+                        Underlyings
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../MonteCarlo_engines/mc_main.html">
+                        MonteCarlo engines
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Discount_curves/discount_curves_main.html">
+                        Discount curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Fixed_Income/fixedincome_main.html">
+                        Fixed income
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Rate_Curves/ratecurves_main.html">
+                        Rate Curves
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Risk/risk_main.html">
+                        Risk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Others/others_main.html">
+                        Others
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Structured/structured_main.html">Structured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interest_Rate_Products/irproducts_main.html">Interest Rate Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irmodels_main.html">Interest Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Underlyings/underlyings_main.html">Underlyings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MonteCarlo_engines/mc_main.html">MonteCarlo engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Discount_curves/discount_curves_main.html">Discount curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Fixed_Income/fixedincome_main.html">Fixed income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rate_Curves/ratecurves_main.html">Rate Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Risk/risk_main.html">Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Others/others_main.html">Others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+</div>
+        <div class="sidebar-primary-item">
+<div id="searchbox"></div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Interest Rate Models</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="Interest-Rate-Models">
+<h1>Interest Rate Models<a class="headerlink" href="#Interest-Rate-Models" title="Permalink to this heading">#</a></h1>
+</section>
+<section id="Available-models">
+<h1>Available models<a class="headerlink" href="#Available-models" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Vasicek</strong>,</p></li>
+<li><p><strong>Hull-White</strong>,</p></li>
+<li><p><strong>G2++</strong>.</p></li>
+</ul>
+<p>See Chapter 3 and 4 of Brigo and Mercurio (BM) <em>Interest Rate Models - Theory and Practice</em> for details.</p>
+</section>
+<section id="Available-classes-and-methods">
+<h1>Available classes and methods<a class="headerlink" href="#Available-classes-and-methods" title="Permalink to this heading">#</a></h1>
+<section id="generate_paths">
+<h2>generate_paths<a class="headerlink" href="#generate_paths" title="Permalink to this heading">#</a></h2>
+<p>It returns the stochastic variable needed for the computation of the future bond, see next section. More precisely, in general,</p>
+<div class="math notranslate nohighlight">
+\[r(t)=\varphi(t)+\sum_{l=0}^{L} x^l(t)\,,\]</div>
+<p>for bond pricing we will be interested in <span class="math notranslate nohighlight">\(\underline{x}=(x^l)_{l=0}^L\)</span>. The term <span class="math notranslate nohighlight">\(\varphi(t)\)</span> is introduced to recover the initial spot curve <span class="math notranslate nohighlight">\(T\to P^M(0, T) \text{ for }T&gt;0\)</span> , so if the model cannot do this, automatically <span class="math notranslate nohighlight">\(\varphi\equiv 0\)</span>. In particular,</p>
+<ul class="simple">
+<li><p><strong>Vasicek</strong>: <span class="math notranslate nohighlight">\(r(t)\)</span> , see (3.9) of BM,</p></li>
+<li><p><strong>Hull-White</strong>: <span class="math notranslate nohighlight">\(x(t)\)</span> , see page 75 of BM,</p></li>
+<li><p><strong>G2++</strong>: <span class="math notranslate nohighlight">\((x(t), y(t))\)</span> , see Lemma 4.2.2 of BM.</p></li>
+</ul>
+<p>Let us call this <span class="math notranslate nohighlight">\(\underline{x}=(x^l)_{l=0}^L\)</span>. More specifically, it returns a four-dimensional array of the form:</p>
+<div class="math notranslate nohighlight">
+\[\left(x_{i}^l(t^0_k,t^1_{j-1})\right)_{i,j\in\{0, \ldots, J+1\},k,l}\,,\]</div>
+<p>for the <span class="math notranslate nohighlight">\(i\)</span>-th simulation of the <span class="math notranslate nohighlight">\(k\)</span>-th start date, <span class="math notranslate nohighlight">\(t^0_k\)</span> and <span class="math notranslate nohighlight">\(l\)</span>-th component evaluated at the time corresponding to the <span class="math notranslate nohighlight">\(j\)</span>-th step date, <span class="math notranslate nohighlight">\(t^1_j\)</span> , (<span class="math notranslate nohighlight">\(j=-1\)</span> corresponds to the starting date, see intervals below). Note that for a given valuation date (fixed <span class="math notranslate nohighlight">\(k\)</span>) we have <span class="math notranslate nohighlight">\(t^1_{j=-1, k} := t^0_k\)</span>, which is consistent with the definition of <code class="docutils literal notranslate"><span class="pre">intervals</span></code> given below.</p>
+<p><strong>Remark:</strong> following Python conventions, in the whole document we will use the so-called zero-based indexing, i.e., <span class="math notranslate nohighlight">\(\underline{x}=(x^l)_{l=0}^L\)</span> instead of <span class="math notranslate nohighlight">\(\underline{x}=(x^l)_{l=1}^{L+1}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p>start_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^0_k\}_{k=0}^K\)</span> ,</p></li>
+<li><p>step_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>short_rate_draws <span class="math notranslate nohighlight">\(\rightarrow\)</span> a 4 dimensional array with the draws for the simulation following the standard conventions for the indexes <span class="math notranslate nohighlight">\((i,j,k,l)\)</span> ,</p></li>
+<li><p>intervals <span class="math notranslate nohighlight">\(\rightarrow \textrm{intervals}[j,k]=\tau(t^1_{j-1}, t^1_{j})\)</span> for <span class="math notranslate nohighlight">\(j&gt;0\)</span> and <span class="math notranslate nohighlight">\(\textrm{intervals}[0,k]=\tau(t^0_{k}, t^1_{0})\)</span>. <span class="math notranslate nohighlight">\(\tau\)</span> represents the day count convention, see page 5 of Chapter 1 of Brigo and Mercurio, and will depend on the calendar used. For simplicity, we can think of it as <span class="math notranslate nohighlight">\(\tau(t,t')=t'-t\)</span> as a year fraction.</p></li>
+</ul>
+</section>
+<section id="generate_short_rate">
+<h2>generate_short_rate<a class="headerlink" href="#generate_short_rate" title="Permalink to this heading">#</a></h2>
+<p>Similar as above, it returns <span class="math notranslate nohighlight">\(r(t)\)</span> according to the specified model. More specifically, it returns a four-dimensional array of the form:</p>
+<div class="math notranslate nohighlight">
+\[\left(r_{i}(t^0_k,t^1_j)\right)_{i,j,k,l=0}\,,\]</div>
+<p>for the <span class="math notranslate nohighlight">\(i\)</span>-th simulation of the <span class="math notranslate nohighlight">\(k\)</span>-th start date at the time corresponding to the <span class="math notranslate nohighlight">\(j\)</span>-th step date (<span class="math notranslate nohighlight">\(j=0\)</span> correspond to the starting date).</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul>
+<li><p>start_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^0_k\}_{k=0}^K\)</span> ,</p></li>
+<li><p>step_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>short_rate_draws <span class="math notranslate nohighlight">\(\rightarrow\)</span> a 4 dimensional array with the draws for the simulation following the standard conventions for the indexes <span class="math notranslate nohighlight">\(i,j,k,l\)</span> ,</p></li>
+<li><p>intervals <span class="math notranslate nohighlight">\(\rightarrow \textrm{intervals}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\textrm{intervals}[j,k]= \begin{cases}\textrm{intervals}[j,k]=\tau(t^1_{j-1}, t^1_{j})\text{ for }j&gt;0 \text{ (independent of } k\text{)}\,,\\
+\textrm{intervals}[0,k]=\tau(t^0_{k}, t^1_{0})\text{ for }j=0\,.
+\end{cases}\end{split}\]</div>
+</li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\tau\)</span> represents the day count convention, see Chapter 1 of Brigo and Mercurio, and will depend on the calendar used. For simplicity, we can think of it as <span class="math notranslate nohighlight">\(\tau(t,t')=t'-t\)</span> as a year fraction.</p>
+</section>
+<section id="compute_future_bond">
+<h2>compute_future_bond<a class="headerlink" href="#compute_future_bond" title="Permalink to this heading">#</a></h2>
+<p>For the dates <span class="math notranslate nohighlight">\(\{t^0_k\}_{k=0}^K\)</span> , <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^{J}\)</span> , <span class="math notranslate nohighlight">\(\{t^2_j\}_{j=0}^{J'}\)</span> it computes</p>
+<div class="math notranslate nohighlight">
+\[P_{t^0}\left(t^1, t^2\right)\]</div>
+<p>according to the specified model. The subscript of <span class="math notranslate nohighlight">\(P\)</span> , <span class="math notranslate nohighlight">\(t^0\)</span> , represents the time considered as origin for “calibration”, <span class="math notranslate nohighlight">\(P_{t^0}(t^0,T)=P^M(t^0,T)\)</span> , market data. As we saw in the previous section, this will only be the case for some models. For those models in which the spot curve is not recovered, once the parameters are fixed, <span class="math notranslate nohighlight">\(t_0\)</span> is irrelevant.</p>
+<p>More precisely, it returns the array:</p>
+<div class="math notranslate nohighlight">
+\[\left(P_{t^0_k}\left(t^1_j, t^2_j, \underline{x}_i\left(t^0_k, t^1_j\right) \right)\right)_{i,j,k, l=0}\,,\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{t^0}\left(t^1, t^2, \underline{x}(t^0, t^1)\right)\)</span> makes explicit that the bond price depends on the stochastic factors of the model, <span class="math notranslate nohighlight">\(\underline{x}\)</span> , e.g., <span class="math notranslate nohighlight">\(\underline{x}=(x,y)\)</span> for G2++.</p>
+<p>Obviously, it is assumed that <span class="math">\begin{equation} \tag{1}
+t^0_k \le t^1_j\le t^2_j \qquad \forall j,k\,.
+\end{equation}</span> The following broadcasting rule must be satisfied,</p>
+<div class="math notranslate nohighlight">
+\[\text{either }\quad J=J' \quad\text{ or }\quad \min\{J+1,J'+1\}=1\,,\]</div>
+<p>and, in the returned array, <span class="math notranslate nohighlight">\(j\in \{0,\ldots, \max(J, J')\}\)</span>. Recall that we are using a zero-based numbering, so <span class="math notranslate nohighlight">\(J+1\)</span> is the cardinality of the set of <span class="math notranslate nohighlight">\(\{j\}_{j\in\mathcal{J}}=\{0,1,\ldots, J\}\)</span>.</p>
+<p><strong>Remark:</strong> If <span class="math notranslate nohighlight">\(\{t^0_k\}_{k=0}^K=\{t^1_j\}_{j=0}^{J}\)</span> as increasing in time sequences, then (1) is not assumed, as this will be useful for compute_spot_bond. But in that case note that only the elements below the diagonal (<span class="math notranslate nohighlight">\(j\ge k\)</span> for a given <span class="math notranslate nohighlight">\(i\)</span>) of</p>
+<div class="math notranslate nohighlight">
+\[\left(P_{t^0_k}\left(t^1_j, t^2_j, \underline{x}_i\left(t^0_k, t^1_j\right) \right)\right)_{i,j,k,l=0}\,,\]</div>
+<p>make sense.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p>dates <span class="math notranslate nohighlight">\(\rightarrow \{t^0_k\}_{k=0}^K\)</span> ,</p></li>
+<li><p>beg_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>end_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^2_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>calendar <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar for computations,</p></li>
+<li><p>srsim <span class="math notranslate nohighlight">\(\rightarrow\)</span> simulations, i.e., srsim[i, j, k, l] = <span class="math notranslate nohighlight">\(x^l_i(t^0_k, t^1_j)\)</span> being the latter the <span class="math notranslate nohighlight">\(i\)</span>-th simulation at time <span class="math notranslate nohighlight">\(t^1_j\)</span> , with origin <span class="math notranslate nohighlight">\(t^0_k\)</span> for the <span class="math notranslate nohighlight">\(l\)</span>-th stochastic component.</p></li>
+</ul>
+</section>
+<section id="compute_spot_bond">
+<h2>compute_spot_bond<a class="headerlink" href="#compute_spot_bond" title="Permalink to this heading">#</a></h2>
+<p>For the dates <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^J\)</span> , <span class="math notranslate nohighlight">\(\{t^2_j\}_{j=0}^{J'}\)</span> it computes</p>
+<div class="math notranslate nohighlight">
+\[P_{t^1}\left(t^1, t^2\right)\]</div>
+<p>according to the specified model. More precisely, it returns the array:</p>
+<div class="math notranslate nohighlight">
+\[\left(P_{t^1_j}\left(t^1_j, t^2_j\right)\right)_{j}\,,\]</div>
+<p>Clearly, it is independent of the simulation as it only depends on the initial curve. This is the spot curve if we recover it using <span class="math notranslate nohighlight">\(\varphi\)</span>, as in G2++ and Hull-White, see above. Another way to see the simulation independence uses the previous method compute_future_bond and the notation <span class="math notranslate nohighlight">\(P_{t^1}\left(t^1, t^2, \underline{x}(t^1,t^1)\right)\)</span> (it makes explicit that the bond price depends on the stochastic factors of the model, <span class="math notranslate nohighlight">\(\underline{x}\)</span>). Here, the simulations are
+<span class="math notranslate nohighlight">\(\underline{x}(t^1, t^1)\)</span>, i.e., it is always the initial condition, so it is independent of the simulation. The following broadcasting rule must be satisfied,</p>
+<div class="math notranslate nohighlight">
+\[\text{either }\quad J=J' \quad\text{ or }\quad \min\{J+1,J'+1\}=1\,,\]</div>
+<p>and, in the returned array, <span class="math notranslate nohighlight">\(j\in \{1,\ldots, \max(J, J')\}\)</span>. Recall that we are using a zero-based numbering, so if <span class="math notranslate nohighlight">\(J+1\)</span> is the cardinality of the set of <span class="math notranslate nohighlight">\(\{j\}_{j\in\mathcal{J}}=\{0,1,\ldots, J\}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p>beg_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>end_dates <span class="math notranslate nohighlight">\(\rightarrow \{t^2_j\}_{j=0}^{J'}\)</span> ,</p></li>
+<li><p>calendar <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar for computations.</p></li>
+</ul>
+</section>
+<section id="compute_forward_bond_old">
+<h2>compute_forward_bond_old<a class="headerlink" href="#compute_forward_bond_old" title="Permalink to this heading">#</a></h2>
+<p>For the dates <span class="math notranslate nohighlight">\(t^0\)</span> , <span class="math notranslate nohighlight">\(\{\tau_j\}_{j=0}^J\)</span> , <span class="math notranslate nohighlight">\(\{\tau_{j'}^f\}_{j'=1}^{J'}\)</span> it computes</p>
+<div class="math notranslate nohighlight">
+\[\text{FP}_{t^0}\left(t_1,\tau_j,\tau^f_{j'}\right):=\frac{P_{t^0}\left(t_1, \tau_{j'}^f\right)}{P_{t^0}\left(t_1,\tau_j\right)}\]</div>
+<p>according to the specified model and defining <span class="math notranslate nohighlight">\(t^1:=\tau_0\)</span>. It is assumed that <span class="math notranslate nohighlight">\(t^0 &lt;t^1\)</span>. The subscript of <span class="math notranslate nohighlight">\(P\)</span> represents the time considered as origin for calibration, as in the previous section. The following broadcasting rule must be satisfied,</p>
+<div class="math notranslate nohighlight">
+\[\text{either }\quad J=J' \quad\text{ or }\quad \min\{J,J'\}=1\,.\]</div>
+<p>With this, we can more precisely say that it returns the array:</p>
+<div class="math notranslate nohighlight">
+\[\left(\text{FP}_{t^0}\left(t_1, \tau_{j}, \tau_{{j}}^f, \underline{x}_i(t_0, t_1)\right)\right)_{i=0,\, {j}=1}^{i=I,\, j=\max{J, J'}}\,,\]</div>
+<p>being <span class="math notranslate nohighlight">\(I+1\)</span> the number of simulations and using the same notation as above. Note that if <span class="math notranslate nohighlight">\(J=1\)</span> , <span class="math notranslate nohighlight">\(\tau_{j}:=\tau_1\, \forall j\)</span> (analogously for <span class="math notranslate nohighlight">\(\tau^f\)</span>), this is the standard numpy broadcasting.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p>date <span class="math notranslate nohighlight">\(\rightarrow t^0\)</span> ,</p></li>
+<li><p>step_dates <span class="math notranslate nohighlight">\(\rightarrow(\tau_j)_{j=0}\,,\, t_1:=\tau_0\)</span> , .</p></li>
+<li><p>final_date <span class="math notranslate nohighlight">\(\rightarrow \{\tau_{j'}^f\}_{j'=1}^{J'}\)</span>.</p></li>
+<li><p>calendar <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar</p></li>
+<li><p>srsim <span class="math notranslate nohighlight">\(\rightarrow\)</span> simulations, i.e., srsim[i, 0, 0, l] = <span class="math notranslate nohighlight">\(x^l_i(t^0, t^1)\)</span> being the latter the <span class="math notranslate nohighlight">\(i\)</span>-th simulation for the <span class="math notranslate nohighlight">\(l\)</span>-th stochastic factor at time <span class="math notranslate nohighlight">\(t^1\)</span> and with origin <span class="math notranslate nohighlight">\(t^0\)</span> , see above.</p></li>
+</ul>
+</section>
+<section id="compute_forward_bond">
+<h2>compute_forward_bond<a class="headerlink" href="#compute_forward_bond" title="Permalink to this heading">#</a></h2>
+<p>For the dates <span class="math notranslate nohighlight">\(\{t^0_k\}_{k=0}^K\)</span> , <span class="math notranslate nohighlight">\(\{t^1_j\}_{j=0}^J\)</span> , <span class="math notranslate nohighlight">\(\{T_l\}_{l=0}^{L}\)</span> it computes</p>
+<div class="math notranslate nohighlight">
+\[\text{FP}_{t^0}\left(t^1,T_{l-1}, T_l\right):=\frac{P_{t^0}\left(t^1, T_l\right)}{P_{t^0}\left(t_1,T_{l-1}\right)}\]</div>
+<p>according to the specified model and defining <span class="math notranslate nohighlight">\(T_{-1}:=t_1\)</span> , so the denominator equals one if <span class="math notranslate nohighlight">\(l=0\)</span>. The subscript of <span class="math notranslate nohighlight">\(P\)</span> represents the time considered as origin for calibration, as in the previous section. It is assumed that</p>
+<div class="math notranslate nohighlight">
+\[t^0_k \le t^1_j\quad\forall j,k\,.\]</div>
+<p>With this, we can more precisely say that it returns the array <span class="math notranslate nohighlight">\(\textrm{forwards}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\textrm{FP}[i,j,k,l]=\begin{cases}
+\text{FP}_{t^0_k}\left(t^1_j,t^1_j, T_0, \underline{x}_i\left(t^0_k, t^1_j\right)\right)={P}_{t^0_k}\left(t^1_j, T_0, \underline{x}\left(t^0_k, t^1_j\right)\right)&amp;\text{ if } l=0\,,\\
+\text{FP}_{t^0_k}\left(t^1_j,T_{l-1}, T_l, \underline{x}_i\left(t^0_k, t^1_j\right)\right)&amp;\text{ otherwise}\,,
+\end{cases}\end{split}\]</div>
+<p>being <span class="math notranslate nohighlight">\(I+1\)</span> the number of simulations and making explicit that <span class="math notranslate nohighlight">\(P\)</span> depends on the stochastic factors of the model, same notation as above.</p>
+<p><strong>WATCH OUT:</strong> We are following BM definition, see page XXXVI. But, to calculate a forward we need <span class="math notranslate nohighlight">\(\text{FP}^{-1}\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[F(t; T, S) = \frac{1}{S-T}\left(\text{FP}^{-1}(t; T, S)-1\right)\,,\]</div>
+<p>for <span class="math notranslate nohighlight">\(t\le T\le S\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\text{Code}\)</span> - math <span class="math notranslate nohighlight">\((\TeX)\)</span> <strong>translation</strong></p>
+<ul class="simple">
+<li><p>dates <span class="math notranslate nohighlight">\(\rightarrow \{t^0_k\}_{k=0}^K\)</span> ,</p></li>
+<li><p>beg_dates <span class="math notranslate nohighlight">\(\rightarrow\{t^1_j\}_{j=0}^J\)</span> ,</p></li>
+<li><p>tenor_dates <span class="math notranslate nohighlight">\(\rightarrow \{T_l\}_{l=0}^{L}\)</span> ,</p></li>
+<li><p>calendar <span class="math notranslate nohighlight">\(\rightarrow\)</span> calendar,</p></li>
+<li><p>srsim <span class="math notranslate nohighlight">\(\rightarrow\)</span> simulations, i.e., srsim[i, j, k, n] = <span class="math notranslate nohighlight">\(x^n_i(t^0_k, t^1_j)\)</span> being the latter the <span class="math notranslate nohighlight">\(i\)</span>-th simulation for the <span class="math notranslate nohighlight">\(n\)</span>-th stochastic factor at time <span class="math notranslate nohighlight">\(t^1_j\)</span> and with origin <span class="math notranslate nohighlight">\(t^0_k\)</span> , see above. Note that <span class="math notranslate nohighlight">\(l\)</span> is now reserved for the tenor structure, not the stochastic factors.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interest Rate Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Available-models">Available models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Available-classes-and-methods">Available classes and methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate_paths">generate_paths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate_short_rate">generate_short_rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute_future_bond">compute_future_bond</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute_spot_bond">compute_spot_bond</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute_forward_bond_old">compute_forward_bond_old</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute_forward_bond">compute_forward_bond</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, AFS.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
